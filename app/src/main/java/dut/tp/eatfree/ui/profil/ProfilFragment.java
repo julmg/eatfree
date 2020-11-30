@@ -1,4 +1,4 @@
-package dut.tp.eatfree.ui.home;
+package dut.tp.eatfree.ui.profil;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -14,17 +14,17 @@ import androidx.lifecycle.ViewModelProvider;
 
 import dut.tp.eatfree.R;
 
-public class HomeFragment extends Fragment {
+public class ProfilFragment extends Fragment {
 
-    private HomeViewModel homeViewModel;
+    private ProfilViewModel profilViewModel;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        homeViewModel =
-                new ViewModelProvider(this).get(HomeViewModel.class);
+        profilViewModel =
+                new ViewModelProvider(this).get(ProfilViewModel.class);
         View root = inflater.inflate(R.layout.fragment_home, container, false);
         final TextView textView = root.findViewById(R.id.text_home);
-        homeViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
+        profilViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
             @Override
             public void onChanged(@Nullable String s) {
                 textView.setText(s);

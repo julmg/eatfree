@@ -1,4 +1,4 @@
-package dut.tp.eatfree.ui.dashboard;
+package dut.tp.eatfree.ui.parametres;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -14,17 +14,17 @@ import androidx.lifecycle.ViewModelProvider;
 
 import dut.tp.eatfree.R;
 
-public class DashboardFragment extends Fragment {
+public class ParametresFragment extends Fragment {
 
-    private DashboardViewModel dashboardViewModel;
+    private ParametresViewModel parametresViewModel;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        dashboardViewModel =
-                new ViewModelProvider(this).get(DashboardViewModel.class);
-        View root = inflater.inflate(R.layout.fragment_dashboard, container, false);
-        final TextView textView = root.findViewById(R.id.text_dashboard);
-        dashboardViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
+        parametresViewModel =
+                new ViewModelProvider(this).get(ParametresViewModel.class);
+        View root = inflater.inflate(R.layout.fragment_notifications, container, false);
+        final TextView textView = root.findViewById(R.id.text_notifications);
+        parametresViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
             @Override
             public void onChanged(@Nullable String s) {
                 textView.setText(s);

@@ -7,19 +7,19 @@
 
     <fragment
         android:id="@+id/navigation_home"
-        android:name="dut.tp.eatfree.ui.home.HomeFragment"
-        android:label="@string/title_home"
+        android:name="dut.tp.eatfree.ui.profil.ProfilFragment"
+        android:label="@string/title_profil"
         tools:layout="@layout/fragment_home" />
 
     <fragment
         android:id="@+id/navigation_dashboard"
-        android:name="dut.tp.eatfree.ui.dashboard.DashboardFragment"
-        android:label="@string/title_dashboard"
+        android:name="dut.tp.eatfree.ui.photo.PhotoFragment"
+        android:label="@string/title_photo"
         tools:layout="@layout/fragment_dashboard" />
 
     <fragment
         android:id="@+id/navigation_notifications"
-        android:name="dut.tp.eatfree.ui.notifications.NotificationsFragment"
-        android:label="@string/title_notifications"
+        android:name="dut.tp.eatfree.ui.parametres.ParametresFragment"
+        android:label="@string/title_parameters"
         tools:layout="@layout/fragment_notifications" />
 </navigation>
