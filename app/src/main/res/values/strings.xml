@@ -1,6 +1,3 @@
 <resources>
     <string name="app_name">eatfree</string>
-    <string name="title_profil">Profil</string>
-    <string name="title_photo">Scan</string>
-    <string name="title_parameters">Paramètres</string>
 </resources>
