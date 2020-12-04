@@ -29,15 +29,6 @@ import java.io.InputStream;
 @RunWith(AndroidJUnit4.class)
 public class OCRInstrumentedTest {
 
-    private String OFFURLPrefix = "https://world.openfoodfacts.org/api/v0/product/";
-
-    @Test
-    public void useAppContext() {
-        // Context of the app under test.
-        Context appTargetContext = InstrumentationRegistry.getInstrumentation().getTargetContext();
-        Assert.assertEquals("com.example.eatfree", appTargetContext.getPackageName());
-    }
-
     public String ocr_isCorrect(String filestr)  {
         Context appContext = InstrumentationRegistry.getInstrumentation().getContext();
         Context appTargetContext = InstrumentationRegistry.getInstrumentation().getTargetContext();
@@ -117,70 +108,6 @@ public class OCRInstrumentedTest {
     }
 
 
-    @Test
-    public void offT1(){
-        String jsontxt = JSONWeb.getJSON(OFFURLPrefix+ 3445850061370L +".json");
-        Log.i("---------------------------",jsontxt);
-        String ingredients = "";
-        try {
-            JSONObject json = new JSONObject(jsontxt);
-            ingredients = json.getJSONObject("product").getString("ingredients_text");
-        } catch(JSONException e){
-            e.printStackTrace();
-        }
-        Assert.assertThat(ingredients, CoreMatchers.containsString("Sel"));
-    }
 
-    @Test
-    public void offT2(){
-        String jsontxt = JSONWeb.getJSON(OFFURLPrefix+ 3245412366185L +".json");
-        String ingredients = "";
-        try {
-            JSONObject json = new JSONObject(jsontxt);
-            ingredients = json.getJSONObject("product").getString("ingredients_text");
-        } catch(JSONException e){
-            e.printStackTrace();
-        }
-        Assert.assertThat(ingredients, CoreMatchers.containsString("blé"));
-    }
-
-    @Test
-    public void offT3(){
-        String jsontxt = JSONWeb.getJSON(OFFURLPrefix+ 3564700610510L +".json");
-        String ingredients = "";
-        try {
-            JSONObject json = new JSONObject(jsontxt);
-            ingredients = json.getJSONObject("product").getString("ingredients_text");
-        } catch(JSONException e){
-            e.printStackTrace();
-        }
-        Assert.assertThat(ingredients, CoreMatchers.containsString("amidon"));
-    }
-
-    @Test
-    public void offT4(){
-        String jsontxt = JSONWeb.getJSON(OFFURLPrefix+ 3564707002158L +".json");
-        String ingredients = "";
-        try {
-            JSONObject json = new JSONObject(jsontxt);
-            ingredients = json.getJSONObject("product").getString("ingredients_text");
-        } catch(JSONException e){
-            e.printStackTrace();
-        }
-        Assert.assertThat(ingredients, CoreMatchers.containsString("blé"));
-    }
-
-    @Test
-    public void offT5(){
-        String jsontxt = JSONWeb.getJSON(OFFURLPrefix+ 3564700414354L +".json");
-        String ingredients = "";
-        try {
-            JSONObject json = new JSONObject(jsontxt);
-            ingredients = json.getJSONObject("product").getString("ingredients_text");
-        } catch(JSONException e){
-            e.printStackTrace();
-        }
-        Assert.assertThat(ingredients, CoreMatchers.containsString("céleri"));
-    }
 }
 
