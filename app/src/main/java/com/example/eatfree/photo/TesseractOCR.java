@@ -13,13 +13,20 @@ import java.io.FileOutputStream;
 import java.io.InputStream;
 
 /**
- * todo à documenter
+ * @file TesseractOCR.java
+ * @brief Classe implémentant l'OCRisation (Reconnaissance optique de caractères) via la bibliothèque Tess-Two (fork de Tesseract)
+ * @date 2020
  */
 public class TesseractOCR {
 
     private final TessBaseAPI mTess;
 
-
+    /**
+     * @brief Constructeur de l'OCRiseur
+     * @param context le contexte de l'application
+     * @param language la langue du texte sous forme de 3 caractères ("fra","eng", ...)
+     * @warning Seul le français est importé dans le projet, donc seul "fra" fonctionnera comme paramètre language
+     */
     public TesseractOCR(Context context, String language) {
         mTess = new TessBaseAPI();
         boolean fileExistFlag = false;
@@ -28,7 +35,7 @@ public class TesseractOCR {
 
         String dstPathDir = "/tesseract/tessdata/";
 
-        String srcFile = "fra.traineddata";
+        String srcFile = "fra.traineddata"; //Seul fichier disponible pour le moment
         InputStream inFile = null;
 
         dstPathDir = context.getFilesDir() + dstPathDir;
@@ -86,6 +93,11 @@ public class TesseractOCR {
         }
     }
 
+    /**
+     * Réalisation de l'OCRisation
+     * @param bitmap le bitmap (image) à OCRiser
+     * @return le texte reconnu, de type String
+     */
     public String getOCRResult(Bitmap bitmap) { //Testé : 6 réussites sur 9 images différentes
         mTess.setImage(bitmap);
         return mTess.getUTF8Text();

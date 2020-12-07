@@ -16,10 +16,20 @@ import com.google.zxing.common.HybridBinarizer;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+/**
+ * @file BarcodeScan.java
+ * @brief Classe implémentant le scan de code-barres et la récupération des données de l'API OpenFoodFacts
+ * @date 2020
+ */
 public class BarcodeScan {
 
-    private static String OFFURLPrefix = "https://world.openfoodfacts.org/api/v0/product/";
+    private static String OFFURLPrefix = "https://world.openfoodfacts.org/api/v0/product/"; //!< Préfixe API OpenFoodFacts
 
+    /**
+     * @brief Récupération du code-barres à 13 chiffres à partir d'un bitmap (image), utilisant la bibliothèque ZXing
+     * @param bmp le bitmap duquel on veut extraire le code-barres
+     * @return Le code-barres de l'image, ou 0 si code-barres illisible/inexistant
+     */
     public static long getDoubleBarcode(Bitmap bmp) {
         String contents;
         int[] intArray = new int[bmp.getWidth()*bmp.getHeight()];
@@ -42,6 +52,12 @@ public class BarcodeScan {
         return Long.parseLong(contentLong13);
     }
 
+    /**
+     * @brief Récupération des ingrédients d'un produit alimentaire à partir de son code-barres et de la base de données OpenFoodFacts
+     * @param barcode le code-barres du produit alimentaire
+     * @return La liste des ingrédients du produit sous forme de String, ou un String vide si impossible
+     * @warning La méthode agrège plusieurs noeuds du JSON de l'API, donc il peut y avoir des doublons d'ingrédients dans le retour
+     */
     public static String getIngredientsFromOFF(long barcode){
         String jsonTxt = JSONWeb.getJSON(OFFURLPrefix+ barcode +".json");
         String ingredients = "";

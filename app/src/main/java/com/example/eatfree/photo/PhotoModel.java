@@ -44,7 +44,7 @@ public class PhotoModel {
     }
 
 
-    public Map<String,ArrayList<String>> findAllergenesByOCR(Bitmap bmp){
+    public Map<String,ArrayList<String>> findAllergenesWithOCR(Bitmap bmp){
         TesseractOCR tocr = new TesseractOCR(mAppContext, "fra");
         String output = tocr.getOCRResult(bmp);
 
@@ -52,7 +52,7 @@ public class PhotoModel {
     }
 
 
-    public Map<String,ArrayList<String>> findAllergenesByBarcodeOFF(Bitmap bmp) {
+    public Map<String,ArrayList<String>> findAllergenesWithBarcodeOFF(Bitmap bmp) {
         String ingredients = BarcodeScan.getIngredientsFromOFF(BarcodeScan.getDoubleBarcode(bmp));
         return findAllergenesInText(stripAccents(ingredients.toLowerCase()));
 

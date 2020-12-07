@@ -22,9 +22,9 @@ import java.io.IOException;
 import java.io.InputStream;
 
 /**
- * Instrumented test, which will execute on an Android device.
- *
- * @see <a href="http://d.android.com/tools/testing">Testing documentation</a>
+ * @file OCRInstrumentedTest.java
+ * @brief Tests unitaires instrumentés du fonctionnement de Tesseract sur la reconnaissance optique de caractères
+ * @date 2020
  */
 @RunWith(AndroidJUnit4.class)
 public class OCRInstrumentedTest {
