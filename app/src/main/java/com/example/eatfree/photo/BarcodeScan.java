@@ -59,6 +59,9 @@ public class BarcodeScan {
      * @warning La méthode agrège plusieurs noeuds du JSON de l'API, donc il peut y avoir des doublons d'ingrédients dans le retour
      */
     public static String getIngredientsFromOFF(long barcode){
+        if(barcode==0){
+            return "";
+        }
         String jsonTxt = JSONWeb.getJSON(OFFURLPrefix+ barcode +".json");
         String ingredients = "";
         JSONObject json = null;

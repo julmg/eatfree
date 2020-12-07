@@ -55,7 +55,7 @@ public class PhotoModelInstrumentedTest {
     }
 
     @Test
-    public void allergenesOFF1() {
+    public void allergenesOFF1() throws Exception {
         Map<String, ArrayList<String>> expectedAllergenes = new HashMap<String, ArrayList<String>>() {{
             put("Gluten", new ArrayList<>(Collections.singletonList("ble")));
             put("Fruits du groupe latex", new ArrayList<>(Collections.singletonList("soja")));
@@ -66,7 +66,7 @@ public class PhotoModelInstrumentedTest {
     }
 
     @Test
-    public void allergenesOFF2() {
+    public void allergenesOFF2() throws Exception {
         Map<String, ArrayList<String>> expectedAllergenes = new HashMap<String, ArrayList<String>>() {{
             put("Gluten", new ArrayList<>(Arrays.asList("gluten","ble")));
             put("Fruits secs oléagineux", new ArrayList<>(Collections.singletonList("carotte")));
@@ -77,7 +77,7 @@ public class PhotoModelInstrumentedTest {
     }
 
     @Test
-    public void allergenesOFF3() {
+    public void allergenesOFF3() throws Exception {
         Map<String, ArrayList<String>> expectedAllergenes = new HashMap<String, ArrayList<String>>() {};
 
         Map<String, ArrayList<String>> allergenes = mPhotoModel.findAllergenesWithBarcodeOFF(getBMP("B4.jpg"));
@@ -85,7 +85,7 @@ public class PhotoModelInstrumentedTest {
     }
 
     @Test
-    public void allergenesOFF4() {
+    public void allergenesOFF4() throws Exception {
         Map<String, ArrayList<String>> expectedAllergenes = new HashMap<String, ArrayList<String>>() {};
 
         Map<String, ArrayList<String>> allergenes = mPhotoModel.findAllergenesWithBarcodeOFF(getBMP("B5.jpg"));

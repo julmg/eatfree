@@ -13,8 +13,10 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.lang.reflect.MalformedParametersException;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.nio.charset.MalformedInputException;
 import java.text.Normalizer;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -65,8 +67,11 @@ public class PhotoModel {
      * @param bmp L'image du code-barres
      * @return La map des groupes d'allergènes et termes qui y font référence
      */
-    public Map<String,ArrayList<String>> findAllergenesWithBarcodeOFF(Bitmap bmp) {
+    public Map<String,ArrayList<String>> findAllergenesWithBarcodeOFF(Bitmap bmp) throws Exception {
         String ingredients = BarcodeScan.getIngredientsFromOFF(BarcodeScan.getDoubleBarcode(bmp));
+        if(ingredients==""){
+            throw new Exception("Une erreur s'est produite avec le scan de code-barres");
+        }
         return findAllergenesInText(stripAccents(ingredients.toLowerCase()));
 
     }
