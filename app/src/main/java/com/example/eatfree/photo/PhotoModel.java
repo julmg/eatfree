@@ -22,11 +22,16 @@ import java.util.Map;
 
 import javax.net.ssl.HttpsURLConnection;
 
+/**
+ * @file PhotoModel.java
+ * @brief Modèle du panel Photo
+ * @date 2020
+ */
 public class PhotoModel {
 
     private Context mAppContext;
 
-
+    //! Map des allergènes pris en charge par l'application (1er élément : groupe d'allergènes / 2e élément : mots apparaissant dans la liste d'ingrédients, se référant à ce groupe d'allergènes)
     private Map<String, String[]> mAllergenes = new HashMap<String, String[]>() {{
         put("Arachides", new String[]{"arachide", "cacahuete"});
         put("Œuf", new String[]{"œuf", "oeuf", "ovalbumine","ovomucoide","ovomucoide","lecithine d'oeuf","lecithine d'œuf","lysozyme"});
@@ -43,7 +48,11 @@ public class PhotoModel {
         mAppContext = context;
     }
 
-
+    /**
+     * @brief Récupération des allergènes présents dans un produit alimentaire à partir du bitmap (image) de la liste d'ingrédients : OCRisation
+     * @param bmp L'image de la liste d'ingrédients
+     * @return La map des groupes d'allergènes et termes qui y font référence
+     */
     public Map<String,ArrayList<String>> findAllergenesWithOCR(Bitmap bmp){
         TesseractOCR tocr = new TesseractOCR(mAppContext, "fra");
         String output = tocr.getOCRResult(bmp);
@@ -51,14 +60,23 @@ public class PhotoModel {
         return findAllergenesInText(stripAccents(output.toLowerCase()));
     }
 
-
+    /**
+     * @brief Récupération des allergènes présents dans un produit alimentaire  à partir du bitmap (image) du code-barres du produit : scan + bdd OpenFoodFacts
+     * @param bmp L'image du code-barres
+     * @return La map des groupes d'allergènes et termes qui y font référence
+     */
     public Map<String,ArrayList<String>> findAllergenesWithBarcodeOFF(Bitmap bmp) {
         String ingredients = BarcodeScan.getIngredientsFromOFF(BarcodeScan.getDoubleBarcode(bmp));
         return findAllergenesInText(stripAccents(ingredients.toLowerCase()));
 
     }
 
-    //Recherche de mots clés d'allergènes dans le string de sortie de l'OCR
+    /**
+     * @brief Recherche de mots-clés d'allergènes dans un String
+     * @param text Le String dans lequel effectuer la recherche
+     * @return La map des groupes d'allergènes et termes qui y font référence
+     */
+
     private Map<String,ArrayList<String>> findAllergenesInText(String text){
         Map<String,ArrayList<String>> foundAllergenes = new HashMap<>();
         for (Map.Entry<String, String[]> entry : mAllergenes.entrySet()) {
@@ -84,6 +102,11 @@ public class PhotoModel {
         return foundAllergenes;
     }
 
+    /**
+     * @brief Suppression des accents dans un String
+     * @param s le String duquel on veut retirer tous les accents
+     * @return Ce même String, sans les accents
+     */
     private static String stripAccents(String s)
     {
         s = Normalizer.normalize(s, Normalizer.Form.NFD);
