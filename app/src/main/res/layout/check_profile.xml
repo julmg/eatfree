@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.LinearLayoutCompat
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/text_dashboard"
+        android:text = "Votre profil"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:textAlignment="center"
+        android:textSize="30sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:gravity="center_horizontal"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_margin="30dp">
+
+        <TextView
+            android:id="@+id/lblUsername"
+            android:text="Nom d'utilisateur"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:labelFor="@id/username"/>
+
+        <TextView
+            android:id="@+id/seeusername"
+            android:text="Mathilde Dupuis"
+            android:textSize="25sp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"/>
+
+        <TextView
+            android:id="@+id/lblBirth"
+            android:text="Date de naissance"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:labelFor="@id/dateOfBirth"
+            android:layout_marginTop="40dp"/>
+
+        <TextView
+            android:id="@+id/seedateOfBirth"
+            android:text="12/04/1997"
+            android:textSize="25sp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"/>
+
+        <TextView
+            android:id="@+id/lblAllergies"
+            android:text="Produits à éviter"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:labelFor="@id/checkbox"
+            android:layout_marginTop="40dp"/>
+
+        <TextView
+            android:id="@+id/textAllergies"
+            android:text="Arachides \nOeufs \n..."
+            android:textSize="25sp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:labelFor="@id/checkbox"
+            android:layout_marginTop="10dp"/>
+
+        <Button
+            android:id="@+id/edit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:text="Modifier" />
+
+
+    </LinearLayout>
+
+</androidx.appcompat.widget.LinearLayoutCompat>
