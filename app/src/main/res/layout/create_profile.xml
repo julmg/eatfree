@@ -63,56 +63,67 @@
             android:layout_height="wrap_content"
             android:labelFor="@id/checkbox"/>
 
-        <LinearLayout
-            android:id="@+id/checkbox"
+        <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            tools:context=".ui.photo.PhotoFragment"
-            android:orientation="vertical">
+            android:layout_height="256dp">
 
-            <CheckBox
-                android:id="@+id/arachidesCheck"
+            <LinearLayout
+                android:id="@+id/checkbox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Arachides"/>
-            <CheckBox
-                android:id="@+id/oeufsCheck"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Oeufs"/>
-            <CheckBox
-                android:id="@+id/laitVacheCheck"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Protéines de lait de vache"/>
-            <CheckBox
-                android:id="@+id/glutenCheck"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Gluten"/>
-            <CheckBox
-                android:id="@+id/fruitsLatexCheck"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Fruits du groupe latex (banane, avocat...)"/>
-            <CheckBox
-                android:id="@+id/fruitsRosaceesCheck"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Fruits Rosacées (abricots, poires...)"/>
-            <CheckBox
-                android:id="@+id/fruitsOleagineuxCheck"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Fruits secs oléagineux et Ombellifères \n(aneth, carottes, céleri...)"/>
+                android:orientation="vertical"
+                tools:context=".ui.photo.PhotoFragment">
 
-            <Button
-                android:id="@+id/valider"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Valider" />
+                <CheckBox
+                    android:id="@+id/arachidesCheck"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Arachides" />
 
-        </LinearLayout>
+                <CheckBox
+                    android:id="@+id/oeufsCheck"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Oeufs" />
+
+                <CheckBox
+                    android:id="@+id/laitVacheCheck"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Protéines de lait de vache" />
+
+                <CheckBox
+                    android:id="@+id/glutenCheck"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Gluten" />
+
+                <CheckBox
+                    android:id="@+id/fruitsLatexCheck"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Fruits du groupe latex (banane, avocat...)" />
+
+                <CheckBox
+                    android:id="@+id/fruitsRosaceesCheck"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Fruits Rosacées (abricots, poires...)" />
+
+                <CheckBox
+                    android:id="@+id/fruitsOleagineuxCheck"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Fruits secs oléagineux et Ombellifères \n(aneth, carottes, céleri...)" />
+
+            </LinearLayout>
+        </ScrollView>
+
+        <Button
+            android:id="@+id/valider"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Valider" />
 
 
     </LinearLayout>

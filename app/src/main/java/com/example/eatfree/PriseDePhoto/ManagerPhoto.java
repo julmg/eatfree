@@ -35,6 +35,8 @@ public class ManagerPhoto {
         ctrlPhoto.setRefMod(mdlPhoto);
         mdlPhoto.setRefVue(viewPhoto);
 
+        ctrlPhoto.refActivity=(MainActivity) context;
+
         refAct= (Activity)context;
 
         mdlPhoto.setRefAct(refAct);

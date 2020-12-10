@@ -2,9 +2,13 @@ package com.example.eatfree;
 
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 
+import android.Manifest;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Build;
@@ -15,7 +19,13 @@ import com.example.eatfree.PriseDePhoto.ManagerPhoto;
 import com.example.eatfree.profile.ProfileManager;
 import com.example.eatfree.photo.PhotoModel;
 
+import java.util.ArrayList;
+import java.util.Map;
+
 public class MainActivity extends AppCompatActivity {
+
+    public static final int MY_PERMISSIONS_REQUEST = 1;
+    private boolean permissionsGranted;
 
     //! stocke les données sauvegardées de l'utilisateur
     public SharedPreferences preferences;
@@ -61,6 +71,24 @@ public class MainActivity extends AppCompatActivity {
         return preferences.getBoolean("isSaved", false);
     }
 
+    public boolean checkPermissions(boolean isFirstTry){
+        if (ContextCompat.checkSelfPermission(this,
+                Manifest.permission.WRITE_EXTERNAL_STORAGE)
+                == PackageManager.PERMISSION_GRANTED && ContextCompat.checkSelfPermission(this,
+                Manifest.permission.CAMERA)
+                == PackageManager.PERMISSION_GRANTED)
+        {
+            permissionsGranted = true;
+        } else if(isFirstTry){
+            ActivityCompat.requestPermissions(MainActivity.this,
+                    new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.CAMERA},
+                    MY_PERMISSIONS_REQUEST);
+        } else {
+            permissionsGranted = false;
+        }
+        return permissionsGranted;
+    }
+
     /**
      * @brief revois le résultat de la prise de photo pour l'afficher sur la vue grâce au fichier temporaire (path)
      * @param requestCode
@@ -76,13 +104,34 @@ public class MainActivity extends AppCompatActivity {
             Bitmap image = BitmapFactory.decodeFile(manager.mdlPhoto.photo_path);
             manager.viewPhoto.affichePhoto.setImageBitmap(image);
             PhotoModel annalyseAllergène = new PhotoModel(this);
-           //try {
-             //  annalyseAllergène.findAllergenesWithBarcodeOFF(image);
-            //}
-            //catch (Exception e){
-             //   Toast.makeText(this, "aucun code barre détecté", Toast.LENGTH_SHORT).show();
-             //   annalyseAllergène.findAllergenesWithOCR(image);
-          // }
+           try {
+               Map<String, ArrayList<String>> result = annalyseAllergène.findAllergenesWithBarcodeOFF(image);
+               Toast.makeText(this, result.toString(), Toast.LENGTH_LONG).show();
+           }
+           catch (Exception e){
+               Toast.makeText(this, "aucun code barre détecté", Toast.LENGTH_SHORT).show();
+               //annalyseAllergène.findAllergenesWithOCR(image);
+           }
+        }
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode,
+                                           String permissions[], int[] grantResults) {
+        switch (requestCode) {
+            case MY_PERMISSIONS_REQUEST: {
+                // If request is cancelled, the result arrays are empty.
+                if (grantResults.length > 0
+                        && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+
+                    permissionsGranted = true;
+                } else {
+
+                    permissionsGranted = false;
+                }
+            }
+
+
         }
     }
 }

@@ -41,7 +41,7 @@
         app:srcCompat="@drawable/ic_person" />
 
     <ImageView
-        android:id="@+id/imageView3"
+        android:id="@+id/imgAffichePhoto"
         android:layout_width="match_parent"
         android:layout_height="566dp"
         android:scaleType="centerInside"
@@ -53,7 +53,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"
         app:backgroundTint="@android:color/transparent"
-        app:layout_anchor="@+id/imageView3"
+        app:layout_anchor="@+id/imgAffichePhoto"
         app:layout_anchorGravity="bottom|center" />
 
     <ImageView
