@@ -13,6 +13,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.StrictMode;
 import android.widget.Toast;
 
 import com.example.eatfree.PriseDePhoto.ManagerPhoto;
@@ -20,6 +21,7 @@ import com.example.eatfree.profile.ProfileManager;
 import com.example.eatfree.photo.PhotoModel;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Map;
 
 public class MainActivity extends AppCompatActivity {
@@ -42,6 +44,11 @@ public class MainActivity extends AppCompatActivity {
         }
         else
             manager.viewPhoto.setActivated(false);
+
+        //exécution en mode strict
+        StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+
+        StrictMode.setThreadPolicy(policy);
 
     }
 
@@ -72,16 +79,14 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public boolean checkPermissions(boolean isFirstTry){
-        if (ContextCompat.checkSelfPermission(this,
-                Manifest.permission.WRITE_EXTERNAL_STORAGE)
-                == PackageManager.PERMISSION_GRANTED && ContextCompat.checkSelfPermission(this,
-                Manifest.permission.CAMERA)
-                == PackageManager.PERMISSION_GRANTED)
+        if (ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED &&
+                ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA) == PackageManager.PERMISSION_GRANTED &&
+                ContextCompat.checkSelfPermission(this, Manifest.permission.INTERNET) == PackageManager.PERMISSION_GRANTED)
         {
             permissionsGranted = true;
         } else if(isFirstTry){
             ActivityCompat.requestPermissions(MainActivity.this,
-                    new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.CAMERA},
+                    new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.CAMERA, Manifest.permission.INTERNET},
                     MY_PERMISSIONS_REQUEST);
         } else {
             permissionsGranted = false;
@@ -106,10 +111,10 @@ public class MainActivity extends AppCompatActivity {
             PhotoModel annalyseAllergène = new PhotoModel(this);
            try {
                Map<String, ArrayList<String>> result = annalyseAllergène.findAllergenesWithBarcodeOFF(image);
-               Toast.makeText(this, result.toString(), Toast.LENGTH_LONG).show();
+               Toast.makeText(this, "Résultat : "+Arrays.toString(result.entrySet().toArray()), Toast.LENGTH_LONG).show();
            }
            catch (Exception e){
-               Toast.makeText(this, "aucun code barre détecté", Toast.LENGTH_SHORT).show();
+               Toast.makeText(this, "ERREUR : "+e.toString(), Toast.LENGTH_SHORT).show();
                //annalyseAllergène.findAllergenesWithOCR(image);
            }
         }
