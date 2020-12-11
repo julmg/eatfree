@@ -6,6 +6,9 @@ import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
 import android.Manifest;
+import android.app.AlertDialog;
+import android.app.ProgressDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
@@ -14,6 +17,8 @@ import android.graphics.BitmapFactory;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.StrictMode;
+import android.provider.ContactsContract;
+import android.util.Log;
 import android.widget.Toast;
 
 import com.example.eatfree.PriseDePhoto.ManagerPhoto;
@@ -22,12 +27,24 @@ import com.example.eatfree.photo.PhotoModel;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
+import java.util.concurrent.Callable;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.Future;
+import java.util.concurrent.TimeUnit;
+import java.util.concurrent.TimeoutException;
 
 public class MainActivity extends AppCompatActivity {
 
     public static final int MY_PERMISSIONS_REQUEST = 1;
-    private boolean permissionsGranted;
+    private boolean mPermissionsGranted;
+    private ProgressDialog mProgressDialogOCR, mProgressDialogOFF;
+    private Bitmap mImage;
+    private PhotoModel mPhotoModel;
 
     //! stocke les données sauvegardées de l'utilisateur
     public SharedPreferences preferences;
@@ -83,15 +100,15 @@ public class MainActivity extends AppCompatActivity {
                 ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA) == PackageManager.PERMISSION_GRANTED &&
                 ContextCompat.checkSelfPermission(this, Manifest.permission.INTERNET) == PackageManager.PERMISSION_GRANTED)
         {
-            permissionsGranted = true;
+            mPermissionsGranted = true;
         } else if(isFirstTry){
             ActivityCompat.requestPermissions(MainActivity.this,
                     new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.CAMERA, Manifest.permission.INTERNET},
                     MY_PERMISSIONS_REQUEST);
         } else {
-            permissionsGranted = false;
+            mPermissionsGranted = false;
         }
-        return permissionsGranted;
+        return mPermissionsGranted;
     }
 
     /**
@@ -106,17 +123,11 @@ public class MainActivity extends AppCompatActivity {
         ManagerPhoto manager= ManagerPhoto.getInstance(this);
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == manager.mdlPhoto.RETOUR_PRENDRE_PHOTO && resultCode == RESULT_OK) {
-            Bitmap image = BitmapFactory.decodeFile(manager.mdlPhoto.photo_path);
-            manager.viewPhoto.affichePhoto.setImageBitmap(image);
-            PhotoModel annalyseAllergène = new PhotoModel(this);
-           try {
-               Map<String, ArrayList<String>> result = annalyseAllergène.findAllergenesWithBarcodeOFF(image);
-               Toast.makeText(this, "Résultat : "+Arrays.toString(result.entrySet().toArray()), Toast.LENGTH_LONG).show();
-           }
-           catch (Exception e){
-               Toast.makeText(this, "ERREUR : "+e.toString(), Toast.LENGTH_SHORT).show();
-               //annalyseAllergène.findAllergenesWithOCR(image);
-           }
+            mImage = BitmapFactory.decodeFile(manager.mdlPhoto.photo_path);
+            manager.viewPhoto.affichePhoto.setImageBitmap(mImage);
+            mPhotoModel = new PhotoModel(this);
+            photoRecognition();
+
         }
     }
 
@@ -129,14 +140,147 @@ public class MainActivity extends AppCompatActivity {
                 if (grantResults.length > 0
                         && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
 
-                    permissionsGranted = true;
+                    mPermissionsGranted = true;
                 } else {
 
-                    permissionsGranted = false;
+                    mPermissionsGranted = false;
                 }
             }
 
 
         }
     }
+
+    private void photoRecognition() {
+
+        if (mProgressDialogOFF == null) {
+            mProgressDialogOFF = ProgressDialog.show(this, "Détection du code barre",
+                    "Veuillez patienter...", true);
+        } else {
+            mProgressDialogOFF.show();
+        }
+        new Thread(new Runnable() {
+            public void run() {
+                final Map<String, ArrayList<String>> result;
+                boolean success=false;
+                try {
+                    result = mPhotoModel.findAllergenesWithBarcodeOFF(mImage);
+                } catch (Exception e) {
+                    runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            mProgressDialogOFF.dismiss();
+                            Log.w("DEBUG","ERREUR : "+e.toString());
+                            DialogInterface.OnClickListener dialogClickListener = (dialog, which) -> {
+                                switch (which){
+                                    case DialogInterface.BUTTON_POSITIVE:
+
+                                        new Thread(new Runnable() {
+
+
+                                            public void run() {
+                                                photoRecognitionOCR();
+                                            }
+                                        }).start();
+                                        if (mProgressDialogOCR == null) {
+                                            mProgressDialogOCR = ProgressDialog.show(MainActivity.this, "Détection des caractères",
+                                                    "Veuillez patienter, cette opération peut prendre jusqu'à une minute", true);
+                                        } else {
+                                            mProgressDialogOCR.show();
+                                        }
+                                        break;
+                                }
+                            };
+
+                            AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
+                            builder.setMessage("Code barre non reconnu. Voulez-vous effectuer une reconnaissance de caractères ?").setPositiveButton("Oui", dialogClickListener)
+                                    .setNegativeButton("Non", dialogClickListener).show();
+                        }
+                    });
+                    return;
+                }
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        mProgressDialogOFF.dismiss();
+                        photoRecognitionResult(result);
+                    }
+                });
+            }
+        }).start();
+    }
+
+    private void photoRecognitionOCR()  {
+
+        ExecutorService executor = Executors.newFixedThreadPool(1);
+        OCRTask task = new OCRTask();
+        List<Future<Map<String, ArrayList<String>>>> futureResult = null;
+        Map<String, ArrayList<String>> result = null;
+        try{
+            futureResult = executor.invokeAll(Arrays.asList(task));
+
+
+            result = futureResult.get(0).get(60, TimeUnit.SECONDS);
+        }catch(TimeoutException e){
+            mProgressDialogOCR.dismiss();
+            AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
+            builder.setMessage("Texte non reconnu (temps d'attente max dépassé)")
+                    .setCancelable(false)
+                    .setPositiveButton("ok",null);
+            AlertDialog alert = builder.create();
+            alert.show();
+            futureResult.get(0).cancel(true);
+            return;
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+        }
+        futureResult.get(0).cancel(true);
+        Map<String, ArrayList<String>> finalResult = result;
+        runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                mProgressDialogOCR.dismiss();
+                if (finalResult == null) {
+                    AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
+                    builder.setMessage("Texte non reconnu")
+                            .setCancelable(false)
+                            .setPositiveButton("ok", null);
+                    AlertDialog alert = builder.create();
+                    alert.show();
+                } else {
+                    photoRecognitionResult(finalResult);
+                }
+            }
+        });
+
+    }
+
+    private void photoRecognitionResult(Map<String, ArrayList<String>> result) {
+        Log.i("DEBUG","Résultat : "+result.entrySet().toArray().toString());
+        AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
+        builder.setMessage(Arrays.toString(result.entrySet().toArray()))
+                .setCancelable(false)
+                .setPositiveButton("ok",null);
+        AlertDialog alert = builder.create();
+        alert.show();
+    }
+
+    class OCRTask implements Callable<Map<String, ArrayList<String>>>
+    {
+        @Override
+        public Map<String, ArrayList<String>> call() throws Exception {
+            final Map<String, ArrayList<String>> result;
+            try {
+                result = mPhotoModel.findAllergenesWithOCR(mImage);
+            } catch (Exception e){
+                Log.e("DEBUG",e.toString());
+                return null;
+            }
+            return result;
+
+        }
+    }
+
 }
