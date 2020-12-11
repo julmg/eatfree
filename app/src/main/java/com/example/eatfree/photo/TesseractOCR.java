@@ -3,6 +3,7 @@ package com.example.eatfree.photo;
 import android.content.Context;
 import android.content.res.AssetManager;
 import android.graphics.Bitmap;
+import android.graphics.Matrix;
 import android.util.Log;
 import android.widget.Toast;
 
@@ -99,7 +100,7 @@ public class TesseractOCR {
      * @return le texte reconnu, de type String
      */
     public String getOCRResult(Bitmap bitmap) { //Testé : 6 réussites sur 9 images différentes
-        mTess.setImage(bitmap);
+        mTess.setImage(resizeBmp(bitmap));
         return mTess.getUTF8Text();
     }
 
@@ -107,5 +108,15 @@ public class TesseractOCR {
         if (mTess != null) mTess.end();
     }
 
+    private static Bitmap resizeBmp(Bitmap bmp) {
+        int maxHeight = 1200;
+        int maxWidth = 1200;
+        float scale = Math.min(((float)maxHeight / bmp.getWidth()), ((float)maxWidth / bmp.getHeight()));
+
+        Matrix matrix = new Matrix();
+        matrix.postScale(scale, scale);
+
+        return Bitmap.createBitmap(bmp, 0, 0, bmp.getWidth(), bmp.getHeight(), matrix, true);
+    }
 
 }
