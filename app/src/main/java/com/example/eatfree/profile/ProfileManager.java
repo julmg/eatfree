@@ -94,8 +94,6 @@ public class ProfileManager extends Observable {
 
             createProfileView.setActivated(false);
             checkProfileView.setActivated(true);
-
-            activity.setContentView(checkProfileView);
         }
     }
 
@@ -148,6 +146,11 @@ public class ProfileManager extends Observable {
     //! récupère la référence vers le MainActivity
     public MainActivity GetActivity() {
         return activity;
+    }
+
+    //! récupère la référence vers le CheckProfileView
+    public CheckProfileView GetProfileView(){
+        return checkProfileView;
     }
 
     //! permet de gérer les changements entre les panels, passer de la création de profil à la page de profil ou inversement

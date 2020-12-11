@@ -17,7 +17,7 @@ import java.util.Observable;
 import java.util.Observer;
 
 ////////////////////////////////////////////////////////////////////////////////////////////////
-//! \class ProfileManager
+//! \class CheckProfileView
 //! \author Solène Tessiore
 //! vue de la page de profil
 ////////////////////////////////////////////////////////////////////////////////////////////////
@@ -33,6 +33,12 @@ public class CheckProfileView extends LinearLayout implements Observer {
 
     //! bouton de modification du profil
     public Button btnEdit;
+
+    //! bouton pour aller à la page settings
+    public Button btnSettings;
+
+    //! bouton pour aller à la page d'accueil (prendre une photo)
+    public Button btnAccueil;
 
     //! référence vers le CheckProfileModel
     private CheckProfileModel model;
@@ -56,11 +62,16 @@ public class CheckProfileView extends LinearLayout implements Observer {
         username.setText(ProfileManager.getInstance().GetName());
         dateOfBirth.setText(ProfileManager.getInstance().GetBirth());
 
+        btnSettings = (Button)findViewById(R.id.btnSettings);
+        btnAccueil = (Button)findViewById(R.id.btnAccueil);
+
         model = new CheckProfileModel();
         controller = new CheckProfileController(model, this);
 
         controller.DisplayAllergenes();
         btnEdit.setOnClickListener(controller);
+        btnSettings.setOnClickListener(controller);
+        btnAccueil.setOnClickListener(controller);
 
         ProfileManager.getInstance().addObserver(this);
     }

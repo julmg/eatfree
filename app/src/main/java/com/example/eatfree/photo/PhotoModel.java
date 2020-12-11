@@ -2,27 +2,11 @@ package com.example.eatfree.photo;
 
 import android.content.Context;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 
-import com.googlecode.tesseract.android.TessBaseAPI;
-
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.lang.reflect.MalformedParametersException;
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.nio.charset.MalformedInputException;
 import java.text.Normalizer;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
-
-import javax.net.ssl.HttpsURLConnection;
 
 /**
  * @file PhotoModel.java
@@ -68,9 +52,15 @@ public class PhotoModel {
      * @return La map des groupes d'allergènes et termes qui y font référence
      */
     public Map<String,ArrayList<String>> findAllergenesWithBarcodeOFF(Bitmap bmp) throws Exception {
-        String ingredients = BarcodeScan.getIngredientsFromOFF(BarcodeScan.getDoubleBarcode(bmp));
+        Long barcode = BarcodeScan.getBarcode(bmp);
+        String ingredients = BarcodeScan.getIngredientsFromOFF(barcode);
         if(ingredients==""){
-            throw new Exception("Une erreur s'est produite avec le scan de code-barres");
+            if(barcode!=0){
+                throw new Exception("Une erreur s'est produite avec le scan de code-barres "+barcode+" (problème de connexion ?)");
+            } else {
+                throw new Exception("Code barre non reconnu");
+            }
+
         }
         return findAllergenesInText(stripAccents(ingredients.toLowerCase()));
 

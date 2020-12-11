@@ -30,7 +30,7 @@ public class BarcodeScan {
      * @param bmp le bitmap duquel on veut extraire le code-barres
      * @return Le code-barres de l'image, ou 0 si code-barres illisible/inexistant
      */
-    public static long getDoubleBarcode(Bitmap bmp) {
+    public static long getBarcode(Bitmap bmp) {
         String contents;
         int[] intArray = new int[bmp.getWidth()*bmp.getHeight()];
         //copy pixel data from the Bitmap into the 'intArray' array

@@ -21,27 +21,24 @@
         app:layout_anchor="@+id/bottomAppBar"
         app:layout_anchorGravity="top|center" />
 
-    <ImageButton
-        android:id="@+id/btn_settings"
-        android:layout_width="110dp"
+    <Button
+        android:id="@+id/btnSettings"
+        android:layout_width="115dp"
         android:layout_height="55dp"
-        android:background="@android:color/transparent"
-        android:visibility="visible"
+        android:text="Réglages"
         app:layout_anchor="@+id/bottomAppBar"
-        app:layout_anchorGravity="end|center"
-        app:srcCompat="@drawable/ic_settings" />
+        app:layout_anchorGravity="end|center"/>
 
-    <ImageButton
-        android:id="@+id/btn_profile"
-        android:layout_width="120dp"
+    <Button
+        android:id="@+id/btnProfil"
+        android:layout_width="115dp"
         android:layout_height="55dp"
-        android:background="@android:color/transparent"
+        android:text="Profil"
         app:layout_anchor="@+id/bottomAppBar"
-        app:layout_anchorGravity="start|bottom"
-        app:srcCompat="@drawable/ic_person" />
+        app:layout_anchorGravity="start|bottom" />
 
     <ImageView
-        android:id="@+id/imageView3"
+        android:id="@+id/imgAffichePhoto"
         android:layout_width="match_parent"
         android:layout_height="566dp"
         android:scaleType="centerInside"
@@ -53,7 +50,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"
         app:backgroundTint="@android:color/transparent"
-        app:layout_anchor="@+id/imageView3"
+        app:layout_anchor="@+id/imgAffichePhoto"
         app:layout_anchorGravity="bottom|center" />
 
     <ImageView
