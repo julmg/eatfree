@@ -151,18 +151,10 @@ public class MainActivity extends AppCompatActivity {
         DialogInterface.OnClickListener dialogClickListener = (dialog, which) -> {
             switch (which){
                 case DialogInterface.BUTTON_POSITIVE:
-                    new Thread(new Runnable() {
-                        public void run() {
-                            photoRecognitionOFF();
-                        }
-                    }).start();
+                    new Thread(this::photoRecognitionOFF).start();
                     break;
                 case DialogInterface.BUTTON_NEGATIVE:
-                    new Thread(new Runnable() {
-                        public void run() {
-                            photoRecognitionOCR();
-                        }
-                    }).start();
+                    new Thread(this::photoRecognitionOCR).start();
                     break;
             }
         };
@@ -179,15 +171,12 @@ public class MainActivity extends AppCompatActivity {
      * @author Julian Lecocq--Mage
      */
     private void photoRecognitionOFF() {
-        runOnUiThread(new Runnable() {
-            @Override
-            public void run() {
-                if (mProgressDialogOFF == null) {
-                    mProgressDialogOFF = ProgressDialog.show(MainActivity.this, "Détection du code barre",
-                            "Veuillez patienter...", true);
-                } else {
-                    mProgressDialogOFF.show();
-                }
+        runOnUiThread(() -> {
+            if (mProgressDialogOFF == null) {
+                mProgressDialogOFF = ProgressDialog.show(MainActivity.this, "Détection du code barre",
+                        "Veuillez patienter...", true);
+            } else {
+                mProgressDialogOFF.show();
             }
         });
         final Map<String, ArrayList<String>> result;
@@ -195,24 +184,18 @@ public class MainActivity extends AppCompatActivity {
         try {
             result = PhotoUtils.findAllergenesWithBarcodeOFF(mImage);
         } catch (Exception e) {
-            runOnUiThread(new Runnable() {
-                @Override
-                public void run() {
-                    mProgressDialogOFF.dismiss();
-                    AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
-                    builder.setMessage("Code barre non reconnu ou introuvable dans la base de données OpenFoodFacts.\n")
-                            .setPositiveButton("Ok", null)
-                            .show();
-                }
+            runOnUiThread(() -> {
+                mProgressDialogOFF.dismiss();
+                AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
+                builder.setMessage("Code barre non reconnu ou introuvable dans la base de données OpenFoodFacts.\n")
+                        .setPositiveButton("Ok", null)
+                        .show();
             });
             return;
         }
-        runOnUiThread(new Runnable() {
-            @Override
-            public void run() {
-                mProgressDialogOFF.dismiss();
-                photoRecognitionResult(result);
-            }
+        runOnUiThread(() -> {
+            mProgressDialogOFF.dismiss();
+            photoRecognitionResult(result);
         });
     }
 
@@ -221,15 +204,12 @@ public class MainActivity extends AppCompatActivity {
      * @author Julian Lecocq--Mage
      */
     private void photoRecognitionOCR()  {
-        runOnUiThread(new Runnable() {
-            @Override
-            public void run() {
-                if (mProgressDialogOCR == null) {
-                    mProgressDialogOCR = ProgressDialog.show(MainActivity.this, "Détection des caractères",
-                            "Veuillez patienter, cette opération peut prendre jusqu'à une minute", true);
-                } else {
-                    mProgressDialogOCR.show();
-                }
+        runOnUiThread(() -> {
+            if (mProgressDialogOCR == null) {
+                mProgressDialogOCR = ProgressDialog.show(MainActivity.this, "Détection des caractères",
+                        "Veuillez patienter, cette opération peut prendre jusqu'à une minute", true);
+            } else {
+                mProgressDialogOCR.show();
             }
         });
         ExecutorService executor = Executors.newFixedThreadPool(1);
@@ -256,17 +236,14 @@ public class MainActivity extends AppCompatActivity {
         }
         futureResult.get(0).cancel(true);
         Map<String, ArrayList<String>> finalResult = result;
-        runOnUiThread(new Runnable() {
-            @Override
-            public void run() {
-                mProgressDialogOCR.dismiss();
-                if (finalResult == null) {
-                    AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
-                    builder.setMessage("Texte non reconnu")
-                            .setPositiveButton("Ok", null).show();
-                } else {
-                    photoRecognitionResult(finalResult);
-                }
+        runOnUiThread(() -> {
+            mProgressDialogOCR.dismiss();
+            if (finalResult == null) {
+                AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
+                builder.setMessage("Texte non reconnu")
+                        .setPositiveButton("Ok", null).show();
+            } else {
+                photoRecognitionResult(finalResult);
             }
         });
 
@@ -292,7 +269,7 @@ public class MainActivity extends AppCompatActivity {
     class OCRTask implements Callable<Map<String, ArrayList<String>>>
     {
         @Override
-        public Map<String, ArrayList<String>> call() throws Exception {
+        public Map<String, ArrayList<String>> call() {
             final Map<String, ArrayList<String>> result;
             try {
                 result = PhotoUtils.findAllergenesWithOCR(mImage,MainActivity.this);
