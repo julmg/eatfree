@@ -51,14 +51,13 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         ProfileManager profileManager = new ProfileManager(this, this);
-        ManagerPhoto photoManager= ManagerPhoto.getInstance(this);
         PanelManager panelManager = new PanelManager(this, this);
         if(IsSaved()){
-            photoManager.viewPhoto.setActivated(true);
-            setContentView(photoManager.viewPhoto);
+            ManagerPhoto.getInstance(this).viewPhoto.setActivated(true);
+            setContentView(ManagerPhoto.getInstance(this).viewPhoto);
         }
         else {
-            photoManager.viewPhoto.setActivated(false);
+            ManagerPhoto.getInstance(this).viewPhoto.setActivated(false);
         }
         //exécution en mode strict
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
@@ -117,7 +116,7 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
-        ManagerPhoto manager= ManagerPhoto.getInstance(this);
+        ManagerPhoto manager = ManagerPhoto.getInstance(this);
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == Mod_photo.RETOUR_PRENDRE_PHOTO && resultCode == RESULT_OK) {
             mImage = BitmapFactory.decodeFile(manager.mdlPhoto.photo_path);
@@ -126,6 +125,12 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    /**
+     * @brief Appelé lorsque l'utilisateur a fini d'accepter/refuser les permissions
+     * @param requestCode code de requête
+     * @param permissions permissions requises
+     * @param grantResults résultat des requêtes
+     */
     @Override
     public void onRequestPermissionsResult(int requestCode,
                                            String permissions[], int[] grantResults) {
@@ -135,79 +140,104 @@ public class MainActivity extends AppCompatActivity {
                 mPermissionsGranted = grantResults.length > 0
                         && grantResults[0] == PackageManager.PERMISSION_GRANTED;
             }
-
-
         }
     }
 
+    /**
+     * @brief Lance le processus de reconnaissance d'image
+     * @author Julian Lecocq--Mage
+     */
     private void photoRecognition() {
-
-        if (mProgressDialogOFF == null) {
-            mProgressDialogOFF = ProgressDialog.show(this, "Détection du code barre",
-                    "Veuillez patienter...", true);
-        } else {
-            mProgressDialogOFF.show();
-        }
-        new Thread(new Runnable() {
-            public void run() {
-                final Map<String, ArrayList<String>> result;
-                boolean success=false;
-                try {
-                    result = PhotoUtils.findAllergenesWithBarcodeOFF(mImage);
-                } catch (Exception e) {
-                    runOnUiThread(new Runnable() {
-                        @Override
+        DialogInterface.OnClickListener dialogClickListener = (dialog, which) -> {
+            switch (which){
+                case DialogInterface.BUTTON_POSITIVE:
+                    new Thread(new Runnable() {
                         public void run() {
-                            mProgressDialogOFF.dismiss();
-                            DialogInterface.OnClickListener dialogClickListener = (dialog, which) -> {
-                                switch (which){
-                                    case DialogInterface.BUTTON_POSITIVE:
-
-                                        new Thread(new Runnable() {
-
-
-                                            public void run() {
-                                                photoRecognitionOCR();
-                                            }
-                                        }).start();
-                                        if (mProgressDialogOCR == null) {
-                                            mProgressDialogOCR = ProgressDialog.show(MainActivity.this, "Détection des caractères",
-                                                    "Veuillez patienter, cette opération peut prendre jusqu'à une minute", true);
-                                        } else {
-                                            mProgressDialogOCR.show();
-                                        }
-                                        break;
-                                }
-                            };
-
-                            AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
-                            builder.setMessage("Code barre non reconnu ou introuvable dans la base de données OpenFoodFacts.\n"
-                                    +"Voulez-vous effectuer une reconnaissance de caractères ?")
-                                    .setPositiveButton("Oui", dialogClickListener)
-                                    .setNegativeButton("Non", dialogClickListener).show();
+                            photoRecognitionOFF();
                         }
-                    });
-                    return;
-                }
-                runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
-                        mProgressDialogOFF.dismiss();
-                        photoRecognitionResult(result);
-                    }
-                });
+                    }).start();
+                    break;
+                case DialogInterface.BUTTON_NEGATIVE:
+                    new Thread(new Runnable() {
+                        public void run() {
+                            photoRecognitionOCR();
+                        }
+                    }).start();
+                    break;
             }
-        }).start();
+        };
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
+        builder.setMessage("Quel support a été pris en photo ?")
+                .setPositiveButton("Code-barres", dialogClickListener)
+                .setNegativeButton("Liste d'ingrédients", dialogClickListener)
+                .show();
     }
 
+    /**
+     * @brief Lance la reconnaissance d'image par code-barre (gestion UI et appel fonction utilitaire)
+     * @author Julian Lecocq--Mage
+     */
+    private void photoRecognitionOFF() {
+        runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                if (mProgressDialogOFF == null) {
+                    mProgressDialogOFF = ProgressDialog.show(MainActivity.this, "Détection du code barre",
+                            "Veuillez patienter...", true);
+                } else {
+                    mProgressDialogOFF.show();
+                }
+            }
+        });
+        final Map<String, ArrayList<String>> result;
+        boolean success=false;
+        try {
+            result = PhotoUtils.findAllergenesWithBarcodeOFF(mImage);
+        } catch (Exception e) {
+            runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    mProgressDialogOFF.dismiss();
+                    AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
+                    builder.setMessage("Code barre non reconnu ou introuvable dans la base de données OpenFoodFacts.\n")
+                            .setPositiveButton("Ok", null)
+                            .show();
+                }
+            });
+            return;
+        }
+        runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                mProgressDialogOFF.dismiss();
+                photoRecognitionResult(result);
+            }
+        });
+    }
+
+    /**
+     * @brief Lance la reconnaissance d'image par reconnaissance de caractères (gestion UI et appel fonction utilitaire)
+     * @author Julian Lecocq--Mage
+     */
     private void photoRecognitionOCR()  {
+        runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                if (mProgressDialogOCR == null) {
+                    mProgressDialogOCR = ProgressDialog.show(MainActivity.this, "Détection des caractères",
+                            "Veuillez patienter, cette opération peut prendre jusqu'à une minute", true);
+                } else {
+                    mProgressDialogOCR.show();
+                }
+            }
+        });
         ExecutorService executor = Executors.newFixedThreadPool(1);
         OCRTask task = new OCRTask();
         List<Future<Map<String, ArrayList<String>>>> futureResult = null;
         Map<String, ArrayList<String>> result = null;
         try{
             futureResult = executor.invokeAll(Collections.singletonList(task));
-
             result = futureResult.get(0).get(60, TimeUnit.SECONDS);
         }catch(TimeoutException e){
             mProgressDialogOCR.dismiss();
@@ -233,10 +263,7 @@ public class MainActivity extends AppCompatActivity {
                 if (finalResult == null) {
                     AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
                     builder.setMessage("Texte non reconnu")
-                            .setCancelable(false)
-                            .setPositiveButton("ok", null);
-                    AlertDialog alert = builder.create();
-                    alert.show();
+                            .setPositiveButton("Ok", null).show();
                 } else {
                     photoRecognitionResult(finalResult);
                 }
@@ -245,6 +272,10 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    /**
+     * @brief Affichage du résultat du traitement de l'image
+     * @param result map des allergènes
+     */
     private void photoRecognitionResult(Map<String, ArrayList<String>> result) {
         AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
         builder.setMessage(Arrays.toString(result.entrySet().toArray()))
@@ -254,6 +285,10 @@ public class MainActivity extends AppCompatActivity {
         alert.show();
     }
 
+    /**
+     * @brief Classe callable représentant l'appel de la fonction utilitaire d'OCR sur un autre thread, car la tâche est longue
+     * @author Julian Lecocq--Mage
+     */
     class OCRTask implements Callable<Map<String, ArrayList<String>>>
     {
         @Override
@@ -265,7 +300,6 @@ public class MainActivity extends AppCompatActivity {
                 return null;
             }
             return result;
-
         }
     }
 

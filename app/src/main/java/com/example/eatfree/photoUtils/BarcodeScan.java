@@ -2,7 +2,9 @@ package com.example.eatfree.photoUtils;
 
 import android.graphics.Bitmap;
 
+import com.google.zxing.BarcodeFormat;
 import com.google.zxing.BinaryBitmap;
+import com.google.zxing.DecodeHintType;
 import com.google.zxing.LuminanceSource;
 import com.google.zxing.MultiFormatReader;
 import com.google.zxing.RGBLuminanceSource;
@@ -11,6 +13,11 @@ import com.google.zxing.Result;
 import com.google.zxing.common.HybridBinarizer;
 
 import org.json.JSONObject;
+
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 /**
  * @file BarcodeScan.java
@@ -37,9 +44,12 @@ public class BarcodeScan {
         BinaryBitmap bitmap = new BinaryBitmap(new HybridBinarizer(source));
 
         Reader reader = new MultiFormatReader();
+        Map<DecodeHintType, Object> hints = new HashMap<>();
+        hints.put(DecodeHintType.TRY_HARDER, Boolean.TRUE);
+        hints.put(DecodeHintType.POSSIBLE_FORMATS, Arrays.asList(BarcodeFormat.EAN_8,BarcodeFormat.EAN_13));
         Result result;
         try {
-            result = reader.decode(bitmap);
+            result = reader.decode(bitmap, hints);
         } catch (Exception e) {
             return 0; //retourne 0 si impossible de reconnaitre code barre
         }

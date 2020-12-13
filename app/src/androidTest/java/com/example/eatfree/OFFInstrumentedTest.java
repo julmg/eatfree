@@ -71,9 +71,9 @@ public class OFFInstrumentedTest {
     }
 
     @Test
-    public void tooSmallBarcodeScanT(){
+    public void barcodeScanT0(){
         long barcode = BarcodeScan.getBarcode(getBMP("B1.jpg"));
-        Assert.assertEquals(0,barcode);
+        Assert.assertEquals(3445850061370L,barcode);
     }
 
     @Test
