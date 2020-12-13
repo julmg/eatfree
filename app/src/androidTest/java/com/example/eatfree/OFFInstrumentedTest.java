@@ -7,7 +7,7 @@ import android.graphics.BitmapFactory;
 import androidx.test.ext.junit.runners.AndroidJUnit4;
 import androidx.test.platform.app.InstrumentationRegistry;
 
-import com.example.eatfree.photo.BarcodeScan;
+import com.example.eatfree.photoUtils.BarcodeScan;
 
 import org.hamcrest.CoreMatchers;
 import org.junit.Assert;

@@ -24,7 +24,7 @@ public class PanelManager {
 
     public static  PanelManager getInstance()
     {
-         return instance;
+        return instance;
     }
 
     @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN_MR1)

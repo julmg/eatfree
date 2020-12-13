@@ -1,4 +1,4 @@
-package com.example.eatfree.photo;
+package com.example.eatfree.photoUtils;
 
 import android.content.Context;
 import android.graphics.Bitmap;
@@ -13,12 +13,10 @@ import java.util.Map;
  * @brief Modèle du panel Photo
  * @date 2020
  */
-public class PhotoModel {
-
-    private Context mAppContext;
+public class PhotoUtils {
 
     //! Map des allergènes pris en charge par l'application (1er élément : groupe d'allergènes / 2e élément : mots apparaissant dans la liste d'ingrédients, se référant à ce groupe d'allergènes)
-    private Map<String, String[]> mAllergenes = new HashMap<String, String[]>() {{
+    private static Map<String, String[]> mAllergenes = new HashMap<String, String[]>() {{
         put("Arachides", new String[]{"arachide", "cacahuete"});
         put("Œuf", new String[]{"œuf", "oeuf", "ovalbumine","ovomucoide","ovomucoide","lecithine d'oeuf","lecithine d'œuf","lysozyme"});
         put("Protéine de lait de vache", new String[]{"albumine", "babeurre", "beurre","caramel","caseine","caseinate","creme","ferments lactiques",
@@ -30,17 +28,14 @@ public class PhotoModel {
     }};
 
 
-    public PhotoModel(Context context){
-        mAppContext = context;
-    }
 
     /**
      * @brief Récupération des allergènes présents dans un produit alimentaire à partir du bitmap (image) de la liste d'ingrédients : OCRisation
      * @param bmp L'image de la liste d'ingrédients
      * @return La map des groupes d'allergènes et termes qui y font référence
      */
-    public Map<String,ArrayList<String>> findAllergenesWithOCR(Bitmap bmp){
-        TesseractOCR tocr = new TesseractOCR(mAppContext, "fra");
+    public static Map<String,ArrayList<String>> findAllergenesWithOCR(Bitmap bmp, Context appContext){
+        TesseractOCR tocr = new TesseractOCR(appContext, "fra");
         String output = tocr.getOCRResult(bmp);
 
         return findAllergenesInText(stripAccents(output.toLowerCase()));
@@ -51,7 +46,7 @@ public class PhotoModel {
      * @param bmp L'image du code-barres
      * @return La map des groupes d'allergènes et termes qui y font référence
      */
-    public Map<String,ArrayList<String>> findAllergenesWithBarcodeOFF(Bitmap bmp) throws Exception {
+    public static Map<String,ArrayList<String>> findAllergenesWithBarcodeOFF(Bitmap bmp) throws Exception {
         Long barcode = BarcodeScan.getBarcode(bmp);
         String ingredients = BarcodeScan.getIngredientsFromOFF(barcode);
         if(ingredients==""){
@@ -72,7 +67,7 @@ public class PhotoModel {
      * @return La map des groupes d'allergènes et termes qui y font référence
      */
 
-    private Map<String,ArrayList<String>> findAllergenesInText(String text){
+    private static Map<String,ArrayList<String>> findAllergenesInText(String text){
         Map<String,ArrayList<String>> foundAllergenes = new HashMap<>();
         for (Map.Entry<String, String[]> entry : mAllergenes.entrySet()) {
             String allergen = entry.getKey();

@@ -1,4 +1,4 @@
-package com.example.eatfree.photo;
+package com.example.eatfree.photoUtils;
 
 import android.content.Context;
 import android.content.res.AssetManager;

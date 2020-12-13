@@ -8,12 +8,9 @@ import android.util.Log;
 import androidx.test.platform.app.InstrumentationRegistry;
 import androidx.test.ext.junit.runners.AndroidJUnit4;
 
-import com.example.eatfree.photo.JSONWeb;
-import com.example.eatfree.photo.TesseractOCR;
+import com.example.eatfree.photoUtils.TesseractOCR;
 
 import org.hamcrest.CoreMatchers;
-import org.json.JSONException;
-import org.json.JSONObject;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;

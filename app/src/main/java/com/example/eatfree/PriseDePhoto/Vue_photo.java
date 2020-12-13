@@ -31,6 +31,7 @@ public class Vue_photo extends LinearLayout {
     public Mod_photo refMod;
     public Ctrl_photo refCtr;
 
+
     public Vue_photo(Context context) {
         super(context);
 

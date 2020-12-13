@@ -17,17 +17,15 @@ import android.graphics.BitmapFactory;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.StrictMode;
-import android.provider.ContactsContract;
-import android.util.Log;
-import android.widget.Toast;
 
 import com.example.eatfree.PriseDePhoto.ManagerPhoto;
+import com.example.eatfree.PriseDePhoto.Mod_photo;
 import com.example.eatfree.profile.ProfileManager;
-import com.example.eatfree.photo.PhotoModel;
+import com.example.eatfree.photoUtils.PhotoUtils;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.HashMap;
+import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.Callable;
@@ -44,7 +42,6 @@ public class MainActivity extends AppCompatActivity {
     private boolean mPermissionsGranted;
     private ProgressDialog mProgressDialogOCR, mProgressDialogOFF;
     private Bitmap mImage;
-    private PhotoModel mPhotoModel;
 
     //! stocke les données sauvegardées de l'utilisateur
     public SharedPreferences preferences;
@@ -54,18 +51,17 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         ProfileManager profileManager = new ProfileManager(this, this);
-        ManagerPhoto manager= ManagerPhoto.getInstance(this);
+        ManagerPhoto photoManager= ManagerPhoto.getInstance(this);
         PanelManager panelManager = new PanelManager(this, this);
         if(IsSaved()){
-            manager.viewPhoto.setActivated(true);
-            setContentView(manager.viewPhoto);
+            photoManager.viewPhoto.setActivated(true);
+            setContentView(photoManager.viewPhoto);
         }
-        else
-            manager.viewPhoto.setActivated(false);
-
+        else {
+            photoManager.viewPhoto.setActivated(false);
+        }
         //exécution en mode strict
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
-
         StrictMode.setThreadPolicy(policy);
 
     }
@@ -123,12 +119,10 @@ public class MainActivity extends AppCompatActivity {
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         ManagerPhoto manager= ManagerPhoto.getInstance(this);
         super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == manager.mdlPhoto.RETOUR_PRENDRE_PHOTO && resultCode == RESULT_OK) {
+        if (requestCode == Mod_photo.RETOUR_PRENDRE_PHOTO && resultCode == RESULT_OK) {
             mImage = BitmapFactory.decodeFile(manager.mdlPhoto.photo_path);
             manager.viewPhoto.affichePhoto.setImageBitmap(mImage);
-            mPhotoModel = new PhotoModel(this);
             photoRecognition();
-
         }
     }
 
@@ -138,14 +132,8 @@ public class MainActivity extends AppCompatActivity {
         switch (requestCode) {
             case MY_PERMISSIONS_REQUEST: {
                 // If request is cancelled, the result arrays are empty.
-                if (grantResults.length > 0
-                        && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-
-                    mPermissionsGranted = true;
-                } else {
-
-                    mPermissionsGranted = false;
-                }
+                mPermissionsGranted = grantResults.length > 0
+                        && grantResults[0] == PackageManager.PERMISSION_GRANTED;
             }
 
 
@@ -165,13 +153,12 @@ public class MainActivity extends AppCompatActivity {
                 final Map<String, ArrayList<String>> result;
                 boolean success=false;
                 try {
-                    result = mPhotoModel.findAllergenesWithBarcodeOFF(mImage);
+                    result = PhotoUtils.findAllergenesWithBarcodeOFF(mImage);
                 } catch (Exception e) {
                     runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
                             mProgressDialogOFF.dismiss();
-                            Log.w("DEBUG","ERREUR : "+e.toString());
                             DialogInterface.OnClickListener dialogClickListener = (dialog, which) -> {
                                 switch (which){
                                     case DialogInterface.BUTTON_POSITIVE:
@@ -194,7 +181,9 @@ public class MainActivity extends AppCompatActivity {
                             };
 
                             AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
-                            builder.setMessage("Code barre non reconnu. Voulez-vous effectuer une reconnaissance de caractères ?").setPositiveButton("Oui", dialogClickListener)
+                            builder.setMessage("Code barre non reconnu ou introuvable dans la base de données OpenFoodFacts.\n"
+                                    +"Voulez-vous effectuer une reconnaissance de caractères ?")
+                                    .setPositiveButton("Oui", dialogClickListener)
                                     .setNegativeButton("Non", dialogClickListener).show();
                         }
                     });
@@ -212,14 +201,12 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void photoRecognitionOCR()  {
-
         ExecutorService executor = Executors.newFixedThreadPool(1);
         OCRTask task = new OCRTask();
         List<Future<Map<String, ArrayList<String>>>> futureResult = null;
         Map<String, ArrayList<String>> result = null;
         try{
-            futureResult = executor.invokeAll(Arrays.asList(task));
-
+            futureResult = executor.invokeAll(Collections.singletonList(task));
 
             result = futureResult.get(0).get(60, TimeUnit.SECONDS);
         }catch(TimeoutException e){
@@ -259,7 +246,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void photoRecognitionResult(Map<String, ArrayList<String>> result) {
-        Log.i("DEBUG","Résultat : "+result.entrySet().toArray().toString());
         AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
         builder.setMessage(Arrays.toString(result.entrySet().toArray()))
                 .setCancelable(false)
@@ -274,9 +260,8 @@ public class MainActivity extends AppCompatActivity {
         public Map<String, ArrayList<String>> call() throws Exception {
             final Map<String, ArrayList<String>> result;
             try {
-                result = mPhotoModel.findAllergenesWithOCR(mImage);
+                result = PhotoUtils.findAllergenesWithOCR(mImage,MainActivity.this);
             } catch (Exception e){
-                Log.e("DEBUG",e.toString());
                 return null;
             }
             return result;

@@ -7,10 +7,9 @@ import android.graphics.BitmapFactory;
 import androidx.test.ext.junit.runners.AndroidJUnit4;
 import androidx.test.platform.app.InstrumentationRegistry;
 
-import com.example.eatfree.photo.PhotoModel;
+import com.example.eatfree.photoUtils.PhotoUtils;
 
 import org.junit.Assert;
-import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
@@ -28,10 +27,8 @@ import java.util.Map;
  * @date 2020
  */
 @RunWith(AndroidJUnit4.class)
-public class PhotoModelInstrumentedTest {
+public class PhotoUtilsInstrumentedTest {
 
-    PhotoModel mPhotoModel;
-    Context appContext = InstrumentationRegistry.getInstrumentation().getContext();
     Context appTargetContext = InstrumentationRegistry.getInstrumentation().getTargetContext();
 
 
@@ -49,11 +46,6 @@ public class PhotoModelInstrumentedTest {
         return bmp;
     }
 
-    @Before
-    public void init() {
-        mPhotoModel = new PhotoModel(appTargetContext);
-    }
-
     @Test
     public void allergenesOFF1() throws Exception {
         Map<String, ArrayList<String>> expectedAllergenes = new HashMap<String, ArrayList<String>>() {{
@@ -61,7 +53,7 @@ public class PhotoModelInstrumentedTest {
             put("Fruits du groupe latex", new ArrayList<>(Collections.singletonList("soja")));
             put("Protéine de lait de vache", new ArrayList<>(Collections.singletonList("beurre"))); }};
 
-        Map<String, ArrayList<String>> allergenes = mPhotoModel.findAllergenesWithBarcodeOFF(getBMP("B2.jpg"));
+        Map<String, ArrayList<String>> allergenes = PhotoUtils.findAllergenesWithBarcodeOFF(getBMP("B2.jpg"));
         Assert.assertEquals(expectedAllergenes.entrySet(),allergenes.entrySet());
     }
 
@@ -72,7 +64,7 @@ public class PhotoModelInstrumentedTest {
             put("Fruits secs oléagineux", new ArrayList<>(Collections.singletonList("carotte")));
             put("Œuf", new ArrayList<>(Collections.singletonList("œuf"))); }};
 
-        Map<String, ArrayList<String>> allergenes = mPhotoModel.findAllergenesWithBarcodeOFF(getBMP("B3.jpg"));
+        Map<String, ArrayList<String>> allergenes = PhotoUtils.findAllergenesWithBarcodeOFF(getBMP("B3.jpg"));
         Assert.assertEquals(expectedAllergenes.entrySet(),allergenes.entrySet());
     }
 
@@ -80,7 +72,7 @@ public class PhotoModelInstrumentedTest {
     public void allergenesOFF3() throws Exception {
         Map<String, ArrayList<String>> expectedAllergenes = new HashMap<String, ArrayList<String>>() {};
 
-        Map<String, ArrayList<String>> allergenes = mPhotoModel.findAllergenesWithBarcodeOFF(getBMP("B4.jpg"));
+        Map<String, ArrayList<String>> allergenes = PhotoUtils.findAllergenesWithBarcodeOFF(getBMP("B4.jpg"));
         Assert.assertEquals(expectedAllergenes.entrySet(),allergenes.entrySet());
     }
 
@@ -88,7 +80,7 @@ public class PhotoModelInstrumentedTest {
     public void allergenesOFF4() throws Exception {
         Map<String, ArrayList<String>> expectedAllergenes = new HashMap<String, ArrayList<String>>() {};
 
-        Map<String, ArrayList<String>> allergenes = mPhotoModel.findAllergenesWithBarcodeOFF(getBMP("B5.jpg"));
+        Map<String, ArrayList<String>> allergenes = PhotoUtils.findAllergenesWithBarcodeOFF(getBMP("B5.jpg"));
         Assert.assertEquals(expectedAllergenes.entrySet(),allergenes.entrySet());
     }
 
@@ -99,7 +91,7 @@ public class PhotoModelInstrumentedTest {
             put("Fruits du groupe latex", new ArrayList<>(Collections.singletonList("soja")));
             put("Protéine de lait de vache", new ArrayList<>(Collections.singletonList("lait"))); }};
 
-        Map<String, ArrayList<String>> allergenes = mPhotoModel.findAllergenesWithOCR(getBMP("1.jpg"));
+        Map<String, ArrayList<String>> allergenes = PhotoUtils.findAllergenesWithOCR(getBMP("1.jpg"),appTargetContext);
         Assert.assertEquals(expectedAllergenes.entrySet(),allergenes.entrySet());
     }
 
@@ -113,7 +105,7 @@ public class PhotoModelInstrumentedTest {
             put("Protéine de lait de vache", new ArrayList<>(Arrays.asList("caramel","lait"))); }};
 
 
-        Map<String, ArrayList<String>> allergenes = mPhotoModel.findAllergenesWithOCR(getBMP("2.png"));
+        Map<String, ArrayList<String>> allergenes = PhotoUtils.findAllergenesWithOCR(getBMP("2.png"),appTargetContext);
         Assert.assertEquals(expectedAllergenes.entrySet(),allergenes.entrySet());
     }
 
@@ -121,7 +113,7 @@ public class PhotoModelInstrumentedTest {
     public void allergenesOCR3() {
         Map<String, ArrayList<String>> expectedAllergenes = new HashMap<String, ArrayList<String>>() {};
 
-        Map<String, ArrayList<String>> allergenes = mPhotoModel.findAllergenesWithOCR(getBMP("3.jpg"));
+        Map<String, ArrayList<String>> allergenes = PhotoUtils.findAllergenesWithOCR(getBMP("3.jpg"),appTargetContext);
         Assert.assertEquals(expectedAllergenes.entrySet(),allergenes.entrySet());
     }
 
@@ -132,7 +124,7 @@ public class PhotoModelInstrumentedTest {
             put("Fruits rosacées", new ArrayList<>(Collections.singletonList("fraise"))); }};
 
 
-        Map<String, ArrayList<String>> allergenes = mPhotoModel.findAllergenesWithOCR(getBMP("5.jpg"));
+        Map<String, ArrayList<String>> allergenes = PhotoUtils.findAllergenesWithOCR(getBMP("5.jpg"),appTargetContext);
         Assert.assertEquals(expectedAllergenes.entrySet(),allergenes.entrySet());
     }
 
@@ -144,7 +136,7 @@ public class PhotoModelInstrumentedTest {
             put("Œuf", new ArrayList<>(Collections.singletonList("œuf")));
             put("Fruits secs oléagineux", new ArrayList<>(Arrays.asList("carotte","celeri", "persil"))); }};
 
-        Map<String, ArrayList<String>> allergenes = mPhotoModel.findAllergenesWithOCR(getBMP("6.jpg"));
+        Map<String, ArrayList<String>> allergenes = PhotoUtils.findAllergenesWithOCR(getBMP("6.jpg"),appTargetContext);
         Assert.assertEquals(expectedAllergenes.entrySet(),allergenes.entrySet());
     }
 
@@ -155,7 +147,7 @@ public class PhotoModelInstrumentedTest {
             put("Œuf", new ArrayList<>(Collections.singletonList("œuf")));
             put("Protéine de lait de vache", new ArrayList<>(Collections.singletonList("lait"))); }};
 
-        Map<String, ArrayList<String>> allergenes = mPhotoModel.findAllergenesWithOCR(getBMP("7.jpg"));
+        Map<String, ArrayList<String>> allergenes = PhotoUtils.findAllergenesWithOCR(getBMP("7.jpg"),appTargetContext);
         Assert.assertEquals(expectedAllergenes.entrySet(),allergenes.entrySet());
     }
 

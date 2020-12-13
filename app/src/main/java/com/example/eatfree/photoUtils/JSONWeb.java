@@ -1,4 +1,4 @@
-package com.example.eatfree.photo;
+package com.example.eatfree.photoUtils;
 
 import java.io.BufferedReader;
 import java.io.IOException;
