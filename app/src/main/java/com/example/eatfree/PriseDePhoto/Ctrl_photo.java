@@ -7,6 +7,7 @@ import android.view.View;
 import androidx.core.app.ActivityCompat;
 
 import com.example.eatfree.MainActivity;
+import com.example.eatfree.PanelManager;
 
 import static androidx.core.app.ActivityCompat.requestPermissions;
 
@@ -29,6 +30,13 @@ public class Ctrl_photo implements View.OnClickListener{
     public void onClick(View v) {
         if(refVue.buttonPhoto.getId()==v.getId()) {
             takePhotoAndVerifyPermissions();
+        }
+        else if (v.getId() == refVue.btnProfil.getId()){
+            PanelManager.getInstance().SwapPanel(1);
+        }
+        else if (v.getId() == refVue.btnSettings.getId()){
+            PanelManager.getInstance().SwapPanel(3);
+
         }
     }
 

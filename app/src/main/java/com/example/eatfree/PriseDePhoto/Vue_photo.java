@@ -24,6 +24,9 @@ public class Vue_photo extends LinearLayout {
     public FloatingActionButton buttonPhoto;
     public ImageView affichePhoto;
 
+    public Button btnProfil;
+    public Button btnSettings;
+
     //référence
     public Mod_photo refMod;
     public Ctrl_photo refCtr;
@@ -36,11 +39,16 @@ public class Vue_photo extends LinearLayout {
 
         buttonPhoto = (FloatingActionButton) findViewById(R.id.btn_photo);
         affichePhoto = (ImageView) findViewById(R.id.imgAffichePhoto);
+
+        btnProfil = (Button)findViewById(R.id.btnProfil);
+        btnSettings = (Button)findViewById(R.id.btnSettings);
     }
 
     public void setRefCtr(Ctrl_photo ct) {
         refCtr = ct;
         buttonPhoto.setOnClickListener(refCtr);
+        btnProfil.setOnClickListener(refCtr);
+        btnSettings.setOnClickListener(refCtr);
     }
 
     public void setRefMod(Mod_photo m){

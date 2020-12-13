@@ -7,125 +7,130 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/text_dashboard"
-        android:text = "Votre profil"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:textAlignment="center"
-        android:textSize="30sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:gravity="center_horizontal"/>
+        android:layout_height="match_parent">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:context=".ui.photo.PhotoFragment"
-        android:orientation="vertical"
-        android:layout_marginHorizontal="30dp">
-
-        <TextView
-            android:id="@+id/lblUsername"
-            android:text="Nom d'utilisateur"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:labelFor="@id/username"/>
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
-        <EditText
-            android:id="@+id/username"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:inputType="text"/>
-
-        <TextView
-            android:id="@+id/lblBirth"
-            android:text="Date de naissance"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:labelFor="@id/dateOfBirth"/>
-
-        <EditText
-            android:id="@+id/dateOfBirth"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:inputType="date"/>
-
-        <TextView
-            android:id="@+id/lblAllergies"
-            android:text="Produits à éviter"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:labelFor="@id/checkbox"/>
-
-        <ScrollView
-            android:layout_width="match_parent"
-            android:layout_height="256dp">
-
-            <LinearLayout
-                android:id="@+id/checkbox"
+            <TextView
+                android:id="@+id/text_dashboard"
+                android:text = "Votre profil"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
+                android:textAlignment="center"
+                android:textSize="30sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:gravity="center_horizontal"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                tools:context=".ui.photo.PhotoFragment"
                 android:orientation="vertical"
-                tools:context=".ui.photo.PhotoFragment">
+                android:layout_margin="30dp">
 
-                <CheckBox
-                    android:id="@+id/arachidesCheck"
+                <TextView
+                    android:id="@+id/lblUsername"
+                    android:text="Nom d'utilisateur"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Arachides" />
+                    android:labelFor="@id/username"/>
 
-                <CheckBox
-                    android:id="@+id/oeufsCheck"
+                <EditText
+                    android:id="@+id/username"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Oeufs" />
+                    android:inputType="text"/>
 
-                <CheckBox
-                    android:id="@+id/laitVacheCheck"
+                <TextView
+                    android:id="@+id/lblBirth"
+                    android:text="Date de naissance"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Protéines de lait de vache" />
+                    android:labelFor="@id/dateOfBirth"
+                    android:layout_marginTop="20dp"/>
 
-                <CheckBox
-                    android:id="@+id/glutenCheck"
+                <EditText
+                    android:id="@+id/dateOfBirth"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Gluten" />
+                    android:inputType="date"/>
 
-                <CheckBox
-                    android:id="@+id/fruitsLatexCheck"
+                <TextView
+                    android:id="@+id/lblAllergies"
+                    android:text="Produits à éviter"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Fruits du groupe latex (banane, avocat...)" />
+                    android:labelFor="@id/checkbox"
+                    android:layout_marginTop="20dp"/>
 
-                <CheckBox
-                    android:id="@+id/fruitsRosaceesCheck"
+                <LinearLayout
+                    android:id="@+id/checkbox"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Fruits Rosacées (abricots, poires...)" />
+                    android:layout_height="match_parent"
+                    tools:context=".ui.photo.PhotoFragment"
+                    android:orientation="vertical">
 
-                <CheckBox
-                    android:id="@+id/fruitsOleagineuxCheck"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Fruits secs oléagineux et Ombellifères \n(aneth, carottes, céleri...)" />
+                    <CheckBox
+                        android:id="@+id/arachidesCheck"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Arachides"/>
+                    <CheckBox
+                        android:id="@+id/oeufsCheck"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Oeufs"/>
+                    <CheckBox
+                        android:id="@+id/laitVacheCheck"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Protéines de lait de vache"/>
+                    <CheckBox
+                        android:id="@+id/glutenCheck"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Gluten"/>
+                    <CheckBox
+                        android:id="@+id/fruitsLatexCheck"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Fruits du groupe latex (banane, avocat...)"/>
+                    <CheckBox
+                        android:id="@+id/fruitsRosaceesCheck"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Fruits Rosacées (abricots, poires...)"/>
+                    <CheckBox
+                        android:id="@+id/fruitsOleagineuxCheck"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Fruits secs oléagineux et Ombellifères \n(aneth, carottes, céleri...)"/>
+
+                    <Button
+                        android:id="@+id/valider"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Valider"
+                        android:layout_marginTop="50dp" />
+
+                </LinearLayout>
+
 
             </LinearLayout>
-        </ScrollView>
 
-        <Button
-            android:id="@+id/valider"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Valider" />
+        </LinearLayout>
 
-
-    </LinearLayout>
+    </ScrollView>
 
 </androidx.appcompat.widget.LinearLayoutCompat>

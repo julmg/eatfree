@@ -2,12 +2,13 @@ package com.example.eatfree.profile.check;
 
 import android.view.View;
 
+import com.example.eatfree.PanelManager;
 import com.example.eatfree.profile.ProfileManager;
 
 ////////////////////////////////////////////////////////////////////////////////////////////////
 //! \class CheckProfileController
 //! \author Solène Tessiore
-//! gère l'affichage des allergènes et le clic sur le bouton modifier
+//! gère l'affichage des allergènes et le clic sur les boutons
 ////////////////////////////////////////////////////////////////////////////////////////////////
 public class CheckProfileController implements View.OnClickListener {
     //! référence vers le CheckProfileController
@@ -53,6 +54,13 @@ public class CheckProfileController implements View.OnClickListener {
     public void onClick(View v) {
         if (v.getId() == view.btnEdit.getId()){
             model.Edit();
+        }
+        else if (v.getId() == view.btnSettings.getId()){
+            PanelManager.getInstance().SwapPanel(3);
+        }
+        else if (v.getId() == view.btnAccueil.getId()){
+            PanelManager.getInstance().SwapPanel(2);
+
         }
     }
 }

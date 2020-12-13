@@ -55,7 +55,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         ProfileManager profileManager = new ProfileManager(this, this);
         ManagerPhoto manager= ManagerPhoto.getInstance(this);
-        if(IsSaved()==true){
+        PanelManager panelManager = new PanelManager(this, this);
+        if(IsSaved()){
             manager.viewPhoto.setActivated(true);
             setContentView(manager.viewPhoto);
         }

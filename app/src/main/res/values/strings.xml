@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">eatfree</string>
+
+    <string-array name="array_name">
+        <item>Français</item>
+    </string-array>
+
+    <string name="bottom_navigation_menu_landscape">Landscape</string>
+    <string name="bottom_navigation_menu_logos">Logo</string>
+    <string name="bottom_navigation_menu_android">Android</string>
 </resources>
