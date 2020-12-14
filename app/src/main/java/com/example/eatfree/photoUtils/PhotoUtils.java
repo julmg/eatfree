@@ -12,6 +12,7 @@ import java.util.Map;
  * @file PhotoModel.java
  * @brief Modèle du panel Photo
  * @date 2020
+ * @author Julian Lecocq--Mage
  */
 public class PhotoUtils {
 

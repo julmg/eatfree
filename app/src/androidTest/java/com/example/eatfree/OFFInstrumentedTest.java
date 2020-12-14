@@ -20,6 +20,7 @@ import java.io.InputStream;
  * @file OFFInstrumentedTest.java
  * @brief Tests unitaires instrumentés du fonctionnement de l'API OpenFoodFacts pour la récupération des allergènes
  * @date 2020
+ * @author Julian Lecocq--Mage
  */
 @RunWith(AndroidJUnit4.class)
 public class OFFInstrumentedTest {

@@ -12,6 +12,7 @@ import javax.net.ssl.HttpsURLConnection;
  * @file JSONWeb.java
  * @brief Classe de méthodes statiques permettant la connexion au web
  * @date 2020
+ * @author Julian Lecocq--Mage
  */
 public class JSONWeb {
 

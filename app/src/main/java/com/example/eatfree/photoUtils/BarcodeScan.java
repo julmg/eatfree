@@ -23,10 +23,11 @@ import java.util.Map;
  * @file BarcodeScan.java
  * @brief Classe implémentant le scan de code-barres et la récupération des données de l'API OpenFoodFacts
  * @date 2020
+ * @author Julian Lecocq--Mage
  */
 public class BarcodeScan {
 
-    private static String OFFURLPrefix = "https://world.openfoodfacts.org/api/v0/product/"; //!< Préfixe API OpenFoodFacts
+    private final static String OFFURLPrefix = "https://world.openfoodfacts.org/api/v0/product/"; //!< Préfixe API OpenFoodFacts
 
     /**
      * @brief Récupération du code-barres à 13 chiffres à partir d'un bitmap (image), utilisant la bibliothèque ZXing

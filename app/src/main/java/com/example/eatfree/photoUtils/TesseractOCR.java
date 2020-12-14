@@ -17,6 +17,7 @@ import java.io.InputStream;
  * @file TesseractOCR.java
  * @brief Classe implémentant l'OCRisation (Reconnaissance optique de caractères) via la bibliothèque Tess-Two (fork de Tesseract)
  * @date 2020
+ * @author Julian Lecocq--Mage
  */
 public class TesseractOCR {
 
