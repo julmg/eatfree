@@ -105,6 +105,18 @@ public class PhotoUtils {
         return s;
     }
 
+    /**
+     * @brief Création rapide de flou sur un bitmap, via un redimensionnement *0.5 puis *2 de l'image
+     * @param bmp L'image que l'on veut traiter
+     * @return l'image traitée
+     */
+    public static Bitmap fastBlur(Bitmap bmp){
+        int height = bmp.getHeight();
+        int width = bmp.getWidth();
+        Bitmap smallbmp = Bitmap.createScaledBitmap(bmp, width/2, height/2, true);
+        return Bitmap.createScaledBitmap(smallbmp, width, height, true);
+    }
+
 
 
 }

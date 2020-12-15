@@ -36,9 +36,9 @@ public class BarcodeScan {
      */
     public static long getBarcode(Bitmap bmp) {
         String contents;
-        int[] intArray = new int[bmp.getWidth()*bmp.getHeight()];
-        //copy pixel data from the Bitmap into the 'intArray' array
+        Bitmap bmp2 = PhotoUtils.fastBlur(bmp); //On crée un peu de flou sur le bitmap afin de réduire le bruit de l'image et d'améliorer la détection du code barres
 
+        int[] intArray = new int[bmp2.getWidth()*bmp2.getHeight()];
         bmp.getPixels(intArray, 0, bmp.getWidth(), 0, 0, bmp.getWidth(), bmp.getHeight());
 
         LuminanceSource source = new RGBLuminanceSource(bmp.getWidth(), bmp.getHeight(), intArray);
