@@ -20,6 +20,7 @@ import android.os.StrictMode;
 
 import com.example.eatfree.PriseDePhoto.ManagerPhoto;
 import com.example.eatfree.PriseDePhoto.Mod_photo;
+import com.example.eatfree.comparaison.ControllerPanel;
 import com.example.eatfree.profile.ProfileManager;
 import com.example.eatfree.photoUtils.PhotoUtils;
 
@@ -253,9 +254,13 @@ public class MainActivity extends AppCompatActivity {
      * @brief Affichage du résultat du traitement de l'image
      * @param result map des allergènes
      */
+    @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN_MR1)
     private void photoRecognitionResult(Map<String, ArrayList<String>> result) {
+        ControllerPanel oui = new ControllerPanel();
+        Map<String, ArrayList<String>> result2 = oui.triMap(result);
         AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
-        builder.setMessage(Arrays.toString(result.entrySet().toArray()))
+
+        builder.setMessage(Arrays.toString(result2.entrySet().toArray()))
                 .setCancelable(false)
                 .setPositiveButton("ok",null);
         AlertDialog alert = builder.create();

@@ -43,38 +43,38 @@ public class CreateProfileModel {
         }
 
         if(arachides){
-            profileManager.SetAllergenes(ProfileManager.Allergenes.Arachides, index);
+            profileManager.SetAllergenes(ProfileManager.Allergenes.Arachides, 0);
             profileManager.SetBoolAllergenes(true, 0);
             index += 1;
         }
         if(oeuf){
-            profileManager.SetAllergenes(ProfileManager.Allergenes.Oeufs, index);
+            profileManager.SetAllergenes(ProfileManager.Allergenes.Oeufs, 1);
             profileManager.SetBoolAllergenes(true, 1);
             index += 1;
         }
         if(lait){
-            profileManager.SetAllergenes(ProfileManager.Allergenes.Lait, index);
+            profileManager.SetAllergenes(ProfileManager.Allergenes.Lait, 2);
             profileManager.SetBoolAllergenes(true, 2);
             index += 1;
         }
         if(gluten){
-            profileManager.SetAllergenes(ProfileManager.Allergenes.Gluten, index);
+            profileManager.SetAllergenes(ProfileManager.Allergenes.Gluten, 3);
             profileManager.SetBoolAllergenes(true, 3);
             index += 1;
         }
 
         if(fruitsLatex){
-            profileManager.SetAllergenes(ProfileManager.Allergenes.FruitsLatex, index);
+            profileManager.SetAllergenes(ProfileManager.Allergenes.FruitsLatex, 4);
             profileManager.SetBoolAllergenes(true, 4);
             index += 1;
         }
         if(fruitsRosacees){
-            profileManager.SetAllergenes(ProfileManager.Allergenes.FruitsRosacees, index);
+            profileManager.SetAllergenes(ProfileManager.Allergenes.FruitsRosacees, 5);
             profileManager.SetBoolAllergenes(true, 5);
             index += 1;
         }
         if(fruitsOleagineux){
-            profileManager.SetAllergenes(ProfileManager.Allergenes.FruitsOleagineux, index);
+            profileManager.SetAllergenes(ProfileManager.Allergenes.FruitsOleagineux, 6);
             profileManager.SetBoolAllergenes(true, 6);
         }
 
