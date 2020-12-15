@@ -39,9 +39,16 @@ import java.util.concurrent.TimeoutException;
 
 public class MainActivity extends AppCompatActivity {
 
+    //! Code de requète de demande de permissions
     public static final int MY_PERMISSIONS_REQUEST = 1;
+
+    //! Indique si les permissions ont été autorisées par l'utilisateur
     private boolean mPermissionsGranted;
+
+    //! Correspond aux fenêtres de progression de reconnaissance photo
     private ProgressDialog mProgressDialogOCR, mProgressDialogOFF;
+
+    //! Image prise en photo
     private Bitmap mImage;
 
     //! stocke les données sauvegardées de l'utilisateur
@@ -92,6 +99,11 @@ public class MainActivity extends AppCompatActivity {
         return preferences.getBoolean("isSaved", false);
     }
 
+    /**
+     * Vérifie si les permissions sont acquises ou non, et les demande si elles ne le sont pas
+     * @param isFirstTry si c'est le premier appel de cette fonction
+     * @return un booléen correspondant à si les permissions ont été autorisées par l'utilisateur
+     */
     public boolean checkPermissions(boolean isFirstTry){
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED &&
                 ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA) == PackageManager.PERMISSION_GRANTED &&
@@ -109,10 +121,10 @@ public class MainActivity extends AppCompatActivity {
     }
 
     /**
-     * @brief revois le résultat de la prise de photo pour l'afficher sur la vue grâce au fichier temporaire (path)
-     * @param requestCode
-     * @param resultCode
-     * @param data
+     * @brief renvoie le résultat de la prise de photo pour l'afficher sur la vue grâce au fichier temporaire (path)
+     * @param requestCode code de requète
+     * @param resultCode code de résultat
+     * @param data données de l'activity
      */
 
     @Override
@@ -171,6 +183,7 @@ public class MainActivity extends AppCompatActivity {
      * @brief Lance la reconnaissance d'image par code-barre (gestion UI et appel fonction utilitaire)
      * @author Julian Lecocq--Mage
      */
+    @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN_MR1)
     private void photoRecognitionOFF() {
         runOnUiThread(() -> {
             if (mProgressDialogOFF == null) {
@@ -204,6 +217,7 @@ public class MainActivity extends AppCompatActivity {
      * @brief Lance la reconnaissance d'image par reconnaissance de caractères (gestion UI et appel fonction utilitaire)
      * @author Julian Lecocq--Mage
      */
+    @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN_MR1)
     private void photoRecognitionOCR()  {
         runOnUiThread(() -> {
             if (mProgressDialogOCR == null) {

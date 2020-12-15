@@ -40,34 +40,9 @@
     <ImageView
         android:id="@+id/imgAffichePhoto"
         android:layout_width="match_parent"
-        android:layout_height="566dp"
+        android:layout_height="400dp"
         android:scaleType="centerInside"
         app:srcCompat="@drawable/ingredient" />
-
-    <com.google.android.material.bottomappbar.BottomAppBar
-        android:id="@+id/bottomAppBar8"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom"
-        app:backgroundTint="@android:color/transparent"
-        app:layout_anchor="@+id/imgAffichePhoto"
-        app:layout_anchorGravity="bottom|center" />
-
-    <ImageView
-        android:id="@+id/btn_validation"
-        android:layout_width="74dp"
-        android:layout_height="46dp"
-        app:layout_anchor="@+id/bottomAppBar8"
-        app:layout_anchorGravity="center"
-        app:srcCompat="@drawable/vert" />
-
-    <ImageView
-        android:id="@+id/btn_PasValide"
-        android:layout_width="74dp"
-        android:layout_height="46dp"
-        app:layout_anchor="@+id/bottomAppBar8"
-        app:layout_anchorGravity="center"
-        app:srcCompat="@drawable/rouge" />
 
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
