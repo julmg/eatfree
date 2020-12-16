@@ -14,6 +14,9 @@ public class ControllerPanel {
     //Pour pouvoir acceder a l'instance et connaitre les allergenes de l'utilisateur.
     public ProfileManager profileManager;
 
+    //! Map qui sera trié
+    private Map<String, ArrayList<String>>tmp = new HashMap<>();
+
 
     public ControllerPanel(){
         this.profileManager = ProfileManager.getInstance();
@@ -21,8 +24,8 @@ public class ControllerPanel {
 
     //methode pour trier la liste des allergenes qui prend en parametre la liste des ingredients du produit scanne.
     public Map triMap(Map<String, ArrayList<String>> list){
-        //On creer une map tampon de celle qu'il faut trier.
-        Map<String, ArrayList<String>>tmp = new HashMap<>(list);
+
+        tmp = list;
 
         //Pour simplifier la procedure car les noms de la liste des allergenes utilisateur ne correspondent pas a ceux des ingredients.
         //On recreer donc une liste pour les allergies utilisateur.
@@ -78,6 +81,14 @@ public class ControllerPanel {
         }
         //On renvoie la nouvelle map avec seulement celle qui interesse l'utilisateur.
         return tmp;
+    }
+
+    //! getteur qui retourne la map trié
+    public Map GetMap(){
+        if(tmp != null){
+            return tmp;
+        }
+        return null;
     }
 
 }
