@@ -42,7 +42,7 @@
         android:layout_width="match_parent"
         android:layout_height="400dp"
         android:scaleType="centerInside"
-        app:srcCompat="@drawable/ingredient" />
+        app:srcCompat="@drawable/indicinit" />
 
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

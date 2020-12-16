@@ -6,9 +6,10 @@ import android.os.Build;
 import androidx.annotation.RequiresApi;
 
 import com.example.eatfree.PriseDePhoto.ManagerPhoto;
-import com.example.eatfree.comparaison.ModelePanel;
-import com.example.eatfree.comparaison.VuePanel;
 import com.example.eatfree.profile.ProfileManager;
+import com.example.eatfree.result.ResultController;
+import com.example.eatfree.result.ResultModel;
+import com.example.eatfree.result.ResultView;
 import com.example.eatfree.settings.SettingsView;
 
 ////////////////////////////////////////////////////////////////////////////////////////////////
@@ -21,24 +22,29 @@ public class PanelManager {
     private static PanelManager instance = null;
 
     SettingsView settingsView;
-
     MainActivity activity;
 
-    VuePanel allergeneCheck;
+    private ResultView mResultView;
+    private ResultController mResultController;
+    private ResultModel mResultModel;
 
-    public static  PanelManager getInstance()
+    public static PanelManager getInstance()
     {
         return instance;
     }
 
     @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN_MR1)
-    PanelManager(MainActivity act, Context context, ModelePanel controllerPanel)
+    PanelManager(MainActivity act, Context context)
     {
         activity = act;
         instance = this;
         settingsView = new SettingsView(context);
-        allergeneCheck = new VuePanel(context, controllerPanel);
         settingsView.setActivated(false);
+
+        mResultView = new ResultView(context);
+        mResultController = new ResultController();
+        mResultModel = new ResultModel();
+        mResultView.setRefController(mResultController);
     }
 
     //! \brief Echange les panels en fonction du bouton sur lequel on clique
@@ -51,34 +57,29 @@ public class PanelManager {
                 ProfileManager.getInstance().GetProfileView().setActivated(true);
                 ManagerPhoto.getInstance(null).viewPhoto.setActivated(false);
                 settingsView.setActivated(false);
-                allergeneCheck.setActivated(false);
+                mResultView.setActivated(false);
                 break;
             case 2:
                 activity.setContentView(ManagerPhoto.getInstance(null).viewPhoto);
                 ProfileManager.getInstance().GetProfileView().setActivated(false);
                 ManagerPhoto.getInstance(null).viewPhoto.setActivated(true);
                 settingsView.setActivated(false);
-                allergeneCheck.setActivated(false);
+                mResultView.setActivated(false);
                 break;
             case 3:
                 activity.setContentView(settingsView);
                 ProfileManager.getInstance().GetProfileView().setActivated(false);
                 ManagerPhoto.getInstance(null).viewPhoto.setActivated(false);
                 settingsView.setActivated(true);
-                allergeneCheck.setActivated(false);
+                mResultView.setActivated(false);
                 break;
             case 4:
-                activity.setContentView(allergeneCheck);
+                activity.setContentView(mResultView);
                 ProfileManager.getInstance().GetProfileView().setActivated(false);
                 ManagerPhoto.getInstance(null).viewPhoto.setActivated(false);
                 settingsView.setActivated(false);
-                allergeneCheck.setActivated(true);
+                mResultView.setActivated(true);
                 break;
         }
-    }
-
-    @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN_MR1)
-    public void FinalResults() {
-        allergeneCheck.GetControllerPanel().SetResult();
     }
 }

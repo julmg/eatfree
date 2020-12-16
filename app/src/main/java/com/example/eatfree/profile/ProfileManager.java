@@ -21,7 +21,7 @@ import java.util.Observable;
 ////////////////////////////////////////////////////////////////////////////////////////////////
 public class ProfileManager extends Observable {
     //! énumération des familles d'allergènes
-    public enum Allergenes {Arachides, Lait, Oeufs, Gluten, FruitsLatex, FruitsRosacees, FruitsOleagineux};
+    public enum Allergenes {Arachides, Oeufs, Lait, Gluten, FruitsLatex, FruitsRosacees, FruitsOleagineux};
 
     //! instance du singleton ProfileManager
     private static ProfileManager instance = null;

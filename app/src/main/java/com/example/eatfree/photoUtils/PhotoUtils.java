@@ -117,6 +117,8 @@ public class PhotoUtils {
         return Bitmap.createScaledBitmap(smallbmp, width, height, true);
     }
 
-
+    public static Bitmap scale(Bitmap bmp, int divscale){
+        return Bitmap.createScaledBitmap(bmp, bmp.getWidth()/divscale, bmp.getHeight()/divscale, false);
+    }
 
 }

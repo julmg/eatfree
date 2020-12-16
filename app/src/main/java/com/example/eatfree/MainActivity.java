@@ -17,10 +17,11 @@ import android.graphics.BitmapFactory;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.StrictMode;
+import android.provider.Settings;
 
 import com.example.eatfree.PriseDePhoto.ManagerPhoto;
 import com.example.eatfree.PriseDePhoto.Mod_photo;
-import com.example.eatfree.comparaison.ModelePanel;
+//import com.example.eatfree.comparaison.ModelePanel;
 import com.example.eatfree.profile.ProfileManager;
 import com.example.eatfree.photoUtils.PhotoUtils;
 
@@ -36,6 +37,8 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.TimeoutException;
+
+import javax.xml.transform.Result;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -55,15 +58,14 @@ public class MainActivity extends AppCompatActivity {
     public SharedPreferences preferences;
 
     //! référence vers le ControllerPanel
-    public ModelePanel modelePanel;
+    //public ModelePanel modelePanel;
 
     @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN_MR1)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         ProfileManager profileManager = new ProfileManager(this, this);
-        modelePanel = new ModelePanel();
-        PanelManager panelManager = new PanelManager(this, this, modelePanel);
+        PanelManager panelManager = new PanelManager(this, this);
         if(IsSaved()){
             ManagerPhoto.getInstance(this).viewPhoto.setActivated(true);
             setContentView(ManagerPhoto.getInstance(this).viewPhoto);
@@ -274,8 +276,8 @@ public class MainActivity extends AppCompatActivity {
      */
     @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN_MR1)
     private void photoRecognitionResult(Map<String, ArrayList<String>> result) {
-        modelePanel.triMap(result);
-        PanelManager.getInstance().FinalResults();
+        ResultManager.getInstance().triAndSetResult(result);
+        PanelManager.getInstance().SwapPanel(4);
     }
 
     /**
