@@ -2,7 +2,6 @@ package com.example.eatfree.comparaison;
 
 import android.app.Activity;
 import android.content.Context;
-import android.media.Image;
 import android.os.Build;
 import android.view.LayoutInflater;
 import android.widget.Button;
@@ -13,12 +12,9 @@ import android.widget.TextView;
 import androidx.annotation.RequiresApi;
 
 import com.example.eatfree.R;
-import com.example.eatfree.photoUtils.PhotoUtils;
 
 import java.util.ArrayList;
 import java.util.Map;
-import java.util.Observable;
-import java.util.Observer;
 
 public class VuePanel extends LinearLayout {
 
@@ -29,9 +25,11 @@ public class VuePanel extends LinearLayout {
     public ImageView img_pouce;
 
     //!map des allergènes où il y a correspondance
-    private static Map<String, ArrayList<String>> mapAllergene_correspondant;
+    private Map<String, ArrayList<String>> mapAllergene_correspondant;
 
-    //! référence au controller (A modifier en fonction de ce que fait Batiste)
+    //! référence au controller
+    private ModelePanel modele;
+
     private ControllerPanel controller;
 
     //! bouton pour aller à la page d'accueil (prendre une photo)
@@ -40,7 +38,7 @@ public class VuePanel extends LinearLayout {
     //! \brief constructeur de la classe VuePanel
     //! il lie le fichier panel_allergene_check.xml, responsable du visuel, aux fichiers qui gèrent l'affichage des données
     @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN_MR1)
-    public VuePanel(Context context, ControllerPanel newController) {
+    public VuePanel(Context context, ModelePanel newModele) {
         super(context);
 
         LayoutInflater inflater = ((Activity)context).getLayoutInflater();
@@ -50,29 +48,22 @@ public class VuePanel extends LinearLayout {
         img_pouce = (ImageView)findViewById(R.id.img_pouce);
         btnAccueil = (Button)findViewById(R.id.btnAccueil_panelAllergene);
 
-        controller = newController;
+        modele = newModele;
+        controller = new ControllerPanel(this, modele);
 
-        //récupère la map trié
-        mapAllergene_correspondant = controller.GetMap();
-        // créer une list de string pour y mettre les valeurs de la map (Allergène)
-        ArrayList<String> result = new ArrayList(mapAllergene_correspondant.values());
-        String listAllergène_afficher = "";
-        // parcourt de cette list
-        for(String s: result){
-            listAllergène_afficher = listAllergène_afficher + " - " + s;
-        }
-        txt_Allergene_correspondant.setText(listAllergène_afficher);
+        btnAccueil.setOnClickListener(controller);
+    }
 
-        // change l'image du pouce en fonction de la map, si elle est null ou non
-        if(mapAllergene_correspondant == null){
-            img_pouce.setImageResource(R.drawable.pouce_vert);
-        }
-        else{
-            img_pouce.setImageResource(R.drawable.pouce_rouge);
-        }
+    public Map<String, ArrayList<String>> GetMapAllergene_correspondant(){
+        return mapAllergene_correspondant;
+    }
 
+    public void SetMapAllergene_correspondant(Map<String, ArrayList<String>> map) {
+        mapAllergene_correspondant = map;
+    }
 
-
+    public ControllerPanel GetControllerPanel() {
+        return controller;
     }
 }
 

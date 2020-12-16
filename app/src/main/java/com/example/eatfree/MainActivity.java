@@ -20,7 +20,7 @@ import android.os.StrictMode;
 
 import com.example.eatfree.PriseDePhoto.ManagerPhoto;
 import com.example.eatfree.PriseDePhoto.Mod_photo;
-import com.example.eatfree.comparaison.ControllerPanel;
+import com.example.eatfree.comparaison.ModelePanel;
 import com.example.eatfree.profile.ProfileManager;
 import com.example.eatfree.photoUtils.PhotoUtils;
 
@@ -54,12 +54,16 @@ public class MainActivity extends AppCompatActivity {
     //! stocke les données sauvegardées de l'utilisateur
     public SharedPreferences preferences;
 
+    //! référence vers le ControllerPanel
+    public ModelePanel modelePanel;
+
     @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN_MR1)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         ProfileManager profileManager = new ProfileManager(this, this);
-        PanelManager panelManager = new PanelManager(this, this);
+        modelePanel = new ModelePanel();
+        PanelManager panelManager = new PanelManager(this, this, modelePanel);
         if(IsSaved()){
             ManagerPhoto.getInstance(this).viewPhoto.setActivated(true);
             setContentView(ManagerPhoto.getInstance(this).viewPhoto);
@@ -270,15 +274,8 @@ public class MainActivity extends AppCompatActivity {
      */
     @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN_MR1)
     private void photoRecognitionResult(Map<String, ArrayList<String>> result) {
-        ControllerPanel oui = new ControllerPanel();
-        Map<String, ArrayList<String>> result2 = oui.triMap(result);
-        AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
-
-        builder.setMessage(Arrays.toString(result2.entrySet().toArray()))
-                .setCancelable(false)
-                .setPositiveButton("ok",null);
-        AlertDialog alert = builder.create();
-        alert.show();
+        modelePanel.triMap(result);
+        PanelManager.getInstance().FinalResults();
     }
 
     /**
