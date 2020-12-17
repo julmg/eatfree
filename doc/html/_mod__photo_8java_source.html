@@ -1,0 +1,182 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.20"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>EatFree:  Fichier source de app/src/main/java/com/example/eatfree/PriseDePhoto/Mod_photo.java</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="logo_EatFree - Copie.png"/></td>
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">EatFree
+   &#160;<span id="projectnumber">1.0.0</span>
+   </div>
+   <div id="projectbrief">Application de signalement à l&#39;utilisateur d&#39;allergènes dans un produit</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Généré par Doxygen 1.8.20 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','Recherche');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('_mod__photo_8java_source.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle">
+<div class="title">Mod_photo.java</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="_mod__photo_8java.html">Aller à la documentation de ce fichier.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="keyword">package </span>com.example.eatfree.PriseDePhoto;</div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160; </div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="keyword">import</span> android.app.Activity;</div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="keyword">import</span> android.content.Intent;</div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="keyword">import</span> android.net.Uri;</div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="keyword">import</span> android.os.Environment;</div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="keyword">import</span> android.provider.MediaStore;</div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="keyword">import</span> android.util.Log;</div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160; </div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="keyword">import</span> androidx.core.content.FileProvider;</div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160; </div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="keyword">import</span> java.io.File;</div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="keyword">import</span> java.io.IOException;</div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="keyword">import</span> java.text.SimpleDateFormat;</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="keyword">import</span> java.util.Date;</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160; </div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160; </div>
+<div class="line"><a name="l00024"></a><span class="lineno"><a class="line" href="classcom_1_1example_1_1eatfree_1_1_prise_de_photo_1_1_mod__photo.html">   24</a></span>&#160;<span class="keyword">public</span> <span class="keyword">class </span><a class="code" href="classcom_1_1example_1_1eatfree_1_1_prise_de_photo_1_1_mod__photo.html">Mod_photo</a> {</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    <span class="comment">//constante</span></div>
+<div class="line"><a name="l00026"></a><span class="lineno"><a class="line" href="classcom_1_1example_1_1eatfree_1_1_prise_de_photo_1_1_mod__photo.html#a65fa3addf53a5de573ffd7ab4d7e0ef6">   26</a></span>&#160;    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keywordtype">int</span> <a class="code" href="classcom_1_1example_1_1eatfree_1_1_prise_de_photo_1_1_mod__photo.html#a65fa3addf53a5de573ffd7ab4d7e0ef6">RETOUR_PRENDRE_PHOTO</a> = 1;</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160; </div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    <span class="comment">//référence</span></div>
+<div class="line"><a name="l00029"></a><span class="lineno"><a class="line" href="classcom_1_1example_1_1eatfree_1_1_prise_de_photo_1_1_mod__photo.html#ad5927be4ca47d5792d43b2f3668c5ea3">   29</a></span>&#160;    <span class="keyword">public</span> <a class="code" href="classcom_1_1example_1_1eatfree_1_1_prise_de_photo_1_1_vue__photo.html">Vue_photo</a> <a class="code" href="classcom_1_1example_1_1eatfree_1_1_prise_de_photo_1_1_mod__photo.html#ad5927be4ca47d5792d43b2f3668c5ea3">refVue</a>;</div>
+<div class="line"><a name="l00030"></a><span class="lineno"><a class="line" href="classcom_1_1example_1_1eatfree_1_1_prise_de_photo_1_1_mod__photo.html#a3c9ea2f014dcddf946a53139b7b0c02b">   30</a></span>&#160;    <span class="keyword">public</span> <a class="code" href="classcom_1_1example_1_1eatfree_1_1_prise_de_photo_1_1_ctrl__photo.html">Ctrl_photo</a> <a class="code" href="classcom_1_1example_1_1eatfree_1_1_prise_de_photo_1_1_mod__photo.html#a3c9ea2f014dcddf946a53139b7b0c02b">refCtrl</a>;</div>
+<div class="line"><a name="l00031"></a><span class="lineno"><a class="line" href="classcom_1_1example_1_1eatfree_1_1_prise_de_photo_1_1_mod__photo.html#a8f3ebdfdf07440a5747db1dab3e163df">   31</a></span>&#160;    <span class="keyword">public</span> Activity <a class="code" href="classcom_1_1example_1_1eatfree_1_1_prise_de_photo_1_1_mod__photo.html#a8f3ebdfdf07440a5747db1dab3e163df">refAct</a>;</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    <span class="comment">//variable</span></div>
+<div class="line"><a name="l00033"></a><span class="lineno"><a class="line" href="classcom_1_1example_1_1eatfree_1_1_prise_de_photo_1_1_mod__photo.html#acd6a115a41795f67793358858338fc39">   33</a></span>&#160;    <span class="keyword">public</span> String <a class="code" href="classcom_1_1example_1_1eatfree_1_1_prise_de_photo_1_1_mod__photo.html#acd6a115a41795f67793358858338fc39">photo_path</a> = <span class="keyword">null</span>;</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160; </div>
+<div class="line"><a name="l00043"></a><span class="lineno"><a class="line" href="classcom_1_1example_1_1eatfree_1_1_prise_de_photo_1_1_mod__photo.html#ada8390147b7795239d20d748d80920bc">   43</a></span>&#160;    <span class="keyword">public</span> <span class="keywordtype">void</span> <a class="code" href="classcom_1_1example_1_1eatfree_1_1_prise_de_photo_1_1_mod__photo.html#ada8390147b7795239d20d748d80920bc">prendrePhoto</a>() {</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;        Intent intent = <span class="keyword">new</span> Intent(MediaStore.ACTION_IMAGE_CAPTURE);</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;        <span class="keywordflow">if</span> (intent.resolveActivity(<a class="code" href="classcom_1_1example_1_1eatfree_1_1_prise_de_photo_1_1_mod__photo.html#a8f3ebdfdf07440a5747db1dab3e163df">refAct</a>.getPackageManager()) != <span class="keyword">null</span>) {</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;            String time = <span class="keyword">new</span> SimpleDateFormat(<span class="stringliteral">&quot;yyyymmdd_HHmmss&quot;</span>).format(<span class="keyword">new</span> Date());</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;            File photoDir = <a class="code" href="classcom_1_1example_1_1eatfree_1_1_prise_de_photo_1_1_mod__photo.html#a8f3ebdfdf07440a5747db1dab3e163df">refAct</a>.getExternalFilesDir(Environment.DIRECTORY_PICTURES);</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;            <span class="keywordflow">try</span> {</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;                File photoFile = File.createTempFile(<span class="stringliteral">&quot;photo&quot;</span> + time, <span class="stringliteral">&quot;.jpg&quot;</span>, photoDir);</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;                <a class="code" href="classcom_1_1example_1_1eatfree_1_1_prise_de_photo_1_1_mod__photo.html#acd6a115a41795f67793358858338fc39">photo_path</a> = photoFile.getAbsolutePath();</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;                Log.i(<span class="stringliteral">&quot;path&quot;</span>,<a class="code" href="classcom_1_1example_1_1eatfree_1_1_prise_de_photo_1_1_mod__photo.html#acd6a115a41795f67793358858338fc39">photo_path</a>);</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;                Uri photoUri = FileProvider.getUriForFile(<a class="code" href="classcom_1_1example_1_1eatfree_1_1_prise_de_photo_1_1_mod__photo.html#a8f3ebdfdf07440a5747db1dab3e163df">refAct</a>,</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;                        <a class="code" href="classcom_1_1example_1_1eatfree_1_1_prise_de_photo_1_1_mod__photo.html#a8f3ebdfdf07440a5747db1dab3e163df">refAct</a>.getApplicationContext().getPackageName() + <span class="stringliteral">&quot;.provider&quot;</span>,</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;                        photoFile);</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;                intent.putExtra(MediaStore.EXTRA_OUTPUT, photoUri);</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160; </div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;                <a class="code" href="classcom_1_1example_1_1eatfree_1_1_prise_de_photo_1_1_mod__photo.html#a8f3ebdfdf07440a5747db1dab3e163df">refAct</a>.startActivityForResult(intent, <a class="code" href="classcom_1_1example_1_1eatfree_1_1_prise_de_photo_1_1_mod__photo.html#a65fa3addf53a5de573ffd7ab4d7e0ef6">RETOUR_PRENDRE_PHOTO</a>);</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160; </div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;            } <span class="keywordflow">catch</span> (IOException e) {</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;                e.printStackTrace();</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;            }</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;        }</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    }</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160; </div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160; </div>
+<div class="line"><a name="l00066"></a><span class="lineno"><a class="line" href="classcom_1_1example_1_1eatfree_1_1_prise_de_photo_1_1_mod__photo.html#a8ffbe7ddcc7f1b065a0cef707a5dcc0c">   66</a></span>&#160;    <span class="keyword">public</span> <span class="keywordtype">void</span> <a class="code" href="classcom_1_1example_1_1eatfree_1_1_prise_de_photo_1_1_mod__photo.html#a8ffbe7ddcc7f1b065a0cef707a5dcc0c">setRefCtrl</a>(<a class="code" href="classcom_1_1example_1_1eatfree_1_1_prise_de_photo_1_1_ctrl__photo.html">Ctrl_photo</a> ct) {</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;        <a class="code" href="classcom_1_1example_1_1eatfree_1_1_prise_de_photo_1_1_mod__photo.html#a3c9ea2f014dcddf946a53139b7b0c02b">refCtrl</a> = ct;</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;    }</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160; </div>
+<div class="line"><a name="l00070"></a><span class="lineno"><a class="line" href="classcom_1_1example_1_1eatfree_1_1_prise_de_photo_1_1_mod__photo.html#aa9cec686190bb5b2943c7c4d0c208e8f">   70</a></span>&#160;    <span class="keyword">public</span> <span class="keywordtype">void</span> <a class="code" href="classcom_1_1example_1_1eatfree_1_1_prise_de_photo_1_1_mod__photo.html#aa9cec686190bb5b2943c7c4d0c208e8f">setRefVue</a>(<a class="code" href="classcom_1_1example_1_1eatfree_1_1_prise_de_photo_1_1_vue__photo.html">Vue_photo</a> v) {</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;        <a class="code" href="classcom_1_1example_1_1eatfree_1_1_prise_de_photo_1_1_mod__photo.html#ad5927be4ca47d5792d43b2f3668c5ea3">refVue</a> = v;</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;    }</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160; </div>
+<div class="line"><a name="l00074"></a><span class="lineno"><a class="line" href="classcom_1_1example_1_1eatfree_1_1_prise_de_photo_1_1_mod__photo.html#ad959bccf872c775a1b3800974882fd5d">   74</a></span>&#160;    <span class="keyword">public</span> <span class="keywordtype">void</span> <a class="code" href="classcom_1_1example_1_1eatfree_1_1_prise_de_photo_1_1_mod__photo.html#ad959bccf872c775a1b3800974882fd5d">setRefAct</a>(Activity a){<a class="code" href="classcom_1_1example_1_1eatfree_1_1_prise_de_photo_1_1_mod__photo.html#a8f3ebdfdf07440a5747db1dab3e163df">refAct</a> = a;}</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160; </div>
+<div class="line"><a name="l00076"></a><span class="lineno"><a class="line" href="classcom_1_1example_1_1eatfree_1_1_prise_de_photo_1_1_mod__photo.html#a43c447680d921943259bf4241d3e6933">   76</a></span>&#160;    <span class="keyword">public</span> String <a class="code" href="classcom_1_1example_1_1eatfree_1_1_prise_de_photo_1_1_mod__photo.html#a43c447680d921943259bf4241d3e6933">getPhoto_path</a>() {</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;        Log.i(<span class="stringliteral">&quot;a&quot;</span>,<a class="code" href="classcom_1_1example_1_1eatfree_1_1_prise_de_photo_1_1_mod__photo.html#acd6a115a41795f67793358858338fc39">photo_path</a>);</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;        <span class="keywordflow">return</span> <a class="code" href="classcom_1_1example_1_1eatfree_1_1_prise_de_photo_1_1_mod__photo.html#acd6a115a41795f67793358858338fc39">photo_path</a>;</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;    }</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160; </div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;}</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160; </div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<div class="ttc" id="aclasscom_1_1example_1_1eatfree_1_1_prise_de_photo_1_1_mod__photo_html_a65fa3addf53a5de573ffd7ab4d7e0ef6"><div class="ttname"><a href="classcom_1_1example_1_1eatfree_1_1_prise_de_photo_1_1_mod__photo.html#a65fa3addf53a5de573ffd7ab4d7e0ef6">com.example.eatfree.PriseDePhoto.Mod_photo.RETOUR_PRENDRE_PHOTO</a></div><div class="ttdeci">static final int RETOUR_PRENDRE_PHOTO</div><div class="ttdef"><b>Definition:</b> <a href="_mod__photo_8java_source.html#l00026">Mod_photo.java:26</a></div></div>
+<div class="ttc" id="aclasscom_1_1example_1_1eatfree_1_1_prise_de_photo_1_1_mod__photo_html_ad5927be4ca47d5792d43b2f3668c5ea3"><div class="ttname"><a href="classcom_1_1example_1_1eatfree_1_1_prise_de_photo_1_1_mod__photo.html#ad5927be4ca47d5792d43b2f3668c5ea3">com.example.eatfree.PriseDePhoto.Mod_photo.refVue</a></div><div class="ttdeci">Vue_photo refVue</div><div class="ttdef"><b>Definition:</b> <a href="_mod__photo_8java_source.html#l00029">Mod_photo.java:29</a></div></div>
+<div class="ttc" id="aclasscom_1_1example_1_1eatfree_1_1_prise_de_photo_1_1_mod__photo_html"><div class="ttname"><a href="classcom_1_1example_1_1eatfree_1_1_prise_de_photo_1_1_mod__photo.html">com.example.eatfree.PriseDePhoto.Mod_photo</a></div><div class="ttdef"><b>Definition:</b> <a href="_mod__photo_8java_source.html#l00024">Mod_photo.java:24</a></div></div>
+<div class="ttc" id="aclasscom_1_1example_1_1eatfree_1_1_prise_de_photo_1_1_mod__photo_html_a8f3ebdfdf07440a5747db1dab3e163df"><div class="ttname"><a href="classcom_1_1example_1_1eatfree_1_1_prise_de_photo_1_1_mod__photo.html#a8f3ebdfdf07440a5747db1dab3e163df">com.example.eatfree.PriseDePhoto.Mod_photo.refAct</a></div><div class="ttdeci">Activity refAct</div><div class="ttdef"><b>Definition:</b> <a href="_mod__photo_8java_source.html#l00031">Mod_photo.java:31</a></div></div>
+<div class="ttc" id="aclasscom_1_1example_1_1eatfree_1_1_prise_de_photo_1_1_mod__photo_html_ada8390147b7795239d20d748d80920bc"><div class="ttname"><a href="classcom_1_1example_1_1eatfree_1_1_prise_de_photo_1_1_mod__photo.html#ada8390147b7795239d20d748d80920bc">com.example.eatfree.PriseDePhoto.Mod_photo.prendrePhoto</a></div><div class="ttdeci">void prendrePhoto()</div><div class="ttdoc">prendrePhoto: méthode qui va avoir acces à l'appareil photo et qui va la mémoriser dans un fichier te...</div><div class="ttdef"><b>Definition:</b> <a href="_mod__photo_8java_source.html#l00043">Mod_photo.java:43</a></div></div>
+<div class="ttc" id="aclasscom_1_1example_1_1eatfree_1_1_prise_de_photo_1_1_vue__photo_html"><div class="ttname"><a href="classcom_1_1example_1_1eatfree_1_1_prise_de_photo_1_1_vue__photo.html">com.example.eatfree.PriseDePhoto.Vue_photo</a></div><div class="ttdef"><b>Definition:</b> <a href="_vue__photo_8java_source.html#l00020">Vue_photo.java:20</a></div></div>
+<div class="ttc" id="aclasscom_1_1example_1_1eatfree_1_1_prise_de_photo_1_1_mod__photo_html_a8ffbe7ddcc7f1b065a0cef707a5dcc0c"><div class="ttname"><a href="classcom_1_1example_1_1eatfree_1_1_prise_de_photo_1_1_mod__photo.html#a8ffbe7ddcc7f1b065a0cef707a5dcc0c">com.example.eatfree.PriseDePhoto.Mod_photo.setRefCtrl</a></div><div class="ttdeci">void setRefCtrl(Ctrl_photo ct)</div><div class="ttdef"><b>Definition:</b> <a href="_mod__photo_8java_source.html#l00066">Mod_photo.java:66</a></div></div>
+<div class="ttc" id="aclasscom_1_1example_1_1eatfree_1_1_prise_de_photo_1_1_mod__photo_html_a43c447680d921943259bf4241d3e6933"><div class="ttname"><a href="classcom_1_1example_1_1eatfree_1_1_prise_de_photo_1_1_mod__photo.html#a43c447680d921943259bf4241d3e6933">com.example.eatfree.PriseDePhoto.Mod_photo.getPhoto_path</a></div><div class="ttdeci">String getPhoto_path()</div><div class="ttdef"><b>Definition:</b> <a href="_mod__photo_8java_source.html#l00076">Mod_photo.java:76</a></div></div>
+<div class="ttc" id="aclasscom_1_1example_1_1eatfree_1_1_prise_de_photo_1_1_ctrl__photo_html"><div class="ttname"><a href="classcom_1_1example_1_1eatfree_1_1_prise_de_photo_1_1_ctrl__photo.html">com.example.eatfree.PriseDePhoto.Ctrl_photo</a></div><div class="ttdef"><b>Definition:</b> <a href="_ctrl__photo_8java_source.html#l00022">Ctrl_photo.java:22</a></div></div>
+<div class="ttc" id="aclasscom_1_1example_1_1eatfree_1_1_prise_de_photo_1_1_mod__photo_html_aa9cec686190bb5b2943c7c4d0c208e8f"><div class="ttname"><a href="classcom_1_1example_1_1eatfree_1_1_prise_de_photo_1_1_mod__photo.html#aa9cec686190bb5b2943c7c4d0c208e8f">com.example.eatfree.PriseDePhoto.Mod_photo.setRefVue</a></div><div class="ttdeci">void setRefVue(Vue_photo v)</div><div class="ttdef"><b>Definition:</b> <a href="_mod__photo_8java_source.html#l00070">Mod_photo.java:70</a></div></div>
+<div class="ttc" id="aclasscom_1_1example_1_1eatfree_1_1_prise_de_photo_1_1_mod__photo_html_ad959bccf872c775a1b3800974882fd5d"><div class="ttname"><a href="classcom_1_1example_1_1eatfree_1_1_prise_de_photo_1_1_mod__photo.html#ad959bccf872c775a1b3800974882fd5d">com.example.eatfree.PriseDePhoto.Mod_photo.setRefAct</a></div><div class="ttdeci">void setRefAct(Activity a)</div><div class="ttdef"><b>Definition:</b> <a href="_mod__photo_8java_source.html#l00074">Mod_photo.java:74</a></div></div>
+<div class="ttc" id="aclasscom_1_1example_1_1eatfree_1_1_prise_de_photo_1_1_mod__photo_html_acd6a115a41795f67793358858338fc39"><div class="ttname"><a href="classcom_1_1example_1_1eatfree_1_1_prise_de_photo_1_1_mod__photo.html#acd6a115a41795f67793358858338fc39">com.example.eatfree.PriseDePhoto.Mod_photo.photo_path</a></div><div class="ttdeci">String photo_path</div><div class="ttdef"><b>Definition:</b> <a href="_mod__photo_8java_source.html#l00033">Mod_photo.java:33</a></div></div>
+<div class="ttc" id="aclasscom_1_1example_1_1eatfree_1_1_prise_de_photo_1_1_mod__photo_html_a3c9ea2f014dcddf946a53139b7b0c02b"><div class="ttname"><a href="classcom_1_1example_1_1eatfree_1_1_prise_de_photo_1_1_mod__photo.html#a3c9ea2f014dcddf946a53139b7b0c02b">com.example.eatfree.PriseDePhoto.Mod_photo.refCtrl</a></div><div class="ttdeci">Ctrl_photo refCtrl</div><div class="ttdef"><b>Definition:</b> <a href="_mod__photo_8java_source.html#l00030">Mod_photo.java:30</a></div></div>
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_d422163b96683743ed3963d4aac17747.html">app</a></li><li class="navelem"><a class="el" href="dir_a8f641299cfea9f7461c2df1141b7786.html">src</a></li><li class="navelem"><a class="el" href="dir_82a1580e18717db72c05fda59883f1c3.html">main</a></li><li class="navelem"><a class="el" href="dir_29a654fef9ee522348956763c377cb52.html">java</a></li><li class="navelem"><a class="el" href="dir_520f01a69ba2ae0241ea16752726d997.html">com</a></li><li class="navelem"><a class="el" href="dir_d91ad83e1a10c35a59154b422e4e394d.html">example</a></li><li class="navelem"><a class="el" href="dir_ae4b5f8f138f4df8270a414ec52369a2.html">eatfree</a></li><li class="navelem"><a class="el" href="dir_7dd5c03b94817687909c791b1b49d125.html">PriseDePhoto</a></li><li class="navelem"><a class="el" href="_mod__photo_8java.html">Mod_photo.java</a></li>
+    <li class="footer">Généré par <a href="http://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.8.20 </li>
+  </ul>
+</div>
+</body>
+</html>

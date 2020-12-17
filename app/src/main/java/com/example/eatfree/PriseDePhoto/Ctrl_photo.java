@@ -39,18 +39,16 @@ public class Ctrl_photo implements View.OnClickListener{
 
         }
     }
-    //! \brief verifie s'il y a acces a l'appareil photo et prends la photo
+
     private void takePhotoAndVerifyPermissions(){
         if(refActivity.checkPermissions(true)){
             refMod.prendrePhoto();
         }
     }
 
-    //! \brief renvoie une reference sur le modele correspondant
     public void setRefMod(Mod_photo m) {
         refMod = m;
     }
-    //! \brief renvoie une reference sur la vue correspondante
 
     public void setRefVue(Vue_photo v) {
         refVue = v;

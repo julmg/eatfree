@@ -29,7 +29,7 @@ import android.widget.TextView;
 
 import com.example.eatfree.PriseDePhoto.ManagerPhoto;
 import com.example.eatfree.PriseDePhoto.Mod_photo;
-import com.example.eatfree.comparaison.ModelePanel;
+
 import com.example.eatfree.profile.ProfileManager;
 import com.example.eatfree.photoUtils.PhotoUtils;
 
@@ -45,46 +45,6 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.TimeoutException;
-
-
-
-
-/*!
- * \mainpage Présentation de l'application EATFREE
-
-* \section  sec1 Présentation
- * L’application permet de créer son profil avec les allergènes/intolérances associées. Une fois ce profil créé, le client peut en magasin ouvrir l’application et avec la caméra
- *  et scanner la liste des ingrédients. Grâce à la base de données, l’application repère les ingrédients spécifiés « allergène » dans le profil. Si les ingrédients sont adaptés
- * au profil, un pouce vert apparait et indique que le consommateur peut manger ce produit, si malheureusement la liste comporte un des ingrédients allergènes pour le consommateur,
- *  un pouce rouge apparait, indiquant qu’il ne peut pas consommer ce produit.
- *
- *
- *\section  sec2 Le public visé
- * Les personnes ayant des intolérances alimentaires : arachides, œuf, lait de vache, gluten, fruits.
- *  Consommateur en âge de faire les courses seul : à partir de 18 ans.
- *
- * \section  sec3 Le contexte
- * Les intolérances alimentaires touchent de plus en plus de personnes. L’emballage et le numérique peuvent aider ces personnes à contrôler leur alimentation en leur indiquant si oui ou non
- *  ils peuvent manger le produit via la liste des ingrédients.
- *
- *
- *\section  sec4 Les systèmes, les sous-systèmes ou les équipements
- *  Application disponible sur smartphones récents (- de 5 ans) qui fonctionnent sur les systèmes d’exploitation les plus utilisés : Android de Google, Windows de Microsoft et iOS de Apple.
- *
- *\section  sec5 Securité
- * Les données personnelles privées ne pourront pas etre utiliser en dehors de l’utilisation de l’application
- *
- *Pour protéger les concepteurs de l’application, acceptation de l’utilisateur d'une décharge de responsabilité
- * en cas d’erreur de la part du logiciel et de problème de santé induit chez le consommateur.
- *
- *\subsection  sec fonctionnalitées disponible sur l'application
- * \li Création d’un profil personnalisé par l’utilisateur afin de renseigner ses allergies
- * \li Base de données avec tous les noms des potentiels allergènes
- * \li Détection visuelle (caméra) des ingrédients présents dans le produit
- * \li Analyse et comparaison entre le profil client et le produit
- * \li Affichage simplifié de la réponse pour le consommateur (feu vert/feu rouge ou pouce vert/pouce rouge)
- *
- */
 
 public class MainActivity extends AppCompatActivity {
 
@@ -103,16 +63,16 @@ public class MainActivity extends AppCompatActivity {
     //! stocke les données sauvegardées de l'utilisateur
     public SharedPreferences preferences;
 
-    //! référence vers le ControllerPanel
-    public ModelePanel modelePanel;
+    private LinearLayout resultTable;
+    private ImageView resultPouce;
+    private Button resultButton;
 
     @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN_MR1)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         ProfileManager profileManager = new ProfileManager(this, this);
-        modelePanel = new ModelePanel();
-        PanelManager panelManager = new PanelManager(this, this, modelePanel);
+        PanelManager panelManager = new PanelManager(this, this);
         if(IsSaved()){
             ManagerPhoto.getInstance(this).viewPhoto.setActivated(true);
             setContentView(ManagerPhoto.getInstance(this).viewPhoto);
@@ -317,15 +277,6 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    /**
-     * @brief Affichage du résultat du traitement de l'image
-     * @param result map des allergènes
-     */
-    @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN_MR1)
-    private void photoRecognitionResult(Map<String, ArrayList<String>> result) {
-        modelePanel.triMap(result);
-        PanelManager.getInstance().FinalResults();
-    }
 
     /**
      * @brief Classe callable représentant l'appel de la fonction utilitaire d'OCR sur un autre thread, car la tâche est longue

@@ -1,52 +1,30 @@
-    xmlns:android="http://schemas.android.com/apk/res/android"    xmlns:app="http://schemas.android.com/apk/res-auto"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:layout_margin="16dp"
+    android:orientation="vertical">
 
-    
-    <LinearLayout
-        android:id="@+id/linearLayout"
-        android:layout_width="318dp"
-        android:layout_height="549dp"
-        android:orientation="vertical"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.494"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.087">
-
-            <ImageView
-            android:id="@+id/img_pouce"
-            android:layout_width="match_parent"
-            android:layout_height="192dp"
-            android:layout_marginTop="104dp"
-            app:srcCompat="@drawable/pouce_vert" />
-
-        <TextView
-            android:id="@+id/txtAllergene"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:text="TextView" />
-
-    </LinearLayout>
+    <ImageView
+        android:id="@+id/img_pouce"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="104dp"
+        android:layout_weight="2" />
 
     <LinearLayout
-        android:layout_width="226dp"
-        android:layout_height="73dp"
-        android:gravity="center"
-        android:orientation="horizontal"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout">
+        android:id="@+id/tableAllergenes"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="3"
+        android:orientation="vertical" />
 
-        <Button
-            android:id="@+id/btnAccueil_panelAllergene"
-            android:layout_width="20dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:text="Accueil" />
+    <Button
+        android:id="@+id/btnOkResultat"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:text="Ok" />
 
-    </LinearLayout>
-</androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>

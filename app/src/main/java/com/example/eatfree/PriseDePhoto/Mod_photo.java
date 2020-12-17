@@ -62,17 +62,15 @@ public class Mod_photo {
         }
     }
 
-    //! \brief reference vers le controller des photos
+
     public void setRefCtrl(Ctrl_photo ct) {
         refCtrl = ct;
     }
 
-    //! \brief reference vers la vue des photos
     public void setRefVue(Vue_photo v) {
         refVue = v;
     }
 
-    //! \brief Reference vers le modele des photos
     public void setRefAct(Activity a){refAct = a;}
 
     public String getPhoto_path() {

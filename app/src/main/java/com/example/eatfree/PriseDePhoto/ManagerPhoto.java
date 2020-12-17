@@ -24,7 +24,6 @@ public class ManagerPhoto {
     public Activity refAct;
     public MainActivity act;
 
-    //! \brief definit le pattern vue modele controller qui gere la prise de photo
     public ManagerPhoto(Context context) {
         ctrlPhoto = new Ctrl_photo();
         viewPhoto = new Vue_photo(context);
@@ -43,7 +42,7 @@ public class ManagerPhoto {
         mdlPhoto.setRefAct(refAct);
 
     }
-    //! \brief retourne une instance
+
     public static ManagerPhoto getInstance( Context context) {
         if (instance == null) {
             instance = new ManagerPhoto(context);
