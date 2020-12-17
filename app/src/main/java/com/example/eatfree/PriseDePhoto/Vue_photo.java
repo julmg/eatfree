@@ -45,13 +45,14 @@ public class Vue_photo extends LinearLayout {
         btnSettings = (Button)findViewById(R.id.btnSettings);
     }
 
+    //! \brief References vers le controller
     public void setRefCtr(Ctrl_photo ct) {
         refCtr = ct;
         buttonPhoto.setOnClickListener(refCtr);
         btnProfil.setOnClickListener(refCtr);
         btnSettings.setOnClickListener(refCtr);
     }
-
+    //! \brief References vers le modele
     public void setRefMod(Mod_photo m){
         refMod=m;
     }

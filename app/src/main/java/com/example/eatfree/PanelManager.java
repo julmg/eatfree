@@ -26,6 +26,7 @@ public class PanelManager {
 
     VuePanel allergeneCheck;
 
+    //! \brief Recupere l'instance de la fenetre active
     public static  PanelManager getInstance()
     {
         return instance;
@@ -78,6 +79,7 @@ public class PanelManager {
     }
 
     @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN_MR1)
+    //! \brief Affiche le resultat de l'analyse du produit
     public void FinalResults() {
         allergeneCheck.GetControllerPanel().SetResult();
     }

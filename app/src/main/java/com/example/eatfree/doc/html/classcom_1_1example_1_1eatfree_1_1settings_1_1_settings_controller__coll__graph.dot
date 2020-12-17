@@ -1,0 +1,20 @@
+digraph "com.example.eatfree.settings.SettingsController"
+{
+ // LATEX_PDF_SIZE
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="LR";
+  Node1 [label="com.example.eatfree.settings.\lSettingsController",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip=" "];
+  Node2 -> Node1 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node2 [label="View::OnClickListener",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled",tooltip=" "];
+  Node3 -> Node1 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" model" ,fontname="Helvetica"];
+  Node3 [label="com.example.eatfree.settings.\lSettingsModel",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classcom_1_1example_1_1eatfree_1_1settings_1_1_settings_model.html",tooltip=" "];
+  Node4 -> Node1 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" view" ,fontname="Helvetica"];
+  Node4 [label="com.example.eatfree.settings.\lSettingsView",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classcom_1_1example_1_1eatfree_1_1settings_1_1_settings_view.html",tooltip=" "];
+  Node5 -> Node4 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node5 [label="LinearLayout",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled",tooltip=" "];
+  Node3 -> Node4 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" model" ,fontname="Helvetica"];
+  Node6 -> Node4 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" btnAccueil\nbtnProfil" ,fontname="Helvetica"];
+  Node6 [label="Button",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled",tooltip=" "];
+  Node1 -> Node4 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" controller" ,fontname="Helvetica"];
+}

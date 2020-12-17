@@ -16,6 +16,12 @@ import com.example.eatfree.R;
 import java.util.ArrayList;
 import java.util.Map;
 
+
+////////////////////////////////////////////////////////////////////////////////////////////////
+//! \class VuePanel
+//! \author Baptiste MADELAINE
+//! Vue de la page du resultat des allergenes
+////////////////////////////////////////////////////////////////////////////////////////////////
 public class VuePanel extends LinearLayout {
 
     //! Affichage des allergènes qui on une correspondance
@@ -54,14 +60,16 @@ public class VuePanel extends LinearLayout {
         btnAccueil.setOnClickListener(controller);
     }
 
+    //! \brief  retourne la liste d'allergene de la personne
     public Map<String, ArrayList<String>> GetMapAllergene_correspondant(){
         return mapAllergene_correspondant;
     }
 
+    //! \brief met a jour la liste d'allergene de la personne
     public void SetMapAllergene_correspondant(Map<String, ArrayList<String>> map) {
         mapAllergene_correspondant = map;
     }
-
+    //! \brief recupere le controller de la fenetre active
     public ControllerPanel GetControllerPanel() {
         return controller;
     }

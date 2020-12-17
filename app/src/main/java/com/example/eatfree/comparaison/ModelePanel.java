@@ -13,6 +13,11 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
+////////////////////////////////////////////////////////////////////////////////////////////////
+//! \class ModelePanel
+//! \author Baptiste MADELAINE
+//! modele qui gere les allergenes detceter lors de l'analyse de la composition
+////////////////////////////////////////////////////////////////////////////////////////////////
 @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN_MR1)
 public class ModelePanel {
     //Pour pouvoir acceder a l'instance et connaitre les allergenes de l'utilisateur.
@@ -21,12 +26,12 @@ public class ModelePanel {
     //! Map qui sera trié
     private Map<String, ArrayList<String>>tmp = new HashMap<>();
 
-
+    //! \brief
     public ModelePanel(){
         this.profileManager = ProfileManager.getInstance();
     }
 
-    //methode pour trier la liste des allergenes qui prend en parametre la liste des ingredients du produit scanne.
+    //! \brief methode pour trier la liste des allergenes qui prend en parametre la liste des ingredients du produit scanne.
     public void triMap(Map<String, ArrayList<String>> list){
 
         tmp = list;
@@ -94,7 +99,7 @@ public class ModelePanel {
         }
         return null;
     }
-
+    //! \brief met a jour le resultat de la la comparaison des allergenes
     public void SetAllergenesView(VuePanel vue) {
         //récupère la map trié
         vue.SetMapAllergene_correspondant(GetMap());

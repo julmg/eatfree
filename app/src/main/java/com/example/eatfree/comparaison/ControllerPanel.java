@@ -8,6 +8,12 @@ import androidx.annotation.RequiresApi;
 import com.example.eatfree.PanelManager;
 import com.example.eatfree.profile.create_edit.CreateProfileModel;
 
+////////////////////////////////////////////////////////////////////////////////////////////////
+//! \class ControllerPanel
+//! \author Baptiste MADELAINE
+//! controller la page du resultat des allergenes
+////////////////////////////////////////////////////////////////////////////////////////////////
+
 public class ControllerPanel implements View.OnClickListener {
     VuePanel view;
     ModelePanel model;
@@ -18,6 +24,7 @@ public class ControllerPanel implements View.OnClickListener {
     }
 
     @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN_MR1)
+    //! \brief met a jour le resultat a afficher
     public void SetResult(){
         model.SetAllergenesView(view);
     }

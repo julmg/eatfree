@@ -1,10 +1,10 @@
 var indexSectionsWithContent =
 {
-  0: "cgimops",
+  0: "cfgimops",
   1: "mp",
   2: "c",
   3: "mp",
-  4: "cgiops",
+  4: "cfgiops",
   5: "imp"
 };
 
