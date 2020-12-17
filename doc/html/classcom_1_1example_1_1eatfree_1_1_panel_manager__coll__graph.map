@@ -1,0 +1,15 @@
+<map id="com.example.eatfree.PanelManager" name="com.example.eatfree.PanelManager">
+<area shape="rect" id="node1" title=" " alt="" coords="715,212,895,253"/>
+<area shape="rect" id="node2" href="$classcom_1_1example_1_1eatfree_1_1settings_1_1_settings_view.html" title=" " alt="" coords="383,119,580,160"/>
+<area shape="rect" id="node6" href="$classcom_1_1example_1_1eatfree_1_1settings_1_1_settings_controller.html" title=" " alt="" coords="707,67,904,108"/>
+<area shape="rect" id="node3" title=" " alt="" coords="56,189,152,215"/>
+<area shape="rect" id="node8" href="$classcom_1_1example_1_1eatfree_1_1_main_activity.html" title=" " alt="" coords="394,292,569,333"/>
+<area shape="rect" id="node4" href="$classcom_1_1example_1_1eatfree_1_1settings_1_1_settings_model.html" title=" " alt="" coords="5,5,203,47"/>
+<area shape="rect" id="node5" title=" " alt="" coords="74,127,134,154"/>
+<area shape="rect" id="node7" title=" " alt="" coords="424,57,539,83"/>
+<area shape="rect" id="node9" title=" " alt="" coords="38,466,170,493"/>
+<area shape="rect" id="node10" title=" " alt="" coords="38,365,170,391"/>
+<area shape="rect" id="node11" title=" " alt="" coords="61,415,147,442"/>
+<area shape="rect" id="node12" title=" " alt="" coords="73,259,135,286"/>
+<area shape="rect" id="node13" title=" " alt="" coords="49,314,159,341"/>
+</map>

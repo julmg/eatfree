@@ -1,0 +1,214 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.20"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>EatFree:  Fichier source de app/src/main/java/com/example/eatfree/photoUtils/TesseractOCR.java</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="logo_EatFree - Copie.png"/></td>
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">EatFree
+   &#160;<span id="projectnumber">1.0.0</span>
+   </div>
+   <div id="projectbrief">Application de signalement à l&#39;utilisateur d&#39;allergènes dans un produit</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Généré par Doxygen 1.8.20 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','Recherche');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('_tesseract_o_c_r_8java_source.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle">
+<div class="title">TesseractOCR.java</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="_tesseract_o_c_r_8java.html">Aller à la documentation de ce fichier.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="keyword">package </span>com.example.eatfree.photoUtils;</div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160; </div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="keyword">import</span> android.content.Context;</div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="keyword">import</span> android.content.res.AssetManager;</div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="keyword">import</span> android.graphics.Bitmap;</div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="keyword">import</span> android.graphics.Matrix;</div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="keyword">import</span> android.util.Log;</div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="keyword">import</span> android.widget.Toast;</div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160; </div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="keyword">import</span> <a class="code" href="namespacecom.html">com</a>.googlecode.tesseract.android.TessBaseAPI;</div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160; </div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="keyword">import</span> java.io.File;</div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="keyword">import</span> java.io.FileOutputStream;</div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="keyword">import</span> java.io.InputStream;</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160; </div>
+<div class="line"><a name="l00022"></a><span class="lineno"><a class="line" href="classcom_1_1example_1_1eatfree_1_1photo_utils_1_1_tesseract_o_c_r.html">   22</a></span>&#160;<span class="keyword">public</span> <span class="keyword">class </span><a class="code" href="classcom_1_1example_1_1eatfree_1_1photo_utils_1_1_tesseract_o_c_r.html">TesseractOCR</a> {</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160; </div>
+<div class="line"><a name="l00024"></a><span class="lineno"><a class="line" href="classcom_1_1example_1_1eatfree_1_1photo_utils_1_1_tesseract_o_c_r.html#a72a9a9bce11921bc2769b9f11e012028">   24</a></span>&#160;    <span class="keyword">private</span> <span class="keyword">final</span> TessBaseAPI <a class="code" href="classcom_1_1example_1_1eatfree_1_1photo_utils_1_1_tesseract_o_c_r.html#a72a9a9bce11921bc2769b9f11e012028">mTess</a>;</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160; </div>
+<div class="line"><a name="l00032"></a><span class="lineno"><a class="line" href="classcom_1_1example_1_1eatfree_1_1photo_utils_1_1_tesseract_o_c_r.html#a0d80bb0cfc69bbb48008e56e0bfffb88">   32</a></span>&#160;    <span class="keyword">public</span> <a class="code" href="classcom_1_1example_1_1eatfree_1_1photo_utils_1_1_tesseract_o_c_r.html#a0d80bb0cfc69bbb48008e56e0bfffb88">TesseractOCR</a>(Context context, String language) {</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;        <a class="code" href="classcom_1_1example_1_1eatfree_1_1photo_utils_1_1_tesseract_o_c_r.html#a72a9a9bce11921bc2769b9f11e012028">mTess</a> = <span class="keyword">new</span> TessBaseAPI();</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;        <span class="keywordtype">boolean</span> fileExistFlag = <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160; </div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;        AssetManager assetManager = context.getAssets();</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160; </div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;        String dstPathDir = <span class="stringliteral">&quot;/tesseract/tessdata/&quot;</span>;</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160; </div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;        String srcFile = <span class="stringliteral">&quot;fra.traineddata&quot;</span>; <span class="comment">//Seul fichier disponible pour le moment</span></div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;        InputStream inFile = <span class="keyword">null</span>;</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160; </div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;        dstPathDir = context.getFilesDir() + dstPathDir;</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;        String dstInitPathDir = context.getFilesDir() + <span class="stringliteral">&quot;/tesseract&quot;</span>;</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;        String dstPathFile = dstPathDir + srcFile;</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;        FileOutputStream outFile = <span class="keyword">null</span>;</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160; </div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;        <span class="keywordflow">try</span> {</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;            inFile = assetManager.open(srcFile);</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160; </div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;            File f = <span class="keyword">new</span> File(dstPathDir);</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160; </div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;            <span class="keywordflow">if</span> (!f.exists()) {</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;                <span class="keywordflow">if</span> (!f.mkdirs()) {</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;                    Toast.makeText(context, srcFile + <span class="stringliteral">&quot; can&#39;t be created.&quot;</span>, Toast.LENGTH_SHORT).show();</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;                }</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;                outFile = <span class="keyword">new</span> FileOutputStream(<span class="keyword">new</span> File(dstPathFile));</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;            } <span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;                fileExistFlag = <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;            }</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160; </div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;        } <span class="keywordflow">catch</span> (Exception ex) {</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;            Log.e(<span class="stringliteral">&quot;OCR&quot;</span>, ex.getMessage());</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160; </div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;        } <span class="keywordflow">finally</span> {</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160; </div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;            <span class="keywordflow">if</span> (fileExistFlag) {</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;                <span class="keywordflow">try</span> {</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;                    <span class="keywordflow">if</span> (inFile != <span class="keyword">null</span>) inFile.close();</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;                    <a class="code" href="classcom_1_1example_1_1eatfree_1_1photo_utils_1_1_tesseract_o_c_r.html#a72a9a9bce11921bc2769b9f11e012028">mTess</a>.init(dstInitPathDir, language);</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;                    <span class="keywordflow">return</span>;</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160; </div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;                } <span class="keywordflow">catch</span> (Exception ex) {</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;                    Log.e(<span class="stringliteral">&quot;OCR&quot;</span>, ex.getMessage());</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;                }</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;            }</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160; </div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;            <span class="keywordflow">if</span> (inFile != <span class="keyword">null</span> &amp;&amp; outFile != <span class="keyword">null</span>) {</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;                <span class="keywordflow">try</span> {</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;                    <span class="comment">//copy file</span></div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;                    <span class="keywordtype">byte</span>[] buf = <span class="keyword">new</span> <span class="keywordtype">byte</span>[1024];</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;                    <span class="keywordtype">int</span> len;</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;                    <span class="keywordflow">while</span> ((len = inFile.read(buf)) != -1) {</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;                        outFile.write(buf, 0, len);</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;                    }</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;                    inFile.close();</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;                    outFile.close();</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;                    <a class="code" href="classcom_1_1example_1_1eatfree_1_1photo_utils_1_1_tesseract_o_c_r.html#a72a9a9bce11921bc2769b9f11e012028">mTess</a>.init(dstInitPathDir, language);</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;                } <span class="keywordflow">catch</span> (Exception ex) {</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;                    Log.e(<span class="stringliteral">&quot;OCR&quot;</span>, ex.getMessage());</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;                }</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;            } <span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;                Toast.makeText(context, srcFile + <span class="stringliteral">&quot; can&#39;t be read.&quot;</span>, Toast.LENGTH_SHORT).show();</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;            }</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;        }</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;    }</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160; </div>
+<div class="line"><a name="l00103"></a><span class="lineno"><a class="line" href="classcom_1_1example_1_1eatfree_1_1photo_utils_1_1_tesseract_o_c_r.html#a96b2dd02b5ea5cc41c208e116c5f5246">  103</a></span>&#160;    <span class="keyword">public</span> String <a class="code" href="classcom_1_1example_1_1eatfree_1_1photo_utils_1_1_tesseract_o_c_r.html#a96b2dd02b5ea5cc41c208e116c5f5246">getOCRResult</a>(Bitmap bitmap) { <span class="comment">//Testé : 6 réussites sur 9 images différentes</span></div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;        <a class="code" href="classcom_1_1example_1_1eatfree_1_1photo_utils_1_1_tesseract_o_c_r.html#a72a9a9bce11921bc2769b9f11e012028">mTess</a>.setImage(<a class="code" href="classcom_1_1example_1_1eatfree_1_1photo_utils_1_1_tesseract_o_c_r.html#aee311a227c73992e960ca442d8ba9bbb">resizeBmp</a>(bitmap));</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;        <span class="keywordflow">return</span> <a class="code" href="classcom_1_1example_1_1eatfree_1_1photo_utils_1_1_tesseract_o_c_r.html#a72a9a9bce11921bc2769b9f11e012028">mTess</a>.getUTF8Text();</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;    }</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160; </div>
+<div class="line"><a name="l00108"></a><span class="lineno"><a class="line" href="classcom_1_1example_1_1eatfree_1_1photo_utils_1_1_tesseract_o_c_r.html#a6138b99c1830c1e2cb3adc4288f3e6c3">  108</a></span>&#160;    <span class="keyword">public</span> <span class="keywordtype">void</span> <a class="code" href="classcom_1_1example_1_1eatfree_1_1photo_utils_1_1_tesseract_o_c_r.html#a6138b99c1830c1e2cb3adc4288f3e6c3">onDestroy</a>() {</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;        <span class="keywordflow">if</span> (<a class="code" href="classcom_1_1example_1_1eatfree_1_1photo_utils_1_1_tesseract_o_c_r.html#a72a9a9bce11921bc2769b9f11e012028">mTess</a> != <span class="keyword">null</span>) <a class="code" href="classcom_1_1example_1_1eatfree_1_1photo_utils_1_1_tesseract_o_c_r.html#a72a9a9bce11921bc2769b9f11e012028">mTess</a>.end();</div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;    }</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160; </div>
+<div class="line"><a name="l00112"></a><span class="lineno"><a class="line" href="classcom_1_1example_1_1eatfree_1_1photo_utils_1_1_tesseract_o_c_r.html#aee311a227c73992e960ca442d8ba9bbb">  112</a></span>&#160;    <span class="keyword">private</span> <span class="keyword">static</span> Bitmap <a class="code" href="classcom_1_1example_1_1eatfree_1_1photo_utils_1_1_tesseract_o_c_r.html#aee311a227c73992e960ca442d8ba9bbb">resizeBmp</a>(Bitmap bmp) {</div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;        <span class="keywordtype">int</span> maxHeight = 1200;</div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;        <span class="keywordtype">int</span> maxWidth = 1200;</div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;        <span class="keywordtype">float</span> scale = Math.min(((<span class="keywordtype">float</span>)maxHeight / bmp.getWidth()), ((<span class="keywordtype">float</span>)maxWidth / bmp.getHeight()));</div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160; </div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;        Matrix matrix = <span class="keyword">new</span> Matrix();</div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;        matrix.postScale(scale, scale);</div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160; </div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;        <span class="keywordflow">return</span> Bitmap.createBitmap(bmp, 0, 0, bmp.getWidth(), bmp.getHeight(), matrix, <span class="keyword">true</span>);</div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;    }</div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160; </div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;}</div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<div class="ttc" id="aclasscom_1_1example_1_1eatfree_1_1photo_utils_1_1_tesseract_o_c_r_html_a6138b99c1830c1e2cb3adc4288f3e6c3"><div class="ttname"><a href="classcom_1_1example_1_1eatfree_1_1photo_utils_1_1_tesseract_o_c_r.html#a6138b99c1830c1e2cb3adc4288f3e6c3">com.example.eatfree.photoUtils.TesseractOCR.onDestroy</a></div><div class="ttdeci">void onDestroy()</div><div class="ttdef"><b>Definition:</b> <a href="_tesseract_o_c_r_8java_source.html#l00108">TesseractOCR.java:108</a></div></div>
+<div class="ttc" id="aclasscom_1_1example_1_1eatfree_1_1photo_utils_1_1_tesseract_o_c_r_html_a72a9a9bce11921bc2769b9f11e012028"><div class="ttname"><a href="classcom_1_1example_1_1eatfree_1_1photo_utils_1_1_tesseract_o_c_r.html#a72a9a9bce11921bc2769b9f11e012028">com.example.eatfree.photoUtils.TesseractOCR.mTess</a></div><div class="ttdeci">final TessBaseAPI mTess</div><div class="ttdef"><b>Definition:</b> <a href="_tesseract_o_c_r_8java_source.html#l00024">TesseractOCR.java:24</a></div></div>
+<div class="ttc" id="aclasscom_1_1example_1_1eatfree_1_1photo_utils_1_1_tesseract_o_c_r_html_a0d80bb0cfc69bbb48008e56e0bfffb88"><div class="ttname"><a href="classcom_1_1example_1_1eatfree_1_1photo_utils_1_1_tesseract_o_c_r.html#a0d80bb0cfc69bbb48008e56e0bfffb88">com.example.eatfree.photoUtils.TesseractOCR.TesseractOCR</a></div><div class="ttdeci">TesseractOCR(Context context, String language)</div><div class="ttdoc">Constructeur de l'OCRiseur.</div><div class="ttdef"><b>Definition:</b> <a href="_tesseract_o_c_r_8java_source.html#l00032">TesseractOCR.java:32</a></div></div>
+<div class="ttc" id="anamespacecom_html"><div class="ttname"><a href="namespacecom.html">com</a></div></div>
+<div class="ttc" id="aclasscom_1_1example_1_1eatfree_1_1photo_utils_1_1_tesseract_o_c_r_html"><div class="ttname"><a href="classcom_1_1example_1_1eatfree_1_1photo_utils_1_1_tesseract_o_c_r.html">com.example.eatfree.photoUtils.TesseractOCR</a></div><div class="ttdef"><b>Definition:</b> <a href="_tesseract_o_c_r_8java_source.html#l00022">TesseractOCR.java:22</a></div></div>
+<div class="ttc" id="aclasscom_1_1example_1_1eatfree_1_1photo_utils_1_1_tesseract_o_c_r_html_a96b2dd02b5ea5cc41c208e116c5f5246"><div class="ttname"><a href="classcom_1_1example_1_1eatfree_1_1photo_utils_1_1_tesseract_o_c_r.html#a96b2dd02b5ea5cc41c208e116c5f5246">com.example.eatfree.photoUtils.TesseractOCR.getOCRResult</a></div><div class="ttdeci">String getOCRResult(Bitmap bitmap)</div><div class="ttdef"><b>Definition:</b> <a href="_tesseract_o_c_r_8java_source.html#l00103">TesseractOCR.java:103</a></div></div>
+<div class="ttc" id="aclasscom_1_1example_1_1eatfree_1_1photo_utils_1_1_tesseract_o_c_r_html_aee311a227c73992e960ca442d8ba9bbb"><div class="ttname"><a href="classcom_1_1example_1_1eatfree_1_1photo_utils_1_1_tesseract_o_c_r.html#aee311a227c73992e960ca442d8ba9bbb">com.example.eatfree.photoUtils.TesseractOCR.resizeBmp</a></div><div class="ttdeci">static Bitmap resizeBmp(Bitmap bmp)</div><div class="ttdef"><b>Definition:</b> <a href="_tesseract_o_c_r_8java_source.html#l00112">TesseractOCR.java:112</a></div></div>
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_d422163b96683743ed3963d4aac17747.html">app</a></li><li class="navelem"><a class="el" href="dir_a8f641299cfea9f7461c2df1141b7786.html">src</a></li><li class="navelem"><a class="el" href="dir_82a1580e18717db72c05fda59883f1c3.html">main</a></li><li class="navelem"><a class="el" href="dir_29a654fef9ee522348956763c377cb52.html">java</a></li><li class="navelem"><a class="el" href="dir_520f01a69ba2ae0241ea16752726d997.html">com</a></li><li class="navelem"><a class="el" href="dir_d91ad83e1a10c35a59154b422e4e394d.html">example</a></li><li class="navelem"><a class="el" href="dir_ae4b5f8f138f4df8270a414ec52369a2.html">eatfree</a></li><li class="navelem"><a class="el" href="dir_9919c62f61485beba42fff0f29cf2bb8.html">photoUtils</a></li><li class="navelem"><a class="el" href="_tesseract_o_c_r_8java.html">TesseractOCR.java</a></li>
+    <li class="footer">Généré par <a href="http://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.8.20 </li>
+  </ul>
+</div>
+</body>
+</html>

@@ -1,0 +1,6 @@
+var namespacecom_1_1example_1_1eatfree_1_1profile_1_1create__edit =
+[
+    [ "CreateProfileController", "classcom_1_1example_1_1eatfree_1_1profile_1_1create__edit_1_1_create_profile_controller.html", "classcom_1_1example_1_1eatfree_1_1profile_1_1create__edit_1_1_create_profile_controller" ],
+    [ "CreateProfileModel", "classcom_1_1example_1_1eatfree_1_1profile_1_1create__edit_1_1_create_profile_model.html", "classcom_1_1example_1_1eatfree_1_1profile_1_1create__edit_1_1_create_profile_model" ],
+    [ "CreateProfileView", "classcom_1_1example_1_1eatfree_1_1profile_1_1create__edit_1_1_create_profile_view.html", "classcom_1_1example_1_1eatfree_1_1profile_1_1create__edit_1_1_create_profile_view" ]
+];

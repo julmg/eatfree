@@ -1,0 +1,183 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.20"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>EatFree:  Fichier source de app/src/main/java/com/example/eatfree/profile/check/CheckProfileController.java</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="logo_EatFree - Copie.png"/></td>
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">EatFree
+   &#160;<span id="projectnumber">1.0.0</span>
+   </div>
+   <div id="projectbrief">Application de signalement à l&#39;utilisateur d&#39;allergènes dans un produit</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Généré par Doxygen 1.8.20 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','Recherche');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('_check_profile_controller_8java_source.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle">
+<div class="title">CheckProfileController.java</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="_check_profile_controller_8java.html">Aller à la documentation de ce fichier.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno"><a class="line" href="namespacecom_1_1example_1_1eatfree_1_1profile_1_1check.html">    1</a></span>&#160;<span class="keyword">package </span>com.example.eatfree.profile.check;</div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160; </div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="keyword">import</span> android.view.View;</div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160; </div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="keyword">import</span> <a class="code" href="namespacecom.html">com</a>.<a class="code" href="namespacecom_1_1example.html">example</a>.<a class="code" href="namespacecom_1_1example_1_1eatfree.html">eatfree</a>.<a class="code" href="classcom_1_1example_1_1eatfree_1_1_panel_manager.html">PanelManager</a>;</div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="keyword">import</span> <a class="code" href="namespacecom.html">com</a>.<a class="code" href="namespacecom_1_1example.html">example</a>.<a class="code" href="namespacecom_1_1example_1_1eatfree.html">eatfree</a>.<a class="code" href="namespacecom_1_1example_1_1eatfree_1_1profile.html">profile</a>.<a class="code" href="classcom_1_1example_1_1eatfree_1_1profile_1_1_profile_manager.html">ProfileManager</a>;</div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160; </div>
+<div class="line"><a name="l00013"></a><span class="lineno"><a class="line" href="classcom_1_1example_1_1eatfree_1_1profile_1_1check_1_1_check_profile_controller.html">   13</a></span>&#160;<span class="keyword">public</span> <span class="keyword">class </span><a class="code" href="classcom_1_1example_1_1eatfree_1_1profile_1_1check_1_1_check_profile_controller.html">CheckProfileController</a> <span class="keyword">implements</span> View.OnClickListener {</div>
+<div class="line"><a name="l00015"></a><span class="lineno"><a class="line" href="classcom_1_1example_1_1eatfree_1_1profile_1_1check_1_1_check_profile_controller.html#ad4416eb52172e6a891f54f17e2dd2431">   15</a></span>&#160;    <span class="keyword">private</span> <a class="code" href="classcom_1_1example_1_1eatfree_1_1profile_1_1check_1_1_check_profile_model.html">CheckProfileModel</a> <a class="code" href="classcom_1_1example_1_1eatfree_1_1profile_1_1check_1_1_check_profile_controller.html#ad4416eb52172e6a891f54f17e2dd2431">model</a>;</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160; </div>
+<div class="line"><a name="l00018"></a><span class="lineno"><a class="line" href="classcom_1_1example_1_1eatfree_1_1profile_1_1check_1_1_check_profile_controller.html#a881eb20be711f5f55f62d2f0cc9793a3">   18</a></span>&#160;    <span class="keyword">private</span> <a class="code" href="classcom_1_1example_1_1eatfree_1_1profile_1_1check_1_1_check_profile_view.html">CheckProfileView</a> <a class="code" href="classcom_1_1example_1_1eatfree_1_1profile_1_1check_1_1_check_profile_controller.html#a881eb20be711f5f55f62d2f0cc9793a3">view</a>;</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160; </div>
+<div class="line"><a name="l00022"></a><span class="lineno"><a class="line" href="classcom_1_1example_1_1eatfree_1_1profile_1_1check_1_1_check_profile_controller.html#a655be5ff228441151b5e8673449293a6">   22</a></span>&#160;    <span class="keyword">public</span> <a class="code" href="classcom_1_1example_1_1eatfree_1_1profile_1_1check_1_1_check_profile_controller.html#a655be5ff228441151b5e8673449293a6">CheckProfileController</a>(<a class="code" href="classcom_1_1example_1_1eatfree_1_1profile_1_1check_1_1_check_profile_model.html">CheckProfileModel</a> m, <a class="code" href="classcom_1_1example_1_1eatfree_1_1profile_1_1check_1_1_check_profile_view.html">CheckProfileView</a> v){</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;        <a class="code" href="classcom_1_1example_1_1eatfree_1_1profile_1_1check_1_1_check_profile_controller.html#ad4416eb52172e6a891f54f17e2dd2431">model</a> = m;</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;        <a class="code" href="classcom_1_1example_1_1eatfree_1_1profile_1_1check_1_1_check_profile_controller.html#a881eb20be711f5f55f62d2f0cc9793a3">view</a> = v;</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    }</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160; </div>
+<div class="line"><a name="l00028"></a><span class="lineno"><a class="line" href="classcom_1_1example_1_1eatfree_1_1profile_1_1check_1_1_check_profile_controller.html#a3fecb3be75a00611900505b4234c2b05">   28</a></span>&#160;    <span class="keyword">public</span> <span class="keywordtype">void</span> <a class="code" href="classcom_1_1example_1_1eatfree_1_1profile_1_1check_1_1_check_profile_controller.html#a3fecb3be75a00611900505b4234c2b05">DisplayAllergenes</a>() {</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;        String allergeneList = <span class="stringliteral">&quot;&quot;</span>;</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;        <span class="keywordflow">for</span> (<a class="code" href="classcom_1_1example_1_1eatfree_1_1profile_1_1_profile_manager.html">ProfileManager</a>.<a class="code" href="enumcom_1_1example_1_1eatfree_1_1profile_1_1_profile_manager_1_1_allergenes.html">Allergenes</a> allergene : <a class="code" href="classcom_1_1example_1_1eatfree_1_1profile_1_1_profile_manager.html">ProfileManager</a>.<a class="code" href="classcom_1_1example_1_1eatfree_1_1profile_1_1_profile_manager.html#ae0ed64af378580a75a6e121573e30054">getInstance</a>().<a class="code" href="classcom_1_1example_1_1eatfree_1_1profile_1_1_profile_manager.html#a3af31aaef44639cafd41dce602baf116">GetAllergenes</a>()) {</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;            <span class="keywordflow">if</span> (allergene != <span class="keyword">null</span>){</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;                <span class="keywordflow">if</span> (allergene == <a class="code" href="classcom_1_1example_1_1eatfree_1_1profile_1_1_profile_manager.html">ProfileManager</a>.<a class="code" href="enumcom_1_1example_1_1eatfree_1_1profile_1_1_profile_manager_1_1_allergenes.html">Allergenes</a>.<a class="code" href="enumcom_1_1example_1_1eatfree_1_1profile_1_1_profile_manager_1_1_allergenes.html#a8d28603836f6e0bc4ed924a91ef23dba">Lait</a>) {</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;                    allergeneList += <span class="stringliteral">&quot;Lait de vache\n&quot;</span>;</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;                }</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;                <span class="keywordflow">else</span> <span class="keywordflow">if</span> (allergene == <a class="code" href="classcom_1_1example_1_1eatfree_1_1profile_1_1_profile_manager.html">ProfileManager</a>.<a class="code" href="enumcom_1_1example_1_1eatfree_1_1profile_1_1_profile_manager_1_1_allergenes.html">Allergenes</a>.<a class="code" href="enumcom_1_1example_1_1eatfree_1_1profile_1_1_profile_manager_1_1_allergenes.html#a292278a148642ad6c65d7f9cc89c9f55">FruitsLatex</a>) {</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;                    allergeneList += <span class="stringliteral">&quot;Fruits du groupe latex\n&quot;</span>;</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;                }</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;                <span class="keywordflow">else</span> <span class="keywordflow">if</span> (allergene == <a class="code" href="classcom_1_1example_1_1eatfree_1_1profile_1_1_profile_manager.html">ProfileManager</a>.<a class="code" href="enumcom_1_1example_1_1eatfree_1_1profile_1_1_profile_manager_1_1_allergenes.html">Allergenes</a>.<a class="code" href="enumcom_1_1example_1_1eatfree_1_1profile_1_1_profile_manager_1_1_allergenes.html#a87fe65bcf071adbbe5b38231b7787d13">FruitsRosacees</a>) {</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;                    allergeneList += <span class="stringliteral">&quot;Fruits Rosacées\n&quot;</span>;</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;                }</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;                <span class="keywordflow">else</span> <span class="keywordflow">if</span> (allergene == <a class="code" href="classcom_1_1example_1_1eatfree_1_1profile_1_1_profile_manager.html">ProfileManager</a>.<a class="code" href="enumcom_1_1example_1_1eatfree_1_1profile_1_1_profile_manager_1_1_allergenes.html">Allergenes</a>.<a class="code" href="enumcom_1_1example_1_1eatfree_1_1profile_1_1_profile_manager_1_1_allergenes.html#a99aca4845ae82236c5975bb4da762b14">FruitsOleagineux</a>) {</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;                    allergeneList += <span class="stringliteral">&quot;Fruits Oléagineux\n&quot;</span>;</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;                }</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;                <span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;                    allergeneList += allergene.toString() + <span class="stringliteral">&quot;\n&quot;</span>;</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;                }</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;            }</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;        }</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;        <a class="code" href="classcom_1_1example_1_1eatfree_1_1profile_1_1check_1_1_check_profile_controller.html#a881eb20be711f5f55f62d2f0cc9793a3">view</a>.<a class="code" href="classcom_1_1example_1_1eatfree_1_1profile_1_1check_1_1_check_profile_view.html#ae3e24355e4d26c07e1a1d9a10d4da3f4">allergenes</a>.setText(allergeneList);</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    }</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160; </div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    @Override</div>
+<div class="line"><a name="l00054"></a><span class="lineno"><a class="line" href="classcom_1_1example_1_1eatfree_1_1profile_1_1check_1_1_check_profile_controller.html#a1aa39ea1925753e82b4a8b188a069d9f">   54</a></span>&#160;    <span class="keyword">public</span> <span class="keywordtype">void</span> <a class="code" href="classcom_1_1example_1_1eatfree_1_1profile_1_1check_1_1_check_profile_controller.html#a1aa39ea1925753e82b4a8b188a069d9f">onClick</a>(View v) {</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;        <span class="keywordflow">if</span> (v.getId() == <a class="code" href="classcom_1_1example_1_1eatfree_1_1profile_1_1check_1_1_check_profile_controller.html#a881eb20be711f5f55f62d2f0cc9793a3">view</a>.<a class="code" href="classcom_1_1example_1_1eatfree_1_1profile_1_1check_1_1_check_profile_view.html#a8b130387db7be2b5904b500239f957d8">btnEdit</a>.getId()){</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;            <a class="code" href="classcom_1_1example_1_1eatfree_1_1profile_1_1check_1_1_check_profile_controller.html#ad4416eb52172e6a891f54f17e2dd2431">model</a>.Edit();</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;        }</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;        <span class="keywordflow">else</span> <span class="keywordflow">if</span> (v.getId() == <a class="code" href="classcom_1_1example_1_1eatfree_1_1profile_1_1check_1_1_check_profile_controller.html#a881eb20be711f5f55f62d2f0cc9793a3">view</a>.<a class="code" href="classcom_1_1example_1_1eatfree_1_1profile_1_1check_1_1_check_profile_view.html#a3918e35f5f21cbe0d5f8c5337a33f40e">btnSettings</a>.getId()){</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;            <a class="code" href="classcom_1_1example_1_1eatfree_1_1_panel_manager.html">PanelManager</a>.<a class="code" href="classcom_1_1example_1_1eatfree_1_1_panel_manager.html#aeca67d9176c7c2c9bbd4221bd6053f67">getInstance</a>().<a class="code" href="classcom_1_1example_1_1eatfree_1_1_panel_manager.html#a8e0cb23c34d68f48dc5e63b35113c8e9">SwapPanel</a>(3);</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;        }</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;        <span class="keywordflow">else</span> <span class="keywordflow">if</span> (v.getId() == <a class="code" href="classcom_1_1example_1_1eatfree_1_1profile_1_1check_1_1_check_profile_controller.html#a881eb20be711f5f55f62d2f0cc9793a3">view</a>.<a class="code" href="classcom_1_1example_1_1eatfree_1_1profile_1_1check_1_1_check_profile_view.html#a477ae6ba6919e8e320af3325ae979fa0">btnAccueil</a>.getId()){</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;            <a class="code" href="classcom_1_1example_1_1eatfree_1_1_panel_manager.html">PanelManager</a>.<a class="code" href="classcom_1_1example_1_1eatfree_1_1_panel_manager.html#aeca67d9176c7c2c9bbd4221bd6053f67">getInstance</a>().<a class="code" href="classcom_1_1example_1_1eatfree_1_1_panel_manager.html#a8e0cb23c34d68f48dc5e63b35113c8e9">SwapPanel</a>(2);</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160; </div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;        }</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    }</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;}</div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<div class="ttc" id="aclasscom_1_1example_1_1eatfree_1_1profile_1_1check_1_1_check_profile_view_html"><div class="ttname"><a href="classcom_1_1example_1_1eatfree_1_1profile_1_1check_1_1_check_profile_view.html">com.example.eatfree.profile.check.CheckProfileView</a></div><div class="ttdef"><b>Definition:</b> <a href="_check_profile_view_8java_source.html#l00024">CheckProfileView.java:24</a></div></div>
+<div class="ttc" id="aclasscom_1_1example_1_1eatfree_1_1profile_1_1check_1_1_check_profile_controller_html"><div class="ttname"><a href="classcom_1_1example_1_1eatfree_1_1profile_1_1check_1_1_check_profile_controller.html">com.example.eatfree.profile.check.CheckProfileController</a></div><div class="ttdef"><b>Definition:</b> <a href="_check_profile_controller_8java_source.html#l00013">CheckProfileController.java:13</a></div></div>
+<div class="ttc" id="aclasscom_1_1example_1_1eatfree_1_1profile_1_1check_1_1_check_profile_controller_html_ad4416eb52172e6a891f54f17e2dd2431"><div class="ttname"><a href="classcom_1_1example_1_1eatfree_1_1profile_1_1check_1_1_check_profile_controller.html#ad4416eb52172e6a891f54f17e2dd2431">com.example.eatfree.profile.check.CheckProfileController.model</a></div><div class="ttdeci">CheckProfileModel model</div><div class="ttdoc">référence vers le CheckProfileController</div><div class="ttdef"><b>Definition:</b> <a href="_check_profile_controller_8java_source.html#l00015">CheckProfileController.java:15</a></div></div>
+<div class="ttc" id="aenumcom_1_1example_1_1eatfree_1_1profile_1_1_profile_manager_1_1_allergenes_html_a87fe65bcf071adbbe5b38231b7787d13"><div class="ttname"><a href="enumcom_1_1example_1_1eatfree_1_1profile_1_1_profile_manager_1_1_allergenes.html#a87fe65bcf071adbbe5b38231b7787d13">com.example.eatfree.profile.ProfileManager.Allergenes.FruitsRosacees</a></div><div class="ttdeci">FruitsRosacees</div><div class="ttdef"><b>Definition:</b> <a href="_profile_manager_8java_source.html#l00024">ProfileManager.java:24</a></div></div>
+<div class="ttc" id="aclasscom_1_1example_1_1eatfree_1_1profile_1_1check_1_1_check_profile_view_html_ae3e24355e4d26c07e1a1d9a10d4da3f4"><div class="ttname"><a href="classcom_1_1example_1_1eatfree_1_1profile_1_1check_1_1_check_profile_view.html#ae3e24355e4d26c07e1a1d9a10d4da3f4">com.example.eatfree.profile.check.CheckProfileView.allergenes</a></div><div class="ttdeci">TextView allergenes</div><div class="ttdoc">affichage de la liste des allergies de l'utilisateur</div><div class="ttdef"><b>Definition:</b> <a href="_check_profile_view_8java_source.html#l00032">CheckProfileView.java:32</a></div></div>
+<div class="ttc" id="aclasscom_1_1example_1_1eatfree_1_1profile_1_1check_1_1_check_profile_controller_html_a3fecb3be75a00611900505b4234c2b05"><div class="ttname"><a href="classcom_1_1example_1_1eatfree_1_1profile_1_1check_1_1_check_profile_controller.html#a3fecb3be75a00611900505b4234c2b05">com.example.eatfree.profile.check.CheckProfileController.DisplayAllergenes</a></div><div class="ttdeci">void DisplayAllergenes()</div><div class="ttdoc">gère l'affichage de la liste des allergies de l'utilisateur</div><div class="ttdef"><b>Definition:</b> <a href="_check_profile_controller_8java_source.html#l00028">CheckProfileController.java:28</a></div></div>
+<div class="ttc" id="anamespacecom_1_1example_1_1eatfree_1_1profile_html"><div class="ttname"><a href="namespacecom_1_1example_1_1eatfree_1_1profile.html">com.example.eatfree.profile</a></div></div>
+<div class="ttc" id="aclasscom_1_1example_1_1eatfree_1_1profile_1_1check_1_1_check_profile_controller_html_a881eb20be711f5f55f62d2f0cc9793a3"><div class="ttname"><a href="classcom_1_1example_1_1eatfree_1_1profile_1_1check_1_1_check_profile_controller.html#a881eb20be711f5f55f62d2f0cc9793a3">com.example.eatfree.profile.check.CheckProfileController.view</a></div><div class="ttdeci">CheckProfileView view</div><div class="ttdoc">référence vers le CheckProfileView</div><div class="ttdef"><b>Definition:</b> <a href="_check_profile_controller_8java_source.html#l00018">CheckProfileController.java:18</a></div></div>
+<div class="ttc" id="aclasscom_1_1example_1_1eatfree_1_1profile_1_1check_1_1_check_profile_model_html"><div class="ttname"><a href="classcom_1_1example_1_1eatfree_1_1profile_1_1check_1_1_check_profile_model.html">com.example.eatfree.profile.check.CheckProfileModel</a></div><div class="ttdef"><b>Definition:</b> <a href="_check_profile_model_8java_source.html#l00012">CheckProfileModel.java:12</a></div></div>
+<div class="ttc" id="aclasscom_1_1example_1_1eatfree_1_1profile_1_1check_1_1_check_profile_view_html_a477ae6ba6919e8e320af3325ae979fa0"><div class="ttname"><a href="classcom_1_1example_1_1eatfree_1_1profile_1_1check_1_1_check_profile_view.html#a477ae6ba6919e8e320af3325ae979fa0">com.example.eatfree.profile.check.CheckProfileView.btnAccueil</a></div><div class="ttdeci">Button btnAccueil</div><div class="ttdoc">bouton pour aller à la page d'accueil (prendre une photo)</div><div class="ttdef"><b>Definition:</b> <a href="_check_profile_view_8java_source.html#l00041">CheckProfileView.java:41</a></div></div>
+<div class="ttc" id="aclasscom_1_1example_1_1eatfree_1_1profile_1_1check_1_1_check_profile_view_html_a3918e35f5f21cbe0d5f8c5337a33f40e"><div class="ttname"><a href="classcom_1_1example_1_1eatfree_1_1profile_1_1check_1_1_check_profile_view.html#a3918e35f5f21cbe0d5f8c5337a33f40e">com.example.eatfree.profile.check.CheckProfileView.btnSettings</a></div><div class="ttdeci">Button btnSettings</div><div class="ttdoc">bouton pour aller à la page settings</div><div class="ttdef"><b>Definition:</b> <a href="_check_profile_view_8java_source.html#l00038">CheckProfileView.java:38</a></div></div>
+<div class="ttc" id="aclasscom_1_1example_1_1eatfree_1_1profile_1_1_profile_manager_html"><div class="ttname"><a href="classcom_1_1example_1_1eatfree_1_1profile_1_1_profile_manager.html">com.example.eatfree.profile.ProfileManager</a></div><div class="ttdef"><b>Definition:</b> <a href="_profile_manager_8java_source.html#l00022">ProfileManager.java:22</a></div></div>
+<div class="ttc" id="aclasscom_1_1example_1_1eatfree_1_1profile_1_1_profile_manager_html_ae0ed64af378580a75a6e121573e30054"><div class="ttname"><a href="classcom_1_1example_1_1eatfree_1_1profile_1_1_profile_manager.html#ae0ed64af378580a75a6e121573e30054">com.example.eatfree.profile.ProfileManager.getInstance</a></div><div class="ttdeci">static ProfileManager getInstance()</div><div class="ttdoc">permet de récupérer l'intance du ProfileManager</div><div class="ttdef"><b>Definition:</b> <a href="_profile_manager_8java_source.html#l00054">ProfileManager.java:54</a></div></div>
+<div class="ttc" id="aclasscom_1_1example_1_1eatfree_1_1_panel_manager_html_a8e0cb23c34d68f48dc5e63b35113c8e9"><div class="ttname"><a href="classcom_1_1example_1_1eatfree_1_1_panel_manager.html#a8e0cb23c34d68f48dc5e63b35113c8e9">com.example.eatfree.PanelManager.SwapPanel</a></div><div class="ttdeci">void SwapPanel(int panel)</div><div class="ttdoc">Echange les panels en fonction du bouton sur lequel on clique.</div><div class="ttdef"><b>Definition:</b> <a href="_panel_manager_8java_source.html#l00040">PanelManager.java:40</a></div></div>
+<div class="ttc" id="aenumcom_1_1example_1_1eatfree_1_1profile_1_1_profile_manager_1_1_allergenes_html"><div class="ttname"><a href="enumcom_1_1example_1_1eatfree_1_1profile_1_1_profile_manager_1_1_allergenes.html">com.example.eatfree.profile.ProfileManager.Allergenes</a></div><div class="ttdoc">énumération des familles d'allergènes.</div><div class="ttdef"><b>Definition:</b> <a href="_profile_manager_8java_source.html#l00024">ProfileManager.java:24</a></div></div>
+<div class="ttc" id="anamespacecom_1_1example_html"><div class="ttname"><a href="namespacecom_1_1example.html">com.example</a></div></div>
+<div class="ttc" id="aenumcom_1_1example_1_1eatfree_1_1profile_1_1_profile_manager_1_1_allergenes_html_a8d28603836f6e0bc4ed924a91ef23dba"><div class="ttname"><a href="enumcom_1_1example_1_1eatfree_1_1profile_1_1_profile_manager_1_1_allergenes.html#a8d28603836f6e0bc4ed924a91ef23dba">com.example.eatfree.profile.ProfileManager.Allergenes.Lait</a></div><div class="ttdeci">Lait</div><div class="ttdef"><b>Definition:</b> <a href="_profile_manager_8java_source.html#l00024">ProfileManager.java:24</a></div></div>
+<div class="ttc" id="aclasscom_1_1example_1_1eatfree_1_1_panel_manager_html_aeca67d9176c7c2c9bbd4221bd6053f67"><div class="ttname"><a href="classcom_1_1example_1_1eatfree_1_1_panel_manager.html#aeca67d9176c7c2c9bbd4221bd6053f67">com.example.eatfree.PanelManager.getInstance</a></div><div class="ttdeci">static PanelManager getInstance()</div><div class="ttdef"><b>Definition:</b> <a href="_panel_manager_8java_source.html#l00025">PanelManager.java:25</a></div></div>
+<div class="ttc" id="aclasscom_1_1example_1_1eatfree_1_1profile_1_1_profile_manager_html_a3af31aaef44639cafd41dce602baf116"><div class="ttname"><a href="classcom_1_1example_1_1eatfree_1_1profile_1_1_profile_manager.html#a3af31aaef44639cafd41dce602baf116">com.example.eatfree.profile.ProfileManager.GetAllergenes</a></div><div class="ttdeci">Allergenes[] GetAllergenes()</div><div class="ttdoc">récupère les allergènes de l'utilisateur</div><div class="ttdef"><b>Definition:</b> <a href="_profile_manager_8java_source.html#l00132">ProfileManager.java:132</a></div></div>
+<div class="ttc" id="aclasscom_1_1example_1_1eatfree_1_1profile_1_1check_1_1_check_profile_controller_html_a655be5ff228441151b5e8673449293a6"><div class="ttname"><a href="classcom_1_1example_1_1eatfree_1_1profile_1_1check_1_1_check_profile_controller.html#a655be5ff228441151b5e8673449293a6">com.example.eatfree.profile.check.CheckProfileController.CheckProfileController</a></div><div class="ttdeci">CheckProfileController(CheckProfileModel m, CheckProfileView v)</div><div class="ttdoc">constructeur initialise les références vers CheckProfileController et CheckProfileView</div><div class="ttdef"><b>Definition:</b> <a href="_check_profile_controller_8java_source.html#l00022">CheckProfileController.java:22</a></div></div>
+<div class="ttc" id="anamespacecom_1_1example_1_1eatfree_html"><div class="ttname"><a href="namespacecom_1_1example_1_1eatfree.html">com.example.eatfree</a></div><div class="ttdef"><b>Definition:</b> <a href="_main_activity_8java_source.html#l00001">MainActivity.java:1</a></div></div>
+<div class="ttc" id="aenumcom_1_1example_1_1eatfree_1_1profile_1_1_profile_manager_1_1_allergenes_html_a99aca4845ae82236c5975bb4da762b14"><div class="ttname"><a href="enumcom_1_1example_1_1eatfree_1_1profile_1_1_profile_manager_1_1_allergenes.html#a99aca4845ae82236c5975bb4da762b14">com.example.eatfree.profile.ProfileManager.Allergenes.FruitsOleagineux</a></div><div class="ttdeci">FruitsOleagineux</div><div class="ttdef"><b>Definition:</b> <a href="_profile_manager_8java_source.html#l00024">ProfileManager.java:24</a></div></div>
+<div class="ttc" id="anamespacecom_html"><div class="ttname"><a href="namespacecom.html">com</a></div></div>
+<div class="ttc" id="aclasscom_1_1example_1_1eatfree_1_1profile_1_1check_1_1_check_profile_controller_html_a1aa39ea1925753e82b4a8b188a069d9f"><div class="ttname"><a href="classcom_1_1example_1_1eatfree_1_1profile_1_1check_1_1_check_profile_controller.html#a1aa39ea1925753e82b4a8b188a069d9f">com.example.eatfree.profile.check.CheckProfileController.onClick</a></div><div class="ttdeci">void onClick(View v)</div><div class="ttdoc">gère le clic sur le bouton modifier et dirige l'utilisateur vers la page de modification du profil</div><div class="ttdef"><b>Definition:</b> <a href="_check_profile_controller_8java_source.html#l00054">CheckProfileController.java:54</a></div></div>
+<div class="ttc" id="aenumcom_1_1example_1_1eatfree_1_1profile_1_1_profile_manager_1_1_allergenes_html_a292278a148642ad6c65d7f9cc89c9f55"><div class="ttname"><a href="enumcom_1_1example_1_1eatfree_1_1profile_1_1_profile_manager_1_1_allergenes.html#a292278a148642ad6c65d7f9cc89c9f55">com.example.eatfree.profile.ProfileManager.Allergenes.FruitsLatex</a></div><div class="ttdeci">FruitsLatex</div><div class="ttdef"><b>Definition:</b> <a href="_profile_manager_8java_source.html#l00024">ProfileManager.java:24</a></div></div>
+<div class="ttc" id="aclasscom_1_1example_1_1eatfree_1_1_panel_manager_html"><div class="ttname"><a href="classcom_1_1example_1_1eatfree_1_1_panel_manager.html">com.example.eatfree.PanelManager</a></div><div class="ttdef"><b>Definition:</b> <a href="_panel_manager_8java_source.html#l00018">PanelManager.java:18</a></div></div>
+<div class="ttc" id="aclasscom_1_1example_1_1eatfree_1_1profile_1_1check_1_1_check_profile_view_html_a8b130387db7be2b5904b500239f957d8"><div class="ttname"><a href="classcom_1_1example_1_1eatfree_1_1profile_1_1check_1_1_check_profile_view.html#a8b130387db7be2b5904b500239f957d8">com.example.eatfree.profile.check.CheckProfileView.btnEdit</a></div><div class="ttdeci">Button btnEdit</div><div class="ttdoc">bouton de modification du profil</div><div class="ttdef"><b>Definition:</b> <a href="_check_profile_view_8java_source.html#l00035">CheckProfileView.java:35</a></div></div>
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_d422163b96683743ed3963d4aac17747.html">app</a></li><li class="navelem"><a class="el" href="dir_a8f641299cfea9f7461c2df1141b7786.html">src</a></li><li class="navelem"><a class="el" href="dir_82a1580e18717db72c05fda59883f1c3.html">main</a></li><li class="navelem"><a class="el" href="dir_29a654fef9ee522348956763c377cb52.html">java</a></li><li class="navelem"><a class="el" href="dir_520f01a69ba2ae0241ea16752726d997.html">com</a></li><li class="navelem"><a class="el" href="dir_d91ad83e1a10c35a59154b422e4e394d.html">example</a></li><li class="navelem"><a class="el" href="dir_ae4b5f8f138f4df8270a414ec52369a2.html">eatfree</a></li><li class="navelem"><a class="el" href="dir_355395e5772adfcdc048b036ec15de06.html">profile</a></li><li class="navelem"><a class="el" href="dir_c30d544d7ab1901d337386ff65ef9955.html">check</a></li><li class="navelem"><a class="el" href="_check_profile_controller_8java.html">CheckProfileController.java</a></li>
+    <li class="footer">Généré par <a href="http://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.8.20 </li>
+  </ul>
+</div>
+</body>
+</html>

@@ -1,0 +1,138 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.20"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>EatFree:  Fichier source de app/src/main/java/com/example/eatfree/profile/create_edit/CreateProfileController.java</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="logo_EatFree - Copie.png"/></td>
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">EatFree
+   &#160;<span id="projectnumber">1.0.0</span>
+   </div>
+   <div id="projectbrief">Application de signalement à l&#39;utilisateur d&#39;allergènes dans un produit</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Généré par Doxygen 1.8.20 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','Recherche');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('_create_profile_controller_8java_source.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle">
+<div class="title">CreateProfileController.java</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="_create_profile_controller_8java.html">Aller à la documentation de ce fichier.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno"><a class="line" href="namespacecom_1_1example_1_1eatfree_1_1profile_1_1create__edit.html">    1</a></span>&#160;<span class="keyword">package </span>com.example.eatfree.profile.create_edit;</div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160; </div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="keyword">import</span> android.view.View;</div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160; </div>
+<div class="line"><a name="l00011"></a><span class="lineno"><a class="line" href="classcom_1_1example_1_1eatfree_1_1profile_1_1create__edit_1_1_create_profile_controller.html">   11</a></span>&#160;<span class="keyword">public</span> <span class="keyword">class </span><a class="code" href="classcom_1_1example_1_1eatfree_1_1profile_1_1create__edit_1_1_create_profile_controller.html">CreateProfileController</a> <span class="keyword">implements</span> View.OnClickListener {</div>
+<div class="line"><a name="l00013"></a><span class="lineno"><a class="line" href="classcom_1_1example_1_1eatfree_1_1profile_1_1create__edit_1_1_create_profile_controller.html#a847b503bc8463f48c70dc7e01d5c31bf">   13</a></span>&#160;    <span class="keyword">private</span> <a class="code" href="classcom_1_1example_1_1eatfree_1_1profile_1_1create__edit_1_1_create_profile_view.html">CreateProfileView</a> <a class="code" href="classcom_1_1example_1_1eatfree_1_1profile_1_1create__edit_1_1_create_profile_controller.html#a847b503bc8463f48c70dc7e01d5c31bf">view</a>;</div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160; </div>
+<div class="line"><a name="l00017"></a><span class="lineno"><a class="line" href="classcom_1_1example_1_1eatfree_1_1profile_1_1create__edit_1_1_create_profile_controller.html#a6cd8ccb6107e37147b2541f4107dfdbb">   17</a></span>&#160;    <span class="keyword">public</span> <a class="code" href="classcom_1_1example_1_1eatfree_1_1profile_1_1create__edit_1_1_create_profile_controller.html#a6cd8ccb6107e37147b2541f4107dfdbb">CreateProfileController</a>(<a class="code" href="classcom_1_1example_1_1eatfree_1_1profile_1_1create__edit_1_1_create_profile_view.html">CreateProfileView</a> v){</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;        <a class="code" href="classcom_1_1example_1_1eatfree_1_1profile_1_1create__edit_1_1_create_profile_controller.html#a847b503bc8463f48c70dc7e01d5c31bf">view</a> = v;</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    }</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160; </div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160; </div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;    @Override</div>
+<div class="line"><a name="l00024"></a><span class="lineno"><a class="line" href="classcom_1_1example_1_1eatfree_1_1profile_1_1create__edit_1_1_create_profile_controller.html#ada791edb0628ba39e7f7acb589b5474b">   24</a></span>&#160;    <span class="keyword">public</span> <span class="keywordtype">void</span> <a class="code" href="classcom_1_1example_1_1eatfree_1_1profile_1_1create__edit_1_1_create_profile_controller.html#ada791edb0628ba39e7f7acb589b5474b">onClick</a>(View v) {</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;        <span class="keywordflow">if</span> (v.getId() == <a class="code" href="classcom_1_1example_1_1eatfree_1_1profile_1_1create__edit_1_1_create_profile_controller.html#a847b503bc8463f48c70dc7e01d5c31bf">view</a>.<a class="code" href="classcom_1_1example_1_1eatfree_1_1profile_1_1create__edit_1_1_create_profile_view.html#aa28d6586163bdffe26637cdb33d93a82">btnValidate</a>.getId()){</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;            <a class="code" href="classcom_1_1example_1_1eatfree_1_1profile_1_1create__edit_1_1_create_profile_model.html">CreateProfileModel</a>.<a class="code" href="classcom_1_1example_1_1eatfree_1_1profile_1_1create__edit_1_1_create_profile_model.html#afaa97f392614c4440b0ceff896547474">getInstance</a>().<a class="code" href="classcom_1_1example_1_1eatfree_1_1profile_1_1create__edit_1_1_create_profile_model.html#a026e885cd2f38d1db5c64be6aa552e64">Validate</a>(<a class="code" href="classcom_1_1example_1_1eatfree_1_1profile_1_1create__edit_1_1_create_profile_controller.html#a847b503bc8463f48c70dc7e01d5c31bf">view</a>.<a class="code" href="classcom_1_1example_1_1eatfree_1_1profile_1_1create__edit_1_1_create_profile_view.html#a25b2f9f5ad8f24032b7adb09588a06b1">username</a>.getText().toString(), <a class="code" href="classcom_1_1example_1_1eatfree_1_1profile_1_1create__edit_1_1_create_profile_controller.html#a847b503bc8463f48c70dc7e01d5c31bf">view</a>.<a class="code" href="classcom_1_1example_1_1eatfree_1_1profile_1_1create__edit_1_1_create_profile_view.html#ae40bd3be8a48f8429250ae2885d216c0">dateOfBirth</a>.getText().toString(), <a class="code" href="classcom_1_1example_1_1eatfree_1_1profile_1_1create__edit_1_1_create_profile_controller.html#a847b503bc8463f48c70dc7e01d5c31bf">view</a>.<a class="code" href="classcom_1_1example_1_1eatfree_1_1profile_1_1create__edit_1_1_create_profile_view.html#a228662561925e54773ae7c46234db3f2">arachides</a>.isChecked(), <a class="code" href="classcom_1_1example_1_1eatfree_1_1profile_1_1create__edit_1_1_create_profile_controller.html#a847b503bc8463f48c70dc7e01d5c31bf">view</a>.<a class="code" href="classcom_1_1example_1_1eatfree_1_1profile_1_1create__edit_1_1_create_profile_view.html#aae7c2df44c9ee90e52ee2a5c99570a71">oeuf</a>.isChecked(), <a class="code" href="classcom_1_1example_1_1eatfree_1_1profile_1_1create__edit_1_1_create_profile_controller.html#a847b503bc8463f48c70dc7e01d5c31bf">view</a>.<a class="code" href="classcom_1_1example_1_1eatfree_1_1profile_1_1create__edit_1_1_create_profile_view.html#a128a703d650e2e3e03803efcef5d1a14">lait</a>.isChecked(), <a class="code" href="classcom_1_1example_1_1eatfree_1_1profile_1_1create__edit_1_1_create_profile_controller.html#a847b503bc8463f48c70dc7e01d5c31bf">view</a>.<a class="code" href="classcom_1_1example_1_1eatfree_1_1profile_1_1create__edit_1_1_create_profile_view.html#a39b244954aa9298770c69f3614f46b64">gluten</a>.isChecked(), <a class="code" href="classcom_1_1example_1_1eatfree_1_1profile_1_1create__edit_1_1_create_profile_controller.html#a847b503bc8463f48c70dc7e01d5c31bf">view</a>.<a class="code" href="classcom_1_1example_1_1eatfree_1_1profile_1_1create__edit_1_1_create_profile_view.html#a5c260a876f9512dcf0e4cd8e4990e003">fruitsLatex</a>.isChecked(), <a class="code" href="classcom_1_1example_1_1eatfree_1_1profile_1_1create__edit_1_1_create_profile_controller.html#a847b503bc8463f48c70dc7e01d5c31bf">view</a>.<a class="code" href="classcom_1_1example_1_1eatfree_1_1profile_1_1create__edit_1_1_create_profile_view.html#a6c9485f9e07273b12677a3dcb6237ec9">fruitsRosacees</a>.isChecked(), <a class="code" href="classcom_1_1example_1_1eatfree_1_1profile_1_1create__edit_1_1_create_profile_controller.html#a847b503bc8463f48c70dc7e01d5c31bf">view</a>.<a class="code" href="classcom_1_1example_1_1eatfree_1_1profile_1_1create__edit_1_1_create_profile_view.html#abeb3f75eb06692f02161de69def4351a">fruitsOleagineux</a>.isChecked() );</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;        }</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    }</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;}</div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<div class="ttc" id="aclasscom_1_1example_1_1eatfree_1_1profile_1_1create__edit_1_1_create_profile_view_html_ae40bd3be8a48f8429250ae2885d216c0"><div class="ttname"><a href="classcom_1_1example_1_1eatfree_1_1profile_1_1create__edit_1_1_create_profile_view.html#ae40bd3be8a48f8429250ae2885d216c0">com.example.eatfree.profile.create_edit.CreateProfileView.dateOfBirth</a></div><div class="ttdeci">EditText dateOfBirth</div><div class="ttdoc">champ de texte dans lequel l'utilisateur entre sa date de naissance</div><div class="ttdef"><b>Definition:</b> <a href="_create_profile_view_8java_source.html#l00031">CreateProfileView.java:31</a></div></div>
+<div class="ttc" id="aclasscom_1_1example_1_1eatfree_1_1profile_1_1create__edit_1_1_create_profile_model_html"><div class="ttname"><a href="classcom_1_1example_1_1eatfree_1_1profile_1_1create__edit_1_1_create_profile_model.html">com.example.eatfree.profile.create_edit.CreateProfileModel</a></div><div class="ttdef"><b>Definition:</b> <a href="_create_profile_model_8java_source.html#l00011">CreateProfileModel.java:11</a></div></div>
+<div class="ttc" id="aclasscom_1_1example_1_1eatfree_1_1profile_1_1create__edit_1_1_create_profile_controller_html_ada791edb0628ba39e7f7acb589b5474b"><div class="ttname"><a href="classcom_1_1example_1_1eatfree_1_1profile_1_1create__edit_1_1_create_profile_controller.html#ada791edb0628ba39e7f7acb589b5474b">com.example.eatfree.profile.create_edit.CreateProfileController.onClick</a></div><div class="ttdeci">void onClick(View v)</div><div class="ttdoc">gère le clic sur le bouton valider pour enregistrer les données saisies par l'utilisateur</div><div class="ttdef"><b>Definition:</b> <a href="_create_profile_controller_8java_source.html#l00024">CreateProfileController.java:24</a></div></div>
+<div class="ttc" id="aclasscom_1_1example_1_1eatfree_1_1profile_1_1create__edit_1_1_create_profile_view_html_abeb3f75eb06692f02161de69def4351a"><div class="ttname"><a href="classcom_1_1example_1_1eatfree_1_1profile_1_1create__edit_1_1_create_profile_view.html#abeb3f75eb06692f02161de69def4351a">com.example.eatfree.profile.create_edit.CreateProfileView.fruitsOleagineux</a></div><div class="ttdeci">CheckBox fruitsOleagineux</div><div class="ttdoc">case à cocher si l'utilisateur est allergique aux fruitsOleagineux</div><div class="ttdef"><b>Definition:</b> <a href="_create_profile_view_8java_source.html#l00052">CreateProfileView.java:52</a></div></div>
+<div class="ttc" id="aclasscom_1_1example_1_1eatfree_1_1profile_1_1create__edit_1_1_create_profile_view_html"><div class="ttname"><a href="classcom_1_1example_1_1eatfree_1_1profile_1_1create__edit_1_1_create_profile_view.html">com.example.eatfree.profile.create_edit.CreateProfileView</a></div><div class="ttdef"><b>Definition:</b> <a href="_create_profile_view_8java_source.html#l00026">CreateProfileView.java:26</a></div></div>
+<div class="ttc" id="aclasscom_1_1example_1_1eatfree_1_1profile_1_1create__edit_1_1_create_profile_model_html_afaa97f392614c4440b0ceff896547474"><div class="ttname"><a href="classcom_1_1example_1_1eatfree_1_1profile_1_1create__edit_1_1_create_profile_model.html#afaa97f392614c4440b0ceff896547474">com.example.eatfree.profile.create_edit.CreateProfileModel.getInstance</a></div><div class="ttdeci">static CreateProfileModel getInstance()</div><div class="ttdoc">récupère l'instance de CreateProfilModel et la créé si elle est inexistante</div><div class="ttdef"><b>Definition:</b> <a href="_create_profile_model_8java_source.html#l00025">CreateProfileModel.java:25</a></div></div>
+<div class="ttc" id="aclasscom_1_1example_1_1eatfree_1_1profile_1_1create__edit_1_1_create_profile_controller_html"><div class="ttname"><a href="classcom_1_1example_1_1eatfree_1_1profile_1_1create__edit_1_1_create_profile_controller.html">com.example.eatfree.profile.create_edit.CreateProfileController</a></div><div class="ttdef"><b>Definition:</b> <a href="_create_profile_controller_8java_source.html#l00011">CreateProfileController.java:11</a></div></div>
+<div class="ttc" id="aclasscom_1_1example_1_1eatfree_1_1profile_1_1create__edit_1_1_create_profile_view_html_a5c260a876f9512dcf0e4cd8e4990e003"><div class="ttname"><a href="classcom_1_1example_1_1eatfree_1_1profile_1_1create__edit_1_1_create_profile_view.html#a5c260a876f9512dcf0e4cd8e4990e003">com.example.eatfree.profile.create_edit.CreateProfileView.fruitsLatex</a></div><div class="ttdeci">CheckBox fruitsLatex</div><div class="ttdoc">case à cocher si l'utilisateur est allergique aux fruitsLatex</div><div class="ttdef"><b>Definition:</b> <a href="_create_profile_view_8java_source.html#l00046">CreateProfileView.java:46</a></div></div>
+<div class="ttc" id="aclasscom_1_1example_1_1eatfree_1_1profile_1_1create__edit_1_1_create_profile_controller_html_a6cd8ccb6107e37147b2541f4107dfdbb"><div class="ttname"><a href="classcom_1_1example_1_1eatfree_1_1profile_1_1create__edit_1_1_create_profile_controller.html#a6cd8ccb6107e37147b2541f4107dfdbb">com.example.eatfree.profile.create_edit.CreateProfileController.CreateProfileController</a></div><div class="ttdeci">CreateProfileController(CreateProfileView v)</div><div class="ttdoc">constructeur lie la vue et le controller</div><div class="ttdef"><b>Definition:</b> <a href="_create_profile_controller_8java_source.html#l00017">CreateProfileController.java:17</a></div></div>
+<div class="ttc" id="aclasscom_1_1example_1_1eatfree_1_1profile_1_1create__edit_1_1_create_profile_view_html_aa28d6586163bdffe26637cdb33d93a82"><div class="ttname"><a href="classcom_1_1example_1_1eatfree_1_1profile_1_1create__edit_1_1_create_profile_view.html#aa28d6586163bdffe26637cdb33d93a82">com.example.eatfree.profile.create_edit.CreateProfileView.btnValidate</a></div><div class="ttdeci">Button btnValidate</div><div class="ttdoc">bouton de validation</div><div class="ttdef"><b>Definition:</b> <a href="_create_profile_view_8java_source.html#l00055">CreateProfileView.java:55</a></div></div>
+<div class="ttc" id="aclasscom_1_1example_1_1eatfree_1_1profile_1_1create__edit_1_1_create_profile_view_html_a228662561925e54773ae7c46234db3f2"><div class="ttname"><a href="classcom_1_1example_1_1eatfree_1_1profile_1_1create__edit_1_1_create_profile_view.html#a228662561925e54773ae7c46234db3f2">com.example.eatfree.profile.create_edit.CreateProfileView.arachides</a></div><div class="ttdeci">CheckBox arachides</div><div class="ttdoc">case à cocher si l'utilisateur est allergique aux arachides</div><div class="ttdef"><b>Definition:</b> <a href="_create_profile_view_8java_source.html#l00034">CreateProfileView.java:34</a></div></div>
+<div class="ttc" id="aclasscom_1_1example_1_1eatfree_1_1profile_1_1create__edit_1_1_create_profile_view_html_a25b2f9f5ad8f24032b7adb09588a06b1"><div class="ttname"><a href="classcom_1_1example_1_1eatfree_1_1profile_1_1create__edit_1_1_create_profile_view.html#a25b2f9f5ad8f24032b7adb09588a06b1">com.example.eatfree.profile.create_edit.CreateProfileView.username</a></div><div class="ttdeci">EditText username</div><div class="ttdoc">champ de texte dans lequel l'utilisateur entre son nom</div><div class="ttdef"><b>Definition:</b> <a href="_create_profile_view_8java_source.html#l00028">CreateProfileView.java:28</a></div></div>
+<div class="ttc" id="aclasscom_1_1example_1_1eatfree_1_1profile_1_1create__edit_1_1_create_profile_view_html_aae7c2df44c9ee90e52ee2a5c99570a71"><div class="ttname"><a href="classcom_1_1example_1_1eatfree_1_1profile_1_1create__edit_1_1_create_profile_view.html#aae7c2df44c9ee90e52ee2a5c99570a71">com.example.eatfree.profile.create_edit.CreateProfileView.oeuf</a></div><div class="ttdeci">CheckBox oeuf</div><div class="ttdoc">case à cocher si l'utilisateur est allergique aux oeuf</div><div class="ttdef"><b>Definition:</b> <a href="_create_profile_view_8java_source.html#l00037">CreateProfileView.java:37</a></div></div>
+<div class="ttc" id="aclasscom_1_1example_1_1eatfree_1_1profile_1_1create__edit_1_1_create_profile_view_html_a39b244954aa9298770c69f3614f46b64"><div class="ttname"><a href="classcom_1_1example_1_1eatfree_1_1profile_1_1create__edit_1_1_create_profile_view.html#a39b244954aa9298770c69f3614f46b64">com.example.eatfree.profile.create_edit.CreateProfileView.gluten</a></div><div class="ttdeci">CheckBox gluten</div><div class="ttdoc">case à cocher si l'utilisateur est allergique aux gluten</div><div class="ttdef"><b>Definition:</b> <a href="_create_profile_view_8java_source.html#l00043">CreateProfileView.java:43</a></div></div>
+<div class="ttc" id="aclasscom_1_1example_1_1eatfree_1_1profile_1_1create__edit_1_1_create_profile_view_html_a128a703d650e2e3e03803efcef5d1a14"><div class="ttname"><a href="classcom_1_1example_1_1eatfree_1_1profile_1_1create__edit_1_1_create_profile_view.html#a128a703d650e2e3e03803efcef5d1a14">com.example.eatfree.profile.create_edit.CreateProfileView.lait</a></div><div class="ttdeci">CheckBox lait</div><div class="ttdoc">case à cocher si l'utilisateur est allergique aux lait</div><div class="ttdef"><b>Definition:</b> <a href="_create_profile_view_8java_source.html#l00040">CreateProfileView.java:40</a></div></div>
+<div class="ttc" id="aclasscom_1_1example_1_1eatfree_1_1profile_1_1create__edit_1_1_create_profile_model_html_a026e885cd2f38d1db5c64be6aa552e64"><div class="ttname"><a href="classcom_1_1example_1_1eatfree_1_1profile_1_1create__edit_1_1_create_profile_model.html#a026e885cd2f38d1db5c64be6aa552e64">com.example.eatfree.profile.create_edit.CreateProfileModel.Validate</a></div><div class="ttdeci">void Validate(String name, String date, boolean arachides, boolean oeuf, boolean lait, boolean gluten, boolean fruitsLatex, boolean fruitsRosacees, boolean fruitsOleagineux)</div><div class="ttdef"><b>Definition:</b> <a href="_create_profile_model_8java_source.html#l00035">CreateProfileModel.java:35</a></div></div>
+<div class="ttc" id="aclasscom_1_1example_1_1eatfree_1_1profile_1_1create__edit_1_1_create_profile_view_html_a6c9485f9e07273b12677a3dcb6237ec9"><div class="ttname"><a href="classcom_1_1example_1_1eatfree_1_1profile_1_1create__edit_1_1_create_profile_view.html#a6c9485f9e07273b12677a3dcb6237ec9">com.example.eatfree.profile.create_edit.CreateProfileView.fruitsRosacees</a></div><div class="ttdeci">CheckBox fruitsRosacees</div><div class="ttdoc">case à cocher si l'utilisateur est allergique aux fruitsRosacees</div><div class="ttdef"><b>Definition:</b> <a href="_create_profile_view_8java_source.html#l00049">CreateProfileView.java:49</a></div></div>
+<div class="ttc" id="aclasscom_1_1example_1_1eatfree_1_1profile_1_1create__edit_1_1_create_profile_controller_html_a847b503bc8463f48c70dc7e01d5c31bf"><div class="ttname"><a href="classcom_1_1example_1_1eatfree_1_1profile_1_1create__edit_1_1_create_profile_controller.html#a847b503bc8463f48c70dc7e01d5c31bf">com.example.eatfree.profile.create_edit.CreateProfileController.view</a></div><div class="ttdeci">CreateProfileView view</div><div class="ttdoc">référence vers la vue</div><div class="ttdef"><b>Definition:</b> <a href="_create_profile_controller_8java_source.html#l00013">CreateProfileController.java:13</a></div></div>
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_d422163b96683743ed3963d4aac17747.html">app</a></li><li class="navelem"><a class="el" href="dir_a8f641299cfea9f7461c2df1141b7786.html">src</a></li><li class="navelem"><a class="el" href="dir_82a1580e18717db72c05fda59883f1c3.html">main</a></li><li class="navelem"><a class="el" href="dir_29a654fef9ee522348956763c377cb52.html">java</a></li><li class="navelem"><a class="el" href="dir_520f01a69ba2ae0241ea16752726d997.html">com</a></li><li class="navelem"><a class="el" href="dir_d91ad83e1a10c35a59154b422e4e394d.html">example</a></li><li class="navelem"><a class="el" href="dir_ae4b5f8f138f4df8270a414ec52369a2.html">eatfree</a></li><li class="navelem"><a class="el" href="dir_355395e5772adfcdc048b036ec15de06.html">profile</a></li><li class="navelem"><a class="el" href="dir_880593f2975b559dbaeea6f88f8df436.html">create_edit</a></li><li class="navelem"><a class="el" href="_create_profile_controller_8java.html">CreateProfileController.java</a></li>
+    <li class="footer">Généré par <a href="http://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.8.20 </li>
+  </ul>
+</div>
+</body>
+</html>
