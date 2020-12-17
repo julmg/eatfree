@@ -25,6 +25,15 @@
 var NAVTREE =
 [
   [ "EatFree", "index.html", [
+    [ "Présentation de l'application EATFREE", "index.html", [
+      [ "Présentation", "index.html#sec1", null ],
+      [ "Le public visé", "index.html#sec2", null ],
+      [ "Le contexte", "index.html#sec3", null ],
+      [ "Les systèmes, les sous-systèmes ou les équipements", "index.html#sec4", null ],
+      [ "Securité", "index.html#sec5", [
+        [ "fonctionnalitées disponible sur l'application", "index.html#sec", null ]
+      ] ]
+    ] ],
     [ "Paquetages", "namespaces.html", [
       [ "Paquetages", "namespaces.html", "namespaces_dup" ]
     ] ],
@@ -46,7 +55,8 @@ var NAVTREE =
 
 var NAVTREEINDEX =
 [
-"_barcode_scan_8java.html"
+"_barcode_scan_8java.html",
+"namespacecom_1_1example_1_1eatfree_1_1settings.html"
 ];
 
 var SYNCONMSG = 'cliquez pour désactiver la synchronisation du panel';
