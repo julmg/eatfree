@@ -17,7 +17,11 @@ import com.example.eatfree.R;
 //! Vue de la page de settings
 ////////////////////////////////////////////////////////////////////////////////////////////////
 public class SettingsView extends LinearLayout {
+
+    //brief bouton qui renvoie a la page de profil
     public Button btnProfil;
+
+    //brief bouton qui renvoie a la page d'accueil
     public Button btnAccueil;
 
     SettingsModel model;

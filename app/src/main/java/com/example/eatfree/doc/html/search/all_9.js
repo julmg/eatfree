@@ -1,0 +1,21 @@
+var searchData=
+[
+  ['mainactivity_76',['MainActivity',['../classcom_1_1example_1_1eatfree_1_1_main_activity.html',1,'com::example::eatfree']]],
+  ['mainactivity_2ejava_77',['MainActivity.java',['../_main_activity_8java.html',1,'']]],
+  ['mallergenes_78',['mAllergenes',['../classcom_1_1example_1_1eatfree_1_1photo_utils_1_1_photo_utils.html#a31c8176ff4e057c81f15eea987a6d1ce',1,'com::example::eatfree::photoUtils::PhotoUtils']]],
+  ['managerphoto_79',['ManagerPhoto',['../classcom_1_1example_1_1eatfree_1_1_prise_de_photo_1_1_manager_photo.html',1,'com.example.eatfree.PriseDePhoto.ManagerPhoto'],['../classcom_1_1example_1_1eatfree_1_1_prise_de_photo_1_1_manager_photo.html#ab333f19ab8b900e046fd49aed6f3e984',1,'com.example.eatfree.PriseDePhoto.ManagerPhoto.ManagerPhoto()']]],
+  ['managerphoto_2ejava_80',['ManagerPhoto.java',['../_manager_photo_8java.html',1,'']]],
+  ['mapallergene_5fcorrespondant_81',['mapAllergene_correspondant',['../classcom_1_1example_1_1eatfree_1_1comparaison_1_1_vue_panel.html#a9f8f21259d5d59ca54896250b9154d72',1,'com::example::eatfree::comparaison::VuePanel']]],
+  ['mdlphoto_82',['mdlPhoto',['../classcom_1_1example_1_1eatfree_1_1_prise_de_photo_1_1_manager_photo.html#ab782a1b95d10ec0b0335113d90ba0bb1',1,'com::example::eatfree::PriseDePhoto::ManagerPhoto']]],
+  ['mimage_83',['mImage',['../classcom_1_1example_1_1eatfree_1_1_main_activity.html#afdc5eeee67349d62e6b76eee97d34c7d',1,'com::example::eatfree::MainActivity']]],
+  ['mod_5fphoto_84',['Mod_photo',['../classcom_1_1example_1_1eatfree_1_1_prise_de_photo_1_1_mod__photo.html',1,'com::example::eatfree::PriseDePhoto']]],
+  ['mod_5fphoto_2ejava_85',['Mod_photo.java',['../_mod__photo_8java.html',1,'']]],
+  ['model_86',['model',['../classcom_1_1example_1_1eatfree_1_1profile_1_1check_1_1_check_profile_controller.html#ad4416eb52172e6a891f54f17e2dd2431',1,'com.example.eatfree.profile.check.CheckProfileController.model()'],['../classcom_1_1example_1_1eatfree_1_1profile_1_1check_1_1_check_profile_view.html#abf633d24e37d9dc8085bd72a0ee569d1',1,'com.example.eatfree.profile.check.CheckProfileView.model()']]],
+  ['modele_87',['modele',['../classcom_1_1example_1_1eatfree_1_1comparaison_1_1_vue_panel.html#a75bedb88aa79e9dac4357584e7284253',1,'com::example::eatfree::comparaison::VuePanel']]],
+  ['modelepanel_88',['ModelePanel',['../classcom_1_1example_1_1eatfree_1_1comparaison_1_1_modele_panel.html',1,'com.example.eatfree.comparaison.ModelePanel'],['../classcom_1_1example_1_1eatfree_1_1comparaison_1_1_modele_panel.html#af101a9b55139f25e68e6610d995a284a',1,'com.example.eatfree.comparaison.ModelePanel.ModelePanel()'],['../classcom_1_1example_1_1eatfree_1_1_main_activity.html#a7b115407db59e6c496470b440aa37d19',1,'com.example.eatfree.MainActivity.modelePanel()']]],
+  ['modelepanel_2ejava_89',['ModelePanel.java',['../_modele_panel_8java.html',1,'']]],
+  ['mpermissionsgranted_90',['mPermissionsGranted',['../classcom_1_1example_1_1eatfree_1_1_main_activity.html#a379e62ad9a31ceb40cf36c428fa228cf',1,'com::example::eatfree::MainActivity']]],
+  ['mprogressdialogocr_91',['mProgressDialogOCR',['../classcom_1_1example_1_1eatfree_1_1_main_activity.html#ae166e7d46ce67f865bbba4553fb5e493',1,'com::example::eatfree::MainActivity']]],
+  ['mtess_92',['mTess',['../classcom_1_1example_1_1eatfree_1_1photo_utils_1_1_tesseract_o_c_r.html#a72a9a9bce11921bc2769b9f11e012028',1,'com::example::eatfree::photoUtils::TesseractOCR']]],
+  ['my_5fpermissions_5frequest_93',['MY_PERMISSIONS_REQUEST',['../classcom_1_1example_1_1eatfree_1_1_main_activity.html#a57366d01be7f0de45060cade9411901e',1,'com::example::eatfree::MainActivity']]]
+];

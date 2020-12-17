@@ -39,10 +39,9 @@
 
     <ImageView
         android:id="@+id/imgAffichePhoto"
-        android:layout_width="match_parent"
-        android:layout_height="400dp"
+        android:layout_width="match_parent"        android:layout_height="400dp"
         android:scaleType="centerInside"
-        app:srcCompat="@drawable/initimage" />
+        app:srcCompat="@drawable/ingredient" />
 
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

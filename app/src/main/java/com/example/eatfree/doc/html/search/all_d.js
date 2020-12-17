@@ -1,0 +1,25 @@
+var searchData=
+[
+  ['save_125',['Save',['../classcom_1_1example_1_1eatfree_1_1_main_activity.html#a6be93bf332ee1689e7ac4bd66dcba278',1,'com::example::eatfree::MainActivity']]],
+  ['setallergenes_126',['SetAllergenes',['../classcom_1_1example_1_1eatfree_1_1profile_1_1_profile_manager.html#a44e20f914c9b1e2b0e5691a5eb1841ef',1,'com::example::eatfree::profile::ProfileManager']]],
+  ['setallergenesview_127',['SetAllergenesView',['../classcom_1_1example_1_1eatfree_1_1comparaison_1_1_modele_panel.html#a6a1732534dacb72cd07c2d41e2202ed6',1,'com::example::eatfree::comparaison::ModelePanel']]],
+  ['setbirth_128',['SetBirth',['../classcom_1_1example_1_1eatfree_1_1profile_1_1_profile_manager.html#aceca1728dd8acda37a51a23d2fffa4fa',1,'com::example::eatfree::profile::ProfileManager']]],
+  ['setboolallergenes_129',['SetBoolAllergenes',['../classcom_1_1example_1_1eatfree_1_1profile_1_1_profile_manager.html#a3a9dbe1acc4a8e099caebfacdeff0738',1,'com::example::eatfree::profile::ProfileManager']]],
+  ['setmapallergene_5fcorrespondant_130',['SetMapAllergene_correspondant',['../classcom_1_1example_1_1eatfree_1_1comparaison_1_1_vue_panel.html#a88605fabe8919384b415ad09581ca3a6',1,'com::example::eatfree::comparaison::VuePanel']]],
+  ['setname_131',['SetName',['../classcom_1_1example_1_1eatfree_1_1profile_1_1_profile_manager.html#a530a9848a1243122f9b9e6769391dbb2',1,'com::example::eatfree::profile::ProfileManager']]],
+  ['setrefact_132',['setRefAct',['../classcom_1_1example_1_1eatfree_1_1_prise_de_photo_1_1_mod__photo.html#ad959bccf872c775a1b3800974882fd5d',1,'com::example::eatfree::PriseDePhoto::Mod_photo']]],
+  ['setrefctr_133',['setRefCtr',['../classcom_1_1example_1_1eatfree_1_1_prise_de_photo_1_1_vue__photo.html#a244fa0bb0185086ac69c0b03b76a068c',1,'com::example::eatfree::PriseDePhoto::Vue_photo']]],
+  ['setrefctrl_134',['setRefCtrl',['../classcom_1_1example_1_1eatfree_1_1_prise_de_photo_1_1_mod__photo.html#a8ffbe7ddcc7f1b065a0cef707a5dcc0c',1,'com::example::eatfree::PriseDePhoto::Mod_photo']]],
+  ['setrefmod_135',['setRefMod',['../classcom_1_1example_1_1eatfree_1_1_prise_de_photo_1_1_ctrl__photo.html#ae8bbade9ef99c9349e5402cc57c5f0fb',1,'com.example.eatfree.PriseDePhoto.Ctrl_photo.setRefMod()'],['../classcom_1_1example_1_1eatfree_1_1_prise_de_photo_1_1_vue__photo.html#a834ae8470c55b27751bd0fa0f6fc5716',1,'com.example.eatfree.PriseDePhoto.Vue_photo.setRefMod()']]],
+  ['setrefvue_136',['setRefVue',['../classcom_1_1example_1_1eatfree_1_1_prise_de_photo_1_1_ctrl__photo.html#aac3eea0ab29513a765b2cd45b9bcc271',1,'com.example.eatfree.PriseDePhoto.Ctrl_photo.setRefVue()'],['../classcom_1_1example_1_1eatfree_1_1_prise_de_photo_1_1_mod__photo.html#aa9cec686190bb5b2943c7c4d0c208e8f',1,'com.example.eatfree.PriseDePhoto.Mod_photo.setRefVue()']]],
+  ['setresult_137',['SetResult',['../classcom_1_1example_1_1eatfree_1_1comparaison_1_1_controller_panel.html#aba41fb6f6b8b4ff2f46e8825fd8e0571',1,'com::example::eatfree::comparaison::ControllerPanel']]],
+  ['settingscontroller_138',['SettingsController',['../classcom_1_1example_1_1eatfree_1_1settings_1_1_settings_controller.html',1,'com.example.eatfree.settings.SettingsController'],['../classcom_1_1example_1_1eatfree_1_1settings_1_1_settings_controller.html#a3928afca517b40eeac4b4ba779024a75',1,'com.example.eatfree.settings.SettingsController.SettingsController()']]],
+  ['settingscontroller_2ejava_139',['SettingsController.java',['../_settings_controller_8java.html',1,'']]],
+  ['settingsmodel_140',['SettingsModel',['../classcom_1_1example_1_1eatfree_1_1settings_1_1_settings_model.html',1,'com::example::eatfree::settings']]],
+  ['settingsmodel_2ejava_141',['SettingsModel.java',['../_settings_model_8java.html',1,'']]],
+  ['settingsview_142',['SettingsView',['../classcom_1_1example_1_1eatfree_1_1settings_1_1_settings_view.html',1,'com.example.eatfree.settings.SettingsView'],['../classcom_1_1example_1_1eatfree_1_1settings_1_1_settings_view.html#a32dab3307efd3de56838a6fb3bc27990',1,'com.example.eatfree.settings.SettingsView.SettingsView()']]],
+  ['settingsview_2ejava_143',['SettingsView.java',['../_settings_view_8java.html',1,'']]],
+  ['stripaccents_144',['stripAccents',['../classcom_1_1example_1_1eatfree_1_1photo_utils_1_1_photo_utils.html#aa69f1ed16272ab16d91b0d2d83f5d39e',1,'com::example::eatfree::photoUtils::PhotoUtils']]],
+  ['swappanel_145',['SwapPanel',['../classcom_1_1example_1_1eatfree_1_1_panel_manager.html#a8e0cb23c34d68f48dc5e63b35113c8e9',1,'com::example::eatfree::PanelManager']]],
+  ['swapprofilepanels_146',['SwapProfilePanels',['../classcom_1_1example_1_1eatfree_1_1profile_1_1_profile_manager.html#a0ddd81f6695ddd7014e554a0dceb5882',1,'com::example::eatfree::profile::ProfileManager']]]
+];
