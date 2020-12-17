@@ -82,6 +82,10 @@ import java.util.concurrent.TimeoutException;
  * \li Analyse et comparaison entre le profil client et le produit
  * \li Affichage simplifié de la réponse pour le consommateur (feu vert/feu rouge ou pouce vert/pouce rouge)
  *
+ * \subsection sec Étudiants sur le projet
+ *
+ * \li Étudiants de l'ESEPAC sur ce projet : Emilie CHASSONNAUD, Tiphaine COUSINARD, Mathilde SAISON-SCHREVERE, Lucie THOMAS, Garance THUIZAT
+ * \li Étudiants de l'IUT du Puy-en-Velay sur ce projet : Aurore MONNERAYE, Emma PROVOT, Solène TESSIORE, Maxime POIRIER, Nathan LEFEBVRE, Baptiste MADELAINE, Karolane PICOT, Julian LECOCQ--MAGE
  */
 
 public class MainActivity extends AppCompatActivity {
