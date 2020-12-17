@@ -6,7 +6,9 @@ import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
 import android.Manifest;
+import android.annotation.SuppressLint;
 import android.app.AlertDialog;
+import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -17,9 +19,17 @@ import android.graphics.BitmapFactory;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.StrictMode;
+import android.util.TypedValue;
+import android.view.Gravity;
+import android.view.View;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import com.example.eatfree.PriseDePhoto.ManagerPhoto;
 import com.example.eatfree.PriseDePhoto.Mod_photo;
+
 import com.example.eatfree.profile.ProfileManager;
 import com.example.eatfree.photoUtils.PhotoUtils;
 
@@ -38,13 +48,24 @@ import java.util.concurrent.TimeoutException;
 
 public class MainActivity extends AppCompatActivity {
 
+    //! Code de requète de demande de permissions
     public static final int MY_PERMISSIONS_REQUEST = 1;
+
+    //! Indique si les permissions ont été autorisées par l'utilisateur
     private boolean mPermissionsGranted;
+
+    //! Correspond aux fenêtres de progression de reconnaissance photo
     private ProgressDialog mProgressDialogOCR, mProgressDialogOFF;
+
+    //! Image prise en photo
     private Bitmap mImage;
 
     //! stocke les données sauvegardées de l'utilisateur
     public SharedPreferences preferences;
+
+    private LinearLayout resultTable;
+    private ImageView resultPouce;
+    private Button resultButton;
 
     @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN_MR1)
     @Override
@@ -91,6 +112,11 @@ public class MainActivity extends AppCompatActivity {
         return preferences.getBoolean("isSaved", false);
     }
 
+    /**
+     * Vérifie si les permissions sont acquises ou non, et les demande si elles ne le sont pas
+     * @param isFirstTry si c'est le premier appel de cette fonction
+     * @return un booléen correspondant à si les permissions ont été autorisées par l'utilisateur
+     */
     public boolean checkPermissions(boolean isFirstTry){
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED &&
                 ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA) == PackageManager.PERMISSION_GRANTED &&
@@ -108,10 +134,10 @@ public class MainActivity extends AppCompatActivity {
     }
 
     /**
-     * @brief revois le résultat de la prise de photo pour l'afficher sur la vue grâce au fichier temporaire (path)
-     * @param requestCode
-     * @param resultCode
-     * @param data
+     * @brief renvoie le résultat de la prise de photo pour l'afficher sur la vue grâce au fichier temporaire (path)
+     * @param requestCode code de requète
+     * @param resultCode code de résultat
+     * @param data données de l'activity
      */
 
     @Override
@@ -170,6 +196,7 @@ public class MainActivity extends AppCompatActivity {
      * @brief Lance la reconnaissance d'image par code-barre (gestion UI et appel fonction utilitaire)
      * @author Julian Lecocq--Mage
      */
+    @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN_MR1)
     private void photoRecognitionOFF() {
         runOnUiThread(() -> {
             if (mProgressDialogOFF == null) {
@@ -203,6 +230,7 @@ public class MainActivity extends AppCompatActivity {
      * @brief Lance la reconnaissance d'image par reconnaissance de caractères (gestion UI et appel fonction utilitaire)
      * @author Julian Lecocq--Mage
      */
+    @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN_MR1)
     private void photoRecognitionOCR()  {
         runOnUiThread(() -> {
             if (mProgressDialogOCR == null) {
@@ -249,18 +277,6 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    /**
-     * @brief Affichage du résultat du traitement de l'image
-     * @param result map des allergènes
-     */
-    private void photoRecognitionResult(Map<String, ArrayList<String>> result) {
-        AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
-        builder.setMessage(Arrays.toString(result.entrySet().toArray()))
-                .setCancelable(false)
-                .setPositiveButton("ok",null);
-        AlertDialog alert = builder.create();
-        alert.show();
-    }
 
     /**
      * @brief Classe callable représentant l'appel de la fonction utilitaire d'OCR sur un autre thread, car la tâche est longue
@@ -278,6 +294,118 @@ public class MainActivity extends AppCompatActivity {
             }
             return result;
         }
+    }
+
+
+    /**
+     * @brief Affichage du résultat du traitement de l'image
+     * @param result map des allergènes
+     */
+    @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN_MR1)
+    private void photoRecognitionResult(Map<String, ArrayList<String>> result) {
+        Map<String, ArrayList<String>> resulttrie = ResultUtils.triResult(result);
+
+        final Dialog dialog = new Dialog(MainActivity.this);
+        dialog.setTitle("Résultat");
+        dialog.setContentView(R.layout.panel_allergene_check);
+
+        resultTable = (LinearLayout) dialog.findViewById(R.id.tableAllergenes);
+        resultPouce = (ImageView) dialog.findViewById(R.id.img_pouce);
+        resultButton = (Button) dialog.findViewById(R.id.btnOkResultat);
+
+        if(resulttrie.isEmpty()){
+            resultPouce.setImageResource(R.drawable.pouce_vert);
+        } else {
+            resultPouce.setImageResource(R.drawable.pouce_rouge);
+        }
+
+        setAllergeneMap(resulttrie);
+
+        resultButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.dismiss();
+            }
+        });
+
+        dialog.show();
+    }
+
+    /**
+     * Permet de remplir la fenêtre de résltats avec les résultats
+     * @param resultMap la map de résultats
+     */
+    public void setAllergeneMap(Map<String, ArrayList<String>> resultMap){
+        resultTable.removeAllViews();
+        if(resultMap.isEmpty()){
+            resultPouce.setImageResource(R.drawable.pouce_vert);
+            addMessageRow("C'est bon ! A priori, il n'y a pas d'allergènes dans ce produit.");
+        } else {
+            resultPouce.setImageResource(R.drawable.pouce_rouge);
+            addMessageRow("Attention, des allergènes ont été trouvés :");
+            for (Map.Entry<String, ArrayList<String>> entry : resultMap.entrySet()) {
+                addAllergeneRow(entry.getKey(),entry.getValue());
+            }
+        }
+    }
+
+    /**
+     * Ajout d'une ligne correspondant à un allergène dans la fenêtre de résultats
+     * @param allergene l'allergène
+     * @param termes les termes s'y rapportant
+     */
+    public void addAllergeneRow(String allergene, ArrayList<String> termes){
+        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
+                0, LinearLayout.LayoutParams.MATCH_PARENT);
+        params.weight = 1.0f;
+
+        String stringtermes = android.text.TextUtils.join(", ", termes);
+        LinearLayout linearLayout = new LinearLayout(MainActivity.this);
+        linearLayout.setOrientation(LinearLayout.HORIZONTAL);
+        linearLayout.setGravity(Gravity.CENTER);
+
+        TextView allergeneTV = new TextView(MainActivity.this);
+        allergeneTV.setGravity(Gravity.CENTER);
+        allergeneTV.setText(allergene);
+        allergeneTV.setLayoutParams(params);
+        allergeneTV.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 18);
+        allergeneTV.setSingleLine(false);
+        linearLayout.addView(allergeneTV);
+
+        TextView termesTV = new TextView(MainActivity.this);
+        termesTV.setGravity(Gravity.CENTER);
+        termesTV.setText(stringtermes);
+        termesTV.setLayoutParams(params);
+        allergeneTV.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 16);
+        allergeneTV.setSingleLine(false);
+        linearLayout.addView(termesTV);
+
+        resultTable.addView(linearLayout);
+    }
+
+    /**
+     * Ajout d'une première ligne correspondant au message juste en dessous du pouce
+     * @param message le message à afficher
+     */
+    @SuppressLint("SetTextI18n")
+    public void addMessageRow(String message){
+        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
+                0, LinearLayout.LayoutParams.MATCH_PARENT);
+        params.weight = 1.0f;
+
+        LinearLayout linearLayout = new LinearLayout(MainActivity.this);
+        linearLayout.setOrientation(LinearLayout.HORIZONTAL);
+        linearLayout.setGravity(Gravity.CENTER);
+
+        TextView messageTV = new TextView(MainActivity.this);
+        messageTV.setGravity(Gravity.CENTER);
+        messageTV.setText(message);
+        messageTV.setLayoutParams(params);
+        messageTV.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 18);
+
+        linearLayout.addView(messageTV);
+
+        resultTable.addView(linearLayout);
     }
 
 }
