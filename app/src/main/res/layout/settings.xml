@@ -22,8 +22,8 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:text="Besoin de renseignements ? \nContactez nous au xx.xx.xx.xx.xx ou à \n eatfree@gmail.com"
-                android:layout_marginTop="10dp"/>
+                android:layout_marginTop="10dp"
+                android:text="Besoin de renseignements ? \nContactez nous au 04 71 09 90 80 ou à \nsecretariat.informatique-lepuy.iut@uca.fr" />
 
             <TextView
                 android:layout_width="match_parent"
@@ -35,8 +35,8 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:text="En utilisant notre application Eatfree, vous acceptez l'accès à votre caméra."
-                android:layout_marginTop="10dp"/>
+                android:layout_marginTop="10dp"
+                android:text="En utilisant notre application Eatfree, vous acceptez l'accès à votre caméra et à vos fichiers. L'application étant réalisée par des étudiants, vous êtes le seul responsable de son utilisation et vous assumez le risque d'une erreur. En cas de doute ou de mauvais ressenti suite à l'achat d'un produit validé par l'application consultez votre médecin. " />
 
             <TextView
                 android:layout_width="match_parent"
